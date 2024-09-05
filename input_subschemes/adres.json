@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq input, adress data.",
+  "$comment": "Schemat do danych teleadresowych pacjenta.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "adres_type": {
+        "type": "string",
+        "enum": [
+          "zamieszkania",
+          "pobytu",
+          "hospitalizacji"
+        ],
+        "$comment": "Wymagany"
+      },
+      "adres_wojewodztwo_nazwa": {
+        "type": "string",
+        "$comment": "Wartosci do uzupelnienia. Wymagany jesli nie podano kodu TERT."
+      },
+      "adres_wojewodztwo_kod": {
+        "type": "string",
+        "$comment": "Napisac pattern rozpoznajacy kod TERYT. Opcjonalny."
+      },
+      "adres_powiat_nazwa": {
+        "type": "string",
+        "$comment": "Dowolny string, lista nazw powiatow jest gdzies pewnie dostepna, ale jak ja walidowac jsonem ?.  Wymagany jesli nie podano kodu TERT."
+      },
+      "adres_powiat_kod": {
+        "type": "string",
+        "$comment": "Napisac pattern rozpoznajacy kod TERYT. Opcjonalny."
+      },
+      "adres_gmina_nazwa": {
+        "type": "string",
+        "$comment": "Dowolny string, lista nazw gmin jest gdzies pewnie dostepna, ale jak ja walidowac jsonem ?. Wymagany jesli nie podano kodu TERT."
+      },
+      "adres_gmina_kod": {
+        "type": "string",
+        "$comment": "Napisac pattern rozpoznajacy kod TERYT. Opcjonalny."
+      },
+      "adres_miejscowosc_nazwa": {
+        "type": "string",
+        "$comment": "Dowolny string, lista nazw miejscowosci jest gdzies pewnie dostepna.  Wymagany jesli nie podano kodu TERT."
+      },
+      "adres_miejscowosc_kod": {
+        "type": "string",
+        "$comment": "Napisac pattern rozpoznajacy kod TERYT. Opcjonalny."
+      },
+      "adres_kod_pocztowy": {
+        "type": "string",
+        "pattern": "^\\d\\d-\\d\\d\\d$",
+        "$comment": "Kody pocztowe maja chyba zawsze postac XX-XXX?. Wymagany"
+      },
+      "adres_ulica_nazwa": {
+        "type": "string",
+        "$comment": "opcjonalny"
+      },
+      "adres_budynek_numer": {
+        "type": "string",
+        "$comment": "String bo budynki maja tez nazwy w stylu 10A. Opcjonalny."
+      },
+      "adres_mieszkanie_numer": {
+        "type": "string",
+        "$comment": "Czy mieszkanie moze miec numer 10A ?. Opcjonalny."
+      },
+      "adres_telefon_numer": {
+        "type": "string",
+        "$comment": "Opcjonalny"
+      }
+    },
+    "required": [
+      "adres_type",
+      "adres_kod_pocztowy"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "not": {
+            "required": [
+              "adres_wojewodztwo_kod"
+            ]
+          }
+        },
+        "then": {
+          "required": [
+            "adres_wojewodztwo_nazwa"
+          ]
+        },
+        "if": {
+          "not": {
+            "required": [
+              "adres_powiat_kod"
+            ]
+          }
+        },
+        "then": {
+          "required": [
+            "adres_powiat_nazwa"
+          ]
+        },
+        "if": {
+          "not": {
+            "required": [
+              "adres_gmina_kod"
+            ]
+          }
+        },
+        "then": {
+          "required": [
+            "adres_gmina_nazwa"
+          ]
+        },
+        "if": {
+          "not": {
+            "required": [
+              "adres_miejscowosc_kod"
+            ]
+          }
+        },
+        "then": {
+          "required": [
+            "adres_miejscowosc_nazwa"
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "test_diagnostyczny_typowanie_status": "Nie",
+  "test_diagnostyczny_typowanie_wartosc": "A",
+  "test_diagnostyczny_podtypowanie_status": "Nie",
+  "rodzaj_dostepnej_probki": [
+    {
+      "rodzaj_dostepnej_probki": "RNA"
+    },
+    {
+      "rodzaj_dostepnej_probki": "probka_wejsciowa",
+      "data_planowanego_zniszczenia": "10-12-2030"
+    }
+  ]
+}

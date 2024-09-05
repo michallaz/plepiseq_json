@@ -1,0 +1,9 @@
+{"probka_identyfikator": "Identyfikator_w_laboratorium",
+"probka_miasto_zachorowania": "Warszawa",
+"probka_epibaza_identyfikator" : "Identyfikator_w_epibaza",
+"probka_pobranie_data" :"10-12-2034",
+"probka_test_diagnostyczny_data" : "11-12-2034",
+"probka_test_diagnostyczny_rodzaj" : "test_antygenowy",
+"probka_material" :"krew",
+"probka_finansowanie" : "NFZ"
+}

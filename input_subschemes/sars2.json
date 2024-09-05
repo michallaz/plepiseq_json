@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq input, SARS-CoV-2 specific data",
+  "$comment": "Informacje o wirusie SARS-CoV-2",
+  "type": "object",
+  "properties": {
+    "test_diagnostyczny_wynik": {
+      "type": "string",
+      "enum": [
+        "Pozytywny",
+        "Negatywny",
+        "Brak danych"
+      ],
+      "$comment": "W dokumencie Pawla - kod wyniku testu pobrany ze slownika. Poki co predefiniowane wartosci sa zmyslowne. Wymagany."
+    },
+    "test_diagnostyczny_wariant": {
+      "type": "string",
+      "$comment": "Informacje o wariancie okreslonym przez test diagnostyczny. Opcjonalny."
+    },
+    "gen1_ct_wartosc": {
+      "type": "string",
+      "pattern": "^.*\\.\\d\\d$",
+      "$comment": "W dokumencie Pawla - dogladnosc do 2 miejsca po przecinku. Opcjonalny."
+    },
+    "gen2_ct_wartosc": {
+      "type": "string",
+      "pattern": "^.*\\.\\d\\d$",
+      "$comment": "W dokumencie Pawla - dogladnosc do 2 miejsca po przecinku. Opcjonalny."
+    },
+    "ct_srednia_wartosc": {
+      "type": "string",
+      "pattern": "^.*\\.\\d\\d$",
+      "$comment": "W dokumencie Pawla - dogladnosc do 2 miejsca po przecinku. Opcjonalny."
+    }
+  }
+}

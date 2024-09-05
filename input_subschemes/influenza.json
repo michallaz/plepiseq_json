@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq input, Influenza specific data",
+  "$comment": "Informacje o wirusie grypy",
+  "type": "object",
+  "properties": {
+    "test_diagnostyczny_typowanie_status": {
+      "type": "string",
+      "enum": [
+        "Tak",
+        "Nie",
+        "Brak danych"
+      ],
+      "$comment": "W dokumencie Pawla - czy okreslono typ wirusa. Wymagany, choc w dokumencie Pawla nie okreslono tego."
+    },
+    "test_diagnostyczny_typowanie_wartosc": {
+      "type": "string",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "Brak danych"
+      ],
+      "$comment": "W dokumencie Pawla - typ wirusa grypy. Wymagany, jesli test_diagnostyczny_typowanie_status to Tak."
+    },
+    "test_diagnostyczny_podtypowanie_status": {
+      "type": "string",
+      "enum": [
+        "Tak",
+        "Nie",
+        "Brak danych"
+      ],
+      "$comment": "W dokumencie Pawla - czy okreslono podtyp wirusa. Wymagany, choc w dokumencie Pawla nie okreslono tego."
+    },
+    "test_diagnostyczny_podtypowanie_wartosc": {
+      "type": "string",
+      "enum": [
+        "H1N1",
+        "H3N2",
+        "H4N6",
+        "H5N1",
+        "H5N2",
+        "H5N5",
+        "H5N6",
+        "H5N8",
+        "H6N1",
+        "H7N9",
+        "H9N2",
+        "Yamagata",
+        "Victoria",
+        "Brak danych"
+      ],
+      "$comment": "W dokumencie Pawla - podtyp wirusa grypy. Podano podtypy rozumiane przez nasz pipeline. Wymagany, jesli test_diagnostyczny_podtypowanie_status to Tak."
+    },
+    "rodzaj_dostepnej_probki": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rodzaj_probki": {
+            "type": "string",
+            "enum": [
+              "probka_wejsciowa",
+              "RNA"
+            ],
+            "$comment": "Rodzaj dostepnej w laboratorium probki. Wymagany"
+          },
+          "data_planowanego_zniszczenia": {
+            "type": "string",
+            "pattern": "^[0-3][0-9]-[0-1][[0-9]-[1-2](0|9)[0-9][0-9]$",
+            "$comment": "Data do ktorej bedzie dostepna probka, format daty to dzien-miesiac-rok, lata w zakresie od 1900 do 2099. W dokumentacji Pawla jest jeszcze godzina. Opcjonalny.",
+            "examples": [
+              "01-12-1900",
+              "16-02-2056"
+            ]
+          }
+        },
+        "required": [
+          "rodzaj_dostepnej_probki"
+        ]
+      },
+      "comment": "Lista obiektow. Kazda element listy moze miec dwa pola rodzaj_probki i data_planowanego_zniszczenia. rodzaj probki jest wymagany"
+    }
+  },
+  "required": [
+    "test_diagnostyczny_typowanie_status",
+    "test_diagnostyczny_podtypowanie_status"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "test_diagnostyczny_typowanie_status": {
+            "const": "Tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "test_diagnostyczny_typowanie_wartosc"
+        ]
+      },
+      "if": {
+        "properties": {
+          "test_diagnostyczny_podtypowanie_status": {
+            "const": "Tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "test_diagnostyczny_podtypowanie_wartosc"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq input, escherichia specific data",
+  "$comment": "Informacje o bakteriach z rodzaju Escherichia",
+  "type": "object",
+  "properties": {
+    "serotyp_status": {
+      "type": "string",
+      "enum": [
+        "Tak",
+        "Nie",
+        "Brak danych"
+      ],
+      "$comment": "Informacje o okresleniu serotypu. Wymagany."
+    },
+    "serotyp_wartosc": {
+      "type": "string",
+      "enum": [
+        "Typ1",
+        "Typ2"
+      ],
+      "$comment": "Deklarowany serotyp, wybierany z predefiniowanych wartosci. Wymagany, jesli serotyp_status to Tak."
+    },
+    "patotyp_status": {
+      "type": "string",
+      "enum": [
+        "Tak",
+        "Nie",
+        "Brak danych"
+      ],
+      "$comment": "Informacje o okresleniu patotypu. Wymagany."
+    },
+    "patotyp_wartosc": {
+      "type": "string",
+      "enum": [
+        "eae",
+        "stx1",
+	"stx2",
+	"aaiC",
+	"aggR",
+	"elt",
+	"stiA",
+	"ipaH"
+      ],
+      "$comment": "Deklarowany patotyp wybierany z predefiniowanych wartosci. Wymagany, jesli serotyp_status to Tak. Do uzupelnienia"
+    },
+    "antybiotyki_status": {
+      "type": "string",
+      "enum": [
+        "Tak",
+        "Nie",
+        "Brak danych"
+      ],
+      "$comment": "Informacje o okresleniu opornosci. Wymagany."
+    },
+    "antybiotyki_wartosc": {
+      "$ref": "antybiotyko_opornosc.json",
+      "$comment": "Opornosc na antybiotyki, oddzielny schemat. antybiotyki_wartosc jest LISTA, wiec moze byc definiowana N-razy. Wymagany jesli antybiotyki_status to Tak."
+    }
+  },
+  "required": [
+    "serotyp_status",
+    "patotyp_status",
+    "antybiotyki_status"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "serotyp_status": {
+            "const": "Tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "serotyp_wartosc"
+        ]
+      },
+      "if": {
+        "properties": {
+          "patotyp_status": {
+            "const": "Tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "patotyp_wartosc"
+        ]
+      },
+      "if": {
+        "properties": {
+          "antybiotyki_status": {
+            "const": "Tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "antybiotyki_wartosc"
+        ]
+      }
+    }
+  ]
+}
+

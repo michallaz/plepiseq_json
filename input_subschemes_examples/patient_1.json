@@ -1,0 +1,9 @@
+{"pacjent_identyfikator_rodzaj":"PESEL matki",
+"pacjent_identyfikator_kod" : "80808000000",
+"pacjent_identyfikator_kraj":"LT",
+"pacjent_imie":"Jan",
+"pacjent_nazwisko":"Kowal",
+"pacjent_data_urodzenia" : "01-01-1940",
+"pacjent_plec" : "mezczyzna",
+"pacjent_adres":"string"
+}

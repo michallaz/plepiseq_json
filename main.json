@@ -1,0 +1,152 @@
+{
+  "title": "Submission schema for plepiseq",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:///home/michall/Desktop/testy_tmp/json_schema/input/input_subschemes",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "pathogen": {
+          "type": "string",
+          "enum": [
+            "salmonella",
+            "campylobacter",
+            "escherichia",
+            "sars2",
+            "rsv",
+            "influenza"
+          ],
+          "$comment": "W dokumencie Pawla jako kod czynnika."
+        },
+        "patient_data": {
+          "$ref": "input_subschemes/patient.json",
+          "$comment": "All info regarding infected patient. Should be invariant. Probably redundant, all should be already present in the epibaza database."
+        },
+        "laboratory_data": {
+          "$ref": "input_subschemes/laboratory_data.json",
+          "$comment": "All info regarding sequencing laboratory. Should be invariant. Probably redundant, all should be already present in the epibaza database."
+        },
+        "sequencing_data": {
+          "$ref": "input_subschemes/sequencing_data.json",
+          "$comment": "All info regarding sequencig process."
+        },
+        "sample_data": {
+          "$ref": "input_subschemes/sample_data.json",
+          "$comment": "All info regarding material that is sequenced. All variability (dates, places, origin )is put here. Probably redundant, all should be already present in the epibaza database."
+        },
+        "escherichia_data": {
+          "$ref": "input_subschemes/eschrichia.json",
+          "$comment": "Escherichia specific data obtain NEXT to sequencing. Required to compare outputs of biochemical methods and sequencing."
+        },
+        "salmonella_data": {
+          "$ref": "input_subschemes/salmonella.json",
+          "$comment": "Salmonella specific data obtain next to sequencing. Required to compare outputs of biochemical methods and sequencing."
+        },
+        "campylobacter_data": {
+          "$ref": "input_subschemes/campylobacter.json",
+          "$comment": "Campylobacter specific data obtain next to sequencing. Required to compare outputs of biochemical methods and sequencing."
+        },
+        "sars2_data": {
+          "$ref": "input_subschemes/sars2.json",
+          "$comment": "SARS-CoV-2 specific data obtain next to sequencing. Required to compare outputs of biochemical methods and sequencing."
+        },
+        "rsv_data": {
+          "$ref": "input_subschemes/rsv.json",
+          "$comment": "RSV specific data obtain next to sequencing. Required to compare outputs of biochemical methods and sequencing."
+        },
+        "influenza_data": {
+          "$ref": "input_subschemes/influenza.json",
+          "$comment": "Influenza specific data obtain next to sequencing. Required to compare outputs of biochemical methods and sequencing."
+        }
+      },
+      "required": ["patient_data", "sample_data", "sequencing_data", "laboratory_data", "pathogen"],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "pathogen": {
+                "const": "salmonella"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "salmonella_data"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "pathogen": {
+                "const": "escherichia"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "escherichia_data"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "pathogen": {
+                "const": "campylobacter"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "campylobacter_data"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "pathogen": {
+                "const": "rsv"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "rsv_data"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "pathogen": {
+                "const": "sars2"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sars2_data"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "pathogen": {
+                "const": "influenza"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "influenza_data"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

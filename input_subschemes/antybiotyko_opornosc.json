@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq input, resistance to antibiotics.",
+  "$comment": "Schemat do danych o stwierdzonej antybiotykoopornosci.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "antybiotyk_nazwa": {
+        "type": "string",
+        "enum": [
+          "Aminoglycoside",
+          "Beta-lactam",
+          "Colistin",
+          "Fluoroquinolone",
+          "Fosfomycin",
+          "Fusidic Acid",
+          "Glycopeptide",
+          "Misc",
+          "MLS - Macrolide, Lincosamide and Streptogramin B",
+          "Nitroimidazole",
+          "Oxazolidinone",
+          "Phenicol",
+          "Pseudomonic Acid",
+          "Rifampicin",
+          "Sulphonamide",
+          "Tetracycline",
+          "Trimethoprim",
+          "Aminoglycoside"
+        ],
+        "$comment": "Wymagany"
+      },
+      "antybiotyk_status": {
+        "type": "string",
+        "enum": [
+          "oporny",
+          "wrazliwy",
+          "inny"
+        ],
+        "$comment": "Status opornosci na dany antybiotyk, do wyboru oporny, wrazliwy, lub inny. Wymagany."
+      },
+      "antybiotyk_opornosc_czynnik": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "czynnik": {
+              "type": "string",
+              "$comment": "Identyfikator genu lub mutacji powodujacej wystapienie opornosci. Wymagany"
+            }
+          },
+          "required": [
+            "czynnik"
+          ]
+        },
+        "comment": "Lista jednoelementowych obiektow. Jedyne pole to /czynnik/. Opcjonalny, pisany pod output/"
+      }
+    },
+    "required": [
+      "antybiotyk_nazwa",
+      "antybiotyk_status"
+    ]
+  }
+}

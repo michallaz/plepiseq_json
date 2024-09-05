@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq input, campylobacter specific data",
+  "$comment": "Informacje o bakteriach z rodzaju Campylobacter",
+  "type": "object",
+  "properties": {
+    "gatunek_status": {
+      "type": "string",
+      "enum": [
+        "Tak",
+        "Nie",
+        "Brak danych"
+      ],
+      "$comment": "Informacje o okresleniu gatunku. Wymagany."
+    },
+    "gatunek_wartosc": {
+      "type": "string",
+      "enum": [
+        "jejuni/coli",
+        "non-jejuni/coli"
+      ],
+      "$comment": "Deklarowany gatunek, wybierany z predefiniowanych wartosci. Wymagany, jesli genotyp_status to Tak."
+    },
+    "serotyp_status": {
+      "type": "string",
+      "enum": [
+        "Tak",
+        "Nie",
+        "Brak danych"
+      ],
+      "$comment": "Informacje o okresleniu serotypum. Wymagany."
+    },
+    "serotyp_wartosc": {
+      "type": "string",
+      "enum": [
+        "Typ1",
+        "Typ2"
+      ],
+      "$comment": "Deklarowany serotyp, wybierany z predefiniowanych wartosci. Wymagany, jesli serotyp_status to Tak."
+    },
+    "antybiotyki_status": {
+      "type": "string",
+      "enum": [
+        "Tak",
+        "Nie",
+        "Brak danych"
+      ],
+      "$comment": "Informacje o okresleniu opornosci. Wymagany."
+    },
+    "antybiotyki_wartosc": {
+      "$ref": "input_subschemes/antybiotyko_opornosc.json",
+      "$comment": "Opornosc na antybiotyki, oddzielny schemat. antybiotyki_wartosc jest LISTA, wiec moze byc definiowana N-razy. Wymagany jesli antybiotyki_status to Tak."
+    }
+  },
+  "required": [
+    "serotyp_status",
+    "gatunek_status",
+    "antybiotyki_status"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "serotyp_status": {
+            "const": "Tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "serotyp_wartosc"
+        ]
+      },
+      "if": {
+        "properties": {
+          "gatunek_status": {
+            "const": "Tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "gatunek_wartosc"
+        ]
+      },
+      "if": {
+        "properties": {
+          "antybiotyki_status": {
+            "const": "Tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "antybiotyki_wartosc"
+        ]
+      }
+    }
+  ]
+}

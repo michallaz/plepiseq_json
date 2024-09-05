@@ -1,0 +1,59 @@
+{
+  "input": {
+    "pathogen": "escherichia",
+    "patient_data": {
+      "pacjent_identyfikator_rodzaj": "PESEL matki",
+      "pacjent_identyfikator_kod": "80808000000",
+      "pacjent_identyfikator_kraj": "LT",
+      "pacjent_imie": "Jan",
+      "pacjent_nazwisko": "Kowal",
+      "pacjent_data_urodzenia": "01-01-1940",
+      "pacjent_plec": "mezczyzna",
+      "pacjent_adres": [
+        {
+          "adres_type": "zamieszkania",
+          "adres_kod_pocztowy": "00-111",
+          "adres_wojewodztwo_kod": "kod",
+          "adres_powiat_kod": "kod",
+          "adres_gmina_kod": "kod",
+          "adres_miejscowosc_kod": "kod"
+        },
+        {
+          "adres_type": "pobytu",
+          "adres_kod_pocztowy": "21-134",
+          "adres_wojewodztwo_nazwa": "inny",
+          "adres_powiat_nazwa": "nazwa",
+          "adres_gmina_nazwa": "nazwa",
+          "adres_miejscowosc_nazwa": "nazwa"
+        }
+      ]
+    },
+    "sample_data": {
+      "probka_identyfikator": "Identyfikator_w_laboratorium",
+      "probka_miasto_zachorowania": "Warszawa",
+      "probka_epibaza_identyfikator": "Identyfikator_w_epibaza",
+      "probka_pobranie_data": "10-12-2034",
+      "probka_test_diagnostyczny_data": "11-12-2034",
+      "probka_test_diagnostyczny_rodzaj": "test_antygenowy",
+      "probka_material": "krew",
+      "probka_finansowanie": "NFZ",
+      "probka_pacjent_wiek" :"10Y"
+    },
+    "sequencing_data": {
+      "typ_sekwencjonowania": "amplikonowe",
+      "platforma_sekwencjonujaca": "Illumina",
+      "plik_1": "ala_R1.fastq.gz",
+      "plik_2": "ala_R2.fastq.gz",
+      "schemat_primerow": "V1"
+    },
+    "laboratory_data": {
+      "laboratorium_identyfikator": "Some_id"
+    },
+    "escherichia_data": {
+      "serotyp_status": "Nie",
+      "patotyp_status": "Tak",
+      "patotyp_wartosc": "stx2",
+      "antybiotyki_status": "Nie"
+    }
+  }
+}

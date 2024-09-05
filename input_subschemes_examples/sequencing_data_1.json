@@ -1,0 +1,5 @@
+{"typ_sekwencjonowania" : "amplikonowe",
+"platforma_sekwencjonujaca": "Illumina",
+"plik_1":"ala_R1.fastq.gz",
+"plik_2": "ala_R2.fastq.gz",
+"schemat_primerow" :"V1"}

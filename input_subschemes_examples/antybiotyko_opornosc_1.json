@@ -1,0 +1,18 @@
+[
+  {
+    "antybiotyk_nazwa": "Colistin",
+    "antybiotyk_status": "oporny",
+    "antybiotyk_opornosc_czynnik": [
+      {
+        "czynnik": "gen1"
+      },
+      {
+        "czynnik": "genZ"
+      }
+    ]
+  },
+  {
+    "antybiotyk_nazwa": "Aminoglycoside",
+    "antybiotyk_status": "wrazliwy"
+  }
+]

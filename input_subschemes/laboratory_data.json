@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq input, info regarding sequencing laboratory",
+  "$comment": "Informacje o laboratorium wykonujacym sekwencjonowanie przekazywane do plepiseq",
+  "type": "object",
+  "properties": {
+    "laboratorium_identyfikator": {
+      "type": "string",
+      "$comment": "Identyfikator laboratorium w systemach PZH. Wymagany."
+    }
+  },
+  "required": [
+    "laboratorium_identyfikator"
+  ]
+}
+

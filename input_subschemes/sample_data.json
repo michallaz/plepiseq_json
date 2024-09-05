@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq input, sample data",
+  "$comment": "Informacje o probce, zarowno z punktu widzenia pacjenta jak i laboratorium. Te cechy opisuja zmienne elementy zmienne.",
+  "type": "object",
+  "properties": {
+    "probka_identyfikator": {
+      "type": "string",
+      "$comment": "Identyfikator probki nadany wewnetrznie w laboratorium diagnostycznym. Dowolny string. Wymagany."
+    },
+    "probka_miasto_zachorowania": {
+      "type": "string",
+      "$comment": "Miasto zachorowania. Tylko w dokumencie Tomka jako Miejsce zachorowania. Dowolny string. Opcjonalny."
+    },
+    "probka_epibaza_identyfikator": {
+      "type": "string",
+      "$comment": "Identyfikator probki nadany w epibaza. Dowolny string. Wymagany."
+    },
+    "probka_pobranie_data": {
+      "type": "string",
+      "pattern": "^[0-3][0-9]-[0-1][[0-9]-[1-2](0|9)[0-9][0-9]$",
+      "$comment": "Data analizy probki, format daty to dzien-miesiac-rok, lata w zakresie od 1900 do 2099. W dokumencie Pawla jest jeszcze godzina. Wymagany.",
+      "examples": [
+        "01-12-1900",
+        "16-02-2056"
+      ]
+    },
+    "probka_test_diagnostyczny_data": {
+      "type": "string",
+      "pattern": "^[0-3][0-9]-[0-1][[0-9]-[1-2](0|9)[0-9][0-9]$",
+      "$comment": "Data analizy probki, format daty to dzien-miesiac-rok, lata w zakresie od 1900 do 2099. W dokumencie Pawla jest jeszcze godzina. Wymagany.",
+      "examples": [
+        "01-12-1900",
+        "16-02-2056"
+      ]
+    },
+    "probka_test_diagnostyczny_rodzaj": {
+      "type": "string",
+      "enum": [
+        "RT-PCR",
+        "test_antygenowy"
+      ],
+      "$comment": "Rodzaj wykonanego testu diagnostycznego, slownik do uzupelnienia. Wynik testu jest schemacie dla kazdego organizmu. Wymagany."
+    },
+    "probka_material": {
+      "type": "string",
+      "enum": [
+        "krew",
+        "mocz",
+        "wymaz_z_nosogardzieli",
+        "inny"
+      ],
+      "$comment": "Kod pobranego materialu. Slownik do uzupelenia. Wymagany."
+    },
+    "probka_pacjent_wiek": {
+      "type": "string",
+      "pattern":"\\d{1,3}(Y|M)?$",
+      "$comment": "Wiek Pacjenta. W dokumencie Pawla po liczbie jest opcjonalne Y lub M na oznaecznie wieku w latach lub miesiacach. U Pawla ten parametr jest przypisany danym PACJENTA. Wymagany."
+    },
+    "probka_finansowanie": {
+      "type": "string",
+      "enum": [
+        "NFZ",
+        "prywatne",
+        "stacja"
+      ],
+      "$comment": "Kod zrodla finansowania. Slownik do uzupelenia. Wymagany."
+    },
+    "probka_komentarz": {
+      "type": "string",
+      "$comment": "Dowolny tekst, komentarz laboratorium do analizowanej probki. Tylko u Tomka. Opcjonalny."
+    }
+  },
+  "required": [
+    "probka_identyfikator",
+    "probka_epibaza_identyfikator",
+    "probka_pobranie_data",
+    "probka_test_diagnostyczny_data",
+    "probka_test_diagnostyczny_rodzaj",
+    "probka_material",
+    "probka_finansowanie",
+    "probka_pacjent_wiek"
+  ]
+}

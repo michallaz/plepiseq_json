@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq input,sequencing related data",
+  "$comment": "Informacje o protokole do sekwencjonowania",
+  "type": "object",
+  "properties": {
+    "plik_1": {
+      "type": "string",
+      "pattern": ".*\\.fastq\\.gz$",
+      "$comment": "Plik 1 z danymi. Wymagany"
+    },
+    "plik_2": {
+      "type": "string",
+      "pattern": ".*\\.fastq\\.gz$",
+      "$comment": "Plik 2 z danymi. Wymagany gdy platforma_sekwencjonujaca to Illumina"
+    },
+    "typ_sekwencjonowania": {
+      "type": "string",
+      "enum": [
+        "amplikonowe",
+        "metagenomowe"
+      ],
+      "$comment": "Sekwenjonowanie metagenomwe wybieramy dla sekwencjonowac bakteryjnych i wirusowych w ktorych nie wykorzystano amplifikacji w oparciu o dostepny schemat primerow. Wymagany."
+    },
+    "platforma_sekwencjonujaca": {
+      "type": "string",
+      "enum": [
+        "Illumina",
+        "Nanopore"
+      ],
+      "$comment": "Platforma sekwencjonujaca. Wymagany."
+    },
+    "schemat_primerow": {
+      "type": "string",
+      "enum": [
+        "V1",
+        "V2"
+      ],
+      "$comment": "Schemat primerow stosowany w sekwencjonowaniu amplikonowym. Wymagany jesli typ_sekwencjonowania to amplikonowe.."
+    }
+  },
+  "required": [
+    "typ_sekwencjonowania",
+    "platforma_sekwencjonujaca"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "allOf": [
+          {
+            "properties": {
+              "typ_sekwencjonowania": {
+                "const": "amplikonowe"
+              }
+            }
+          },
+          {
+            "properties": {
+              "platforma_sekwencjonujaca": {
+                "const": "Illumina"
+              }
+            }
+          }
+        ]
+      },
+      "then": {
+        "required": [
+          "plik_1",
+          "plik_2",
+          "schemat_primerow"
+        ]
+      }
+    },
+    {
+      "if": {
+        "allOf": [
+          {
+            "properties": {
+              "typ_sekwencjonowania": {
+                "const": "metagenomowe"
+              }
+            }
+          },
+          {
+            "properties": {
+              "platforma_sekwencjonujaca": {
+                "const": "Illumina"
+              }
+            }
+          }
+        ]
+      },
+      "then": {
+        "required": [
+          "plik_1",
+          "plik_2"
+        ]
+      }
+    },
+    {
+      "if": {
+        "allOf": [
+          {
+            "properties": {
+              "typ_sekwencjonowania": {
+                "const": "amplikonowe"
+              }
+            }
+          },
+          {
+            "properties": {
+              "platforma_sekwencjonujaca": {
+                "const": "Nanopore"
+              }
+            }
+          }
+        ]
+      },
+      "then": {
+        "required": [
+          "plik_1",
+          "schemat_primerow"
+        ]
+      }
+    },
+    {
+      "if": {
+        "allOf": [
+          {
+            "properties": {
+              "typ_sekwencjonowania": {
+                "const": "metagenomowe"
+              }
+            }
+          },
+          {
+            "properties": {
+              "platforma_sekwencjonujaca": {
+                "const": "Nanopore"
+              }
+            }
+          }
+        ]
+      },
+      "then": {
+        "required": [
+          "plik_1"
+        ]
+      }
+    }
+  ]
+}

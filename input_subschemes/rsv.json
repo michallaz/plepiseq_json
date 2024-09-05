@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq input, RSV specific data",
+  "$comment": "Informacje o wirusie RSV, brak informacji w dokumantacjach Pawla i Tomka",
+  "type": "object"
+}

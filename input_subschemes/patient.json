@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq input, patient data",
+  "$comment": "Informacje o pacjencie przypisanym do probki. Umieszczamy tutaj /niezmienne/ cechy pacjenta. Cechy zmienne (np. wiek w momencie zachorowania) przypisano do materialu.",
+  "type": "object",
+  "properties": {
+    "pacjent_identyfikator_rodzaj": {
+      "type": "string",
+      "enum": [
+        "PESEL",
+        "PESEL matki",
+        "Numer paszportu",
+        "Numer dowodu osobistego",
+        "Inny"
+      ],
+      "$comment": "Rodzaj identyfikatora pacjenta. Wymagany."
+    },
+    "pacjent_identyfikator_kod": {
+      "type": "string",
+      "$comment": "Alfanumeryczny identyfikator pacjenta, rozny w zaleznosci od rodzaju identyfikatora. Wymagany."
+    },
+    "pacjent_identyfikator_kraj": {
+      "type": "string",
+      "deafult": "PL",
+      "$comment": "Kraj wydajacy dokument identyfikujacy. W dokumentacji Pawla podano zgodnosc ze standardem ISO 3166 i wartosc domyslna - PL. Wymagany."
+    },
+    "pacjent_imie": {
+      "type": "string",
+      "$comment": "Imie pacjenta. Wymagany"
+    },
+    "pacjent_nazwisko": {
+      "type": "string",
+      "$comment": "Nazwisko pacjenta. Wymagany"
+    },
+    "pacjent_data_urodzenia": {
+      "type": "string",
+      "pattern": "^[0-3][0-9]-[0-1][[0-9]-[1-2](0|9)[0-9][0-9]$",
+      "$comment": "Data urodzenia pacjenta. Format daty to dzien-miesiac-rok, lata w zakresie od 1900 do 2099. Wymagany, jesli pacjent_identyfikator_rodzaj jest rozny od PESEL."
+    },
+    "pacjent_plec": {
+      "type": "string",
+      "enum": [
+        "kobieta",
+        "mezczyzna",
+        "nieznana"
+      ],
+      "$comment": "Plec pacjenta, W dokumencie Pawla okreslono 3 mozliwosci. Wymagany"
+    },
+    "pacjent_adres": {
+      "$ref": "adres.json",
+      "$comment": "Adres pacjenta, oddzielny schemat. pacjent_adress jest LISTA, wiec moze byc definiowana N-razy. Przyklad w input_subschemes_przyklady/adres_1.json "
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "pacjent_identyfikator_rodzaj": {
+            "const": "PESEL"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "pacjent_identyfikator_rodzaj",
+          "pacjent_identyfikator_kod",
+          "pacjent_identyfikator_kraj",
+          "pacjent_imie",
+          "pacjent_nazwisko",
+          "pacjent_plec",
+          "pacjent_adres"
+        ]
+      },
+      "else": {
+        "required": [
+          "pacjent_identyfikator_rodzaj",
+          "pacjent_identyfikator_kod",
+          "pacjent_identyfikator_kraj",
+          "pacjent_imie",
+          "pacjent_nazwisko",
+          "pacjent_data_urodzenia",
+          "pacjent_plec",
+          "pacjent_adres"
+        ]
+      }
+    }
+  ]
+}
