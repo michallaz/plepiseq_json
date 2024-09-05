@@ -1,0 +1,4 @@
+Python script requires "fastjsonschema", to install just type "pip install fastjsonschema".
+To evaluate json against prepared schema type
+python scheme_validation.py <schema> <your json>, e.g.
+python scheme_validation.py main_schema.json full_input_1.json

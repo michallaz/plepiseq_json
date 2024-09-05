@@ -1,7 +1,7 @@
 {
   "title": "Submission schema for plepiseq",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "file:///home/michall/Desktop/testy_tmp/json_schema/input/input_subschemes",
+  "$id": "https://raw.githubusercontent.com/michallaz/plepiseq_json/main/",
   "type": "object",
   "properties": {
     "input": {
