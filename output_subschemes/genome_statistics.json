@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output, statistic information regarding genome proposed at various steps of a pipeline.",
+  "$comment": "Schemat dla outputu, statystyczne informacja o genomach poropnowanych na roznych etapach pipeline.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "etap": {
+        "type": "string",
+        "enum": [
+          "pre-filtering",
+          "post-filtering"
+        ],
+        "$comment": "Infomacja czy analiza dotyczyla genomu przed filtrowanie contigow czy po. Genom przed filtrowaniem pozwala lepiej oceniac zanieczyszczenia obcym materialem.. Wymagany."
+      },
+      "komunikat_bledu": {
+        "type": "string",
+        "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "Tak",
+          "Nie",
+          "Blad"
+        ],
+        "$comment": "informacja czy policzono profil, niepoliczono, zwrocnono blad. Wymagany."
+      },
+      "genom_calkowita_dlugosc": {
+        "type": "number",
+        "$comment": "Calkowita dlugosc genomu. Wymagany."
+      },
+      "genom_ilosc_segmentow": {
+        "type": "number",
+        "$comment": "Calkowita ilosc proponowanych contigow. Wymagany "
+      },
+      "genom_srednie_pokrycie": {
+        "type": "number",
+        "multipleOf": 0.01,
+        "$comment": "Srednie pokrycie dla zapronowanego genomu, z dokladnoscia maksymalnie do 2 miejsca po przecinku. Wymagany "
+      },
+      "genom_N50": {
+        "type": "number",
+        "$comment": "Dlugosc genomu przy uwzglednieniu 50%, najdluzszych contigow. Wymagany "
+      },
+      "genom_L50": {
+        "type": "number",
+        "$comment": "Minimalna liczba contigow wymagana aby uzyskac 50% dlugosci genomu. Wymagany "
+      },
+      "genom_liczba_N": {
+        "type": "number",
+        "$comment": "Ilosc nieokreslonych nukleotydow zidentyfikowana w gnomie"
+      }
+    },
+    "required": [
+      "etap",
+      "status"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "status": {
+              "const": "Tak"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "genom_calkowita_dlugosc",
+            "genom_ilosc_segmentow",
+            "genom_srednie_pokrycie",
+            "genom_N50",
+            "genom_L50",
+            "genom_liczba_N"
+          ]
+        },
+        "else": {
+          "required": [
+            "komunikat_bledu"
+          ]
+        }
+      }
+    ]
+  }
+}

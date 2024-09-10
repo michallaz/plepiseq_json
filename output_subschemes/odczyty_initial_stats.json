@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output, statistic information regarding reads.",
+  "$comment": "Schemat dla outputu, statystyczne informacja o odczytach.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "plik_nazwa": {
+        "type": "string",
+        "pattern": "^.*\\.fastq(.gz)?$",
+        "$comment": "Nazwa pliku poddanego analizie. Wymagany."
+      },
+      "etap": {
+        "type": "string",
+        "enum": [
+          "oryginalne",
+          "post-filtering"
+        ],
+        "$comment": "Infomacja czy analiza dotyczyla odczytow oryginalnych czy po filtrowaniu Wymagany."
+      },
+      "komunikat_bledu": {
+        "type": "string",
+        "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "Tak",
+          "Nie",
+          "Blad"
+        ],
+        "$comment": "informacja czy udanie zakonczono obliczenia. Wymagany."
+      },
+      "odczyty_calkowita_liczba": {
+        "type": "number",
+        "$comment": "Calkowita liczba odczytow. Wymagany."
+      },
+      "odczyty_calkowita_liczba_zasad": {
+        "type": "number",
+        "$comment": "Calkowita ilosc zasad. Wymagany "
+      },
+      "odczyty_dlugosc_mediana": {
+        "type": "number",
+        "$comment": "Mediana dlugosci odczytow. Wymagany "
+      },
+      "odczyty_dlugosc_histogram": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "zakres_dlugosci": {
+              "type": "string",
+              "$comment": "Zakresu dlugosci odczytu",
+              "examples": [
+                "10-20",
+                "100-110"
+              ]
+            },
+            "wartosc": {
+              "type": "number",
+              "$comment": "Wartosc przypisana danemu zakresowi"
+            }
+          },
+          "required": [
+            "zakres_dlugosci",
+            "wartosc"
+          ]
+        },
+        "$comment": "Histogram dla dlugosci odczytow. Wymagany "
+      },
+      "odczyty_jakosc_mediana": {
+        "type": "number",
+        "$comment": "Mediana jakosci odczytow w skali PHRED+33. Wymagany "
+      },
+      "odczyty_jakosc_histogram": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "zakres_jakosci": {
+              "type": "string",
+              "$comment": "Zakresu jakosci odczytu",
+              "examples": [
+                "10-15",
+                "60+"
+              ]
+            },
+            "wartosc": {
+              "type": "number",
+              "$comment": "Wartosc przypisana danemu zakresowi"
+            }
+          },
+          "required": [
+            "zakres_jakosci",
+            "wartosc"
+          ]
+        },
+        "$comment": "Histogram dla jakosci odczytow. Wymagany "
+      }
+    },
+    "required": [
+      "plik_nazwa",
+      "etap",
+      "status"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "status": {
+              "const": "Tak"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "odczyty_calkowita_liczba",
+            "odczyty_calkowita_liczba_zasad",
+            "odczyty_dlugosc_mediana",
+            "odczyty_dlugosc_histogram",
+            "odczyty_jakosc_mediana",
+            "odczyty_jakosc_histogram"
+          ]
+        },
+        "else": {
+          "required": [
+            "komunikat_bledu"
+          ]
+        }
+      }
+    ]
+  }
+}

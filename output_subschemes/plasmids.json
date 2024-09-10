@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output,summary of predicted plasmids.",
+  "$comment": "Schemat dla outputu, Podsumowanie predykcji plazmidow.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "Tak",
+        "Nie",
+        "Blad"
+      ],
+      "$comment": "Informacja czy przewidzano jakiekoliwek plazmidy. Wymagany"
+    },
+    "komunikat_bledu": {
+      "type": "string",
+      "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
+    },
+    "plazmidy_lista": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "plazmid_nazwa": {
+            "type": "string",
+            "$comment": "Nazwa plazmidu. Wymagany"
+          },
+          "plazmid_identycznosc_sekwencyjna": {
+            "type": "string",
+            "pattern": "^.*\\.\\d\\d$",
+            "$comment": "Identycznosc sekwencyjna miedzy sekwencja znaleziona w probce, a sekwencja referencyjna."
+          },
+          "plazmid_zakres": {
+            "type": "string",
+            "pattern": "^.*\\.\\d\\d$",
+            "$comment": "Procent dlugosci sekwencji referencyjnej zidentyfikowany w probce."
+          },
+          "plazmid_contig_id": {
+            "type": "string",
+            "$comment": "Identyfikator contigu na ktorym zidentyfikowano plazmid."
+          },
+          "plazmid_accession_id": {
+            "type": "string",
+            "$comment": "Accession id sekwencji referencyjnej"
+          }
+        },
+        "required": [
+          "plazmid_nazwa",
+          "plazmid_identycznosc_sekwencyjna",
+          "plazmid_zakres",
+          "plazmid_contig_id",
+          "plazmid_accesion_id"
+        ]
+      }
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "Tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "plazmidy_lista"
+        ]
+      },
+      "else": {
+        "required": [
+          "komunikat_bledu"
+        ]
+      }
+    }
+  ]
+}

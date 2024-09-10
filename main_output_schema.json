@@ -1,0 +1,92 @@
+{
+  "title": "Output schema for plepiseq pipelines",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/michallaz/plepiseq_json/main/",
+  "type": "object",
+  "properties": {
+    "output": {
+      "type": "object",
+      "properties": {
+        "pathogen": {
+          "type": "string",
+          "enum": [
+            "bacteria",
+            "virus"
+          ],
+          "$comment": "Rodzaj wybranego pipeline'u, mamy dwa - bakteryjny lub wirusowy. Wymagany."
+        },
+        "pipeline_version": {
+          "type": "string",
+          "$comment": "Informacja o wersji pipeline stosowanego do analizy probki. Wymagany."
+        },
+        "MLST_data": {
+          "$ref": "output_subschemes/MLST.json",
+          "$comment": "Informacje o typowaniu bakterii przy pomocy schematow MLST/cgMLST. Lista. Wymagany, jesli pathogen to bacteria"
+        },
+        "antybiotykoopornosc_data": {
+          "$ref": "output_subschemes/antybiotyko_opornosc_output.json",
+          "$comment": "Informacje o antybiotykoopornosci bakterii przy pomocy programow AMRFinderPlus lub Resfinder. Lista. Wymagany, jesli pathogen to bacteria"
+        },
+        "contamination_data": {
+          "$ref": "output_subschemes/contaminations.json",
+          "$comment": "Informacje o glownych organizmach obecnych w probce. Lista. Wymagany. "
+        },
+        "bacterial_genome_data": {
+          "$ref": "output_subschemes/genome_statistics.json",
+          "$comment": "Statystyczne informacje o proponowanym de novo genomie dla probek bakteryjnych. Lista. Wymagany, jesli pathogen to bacteria"
+        },
+        "sequencing_summary_data": {
+          "$ref": "output_subschemes/odczyty_initial_stats.json",
+          "$comment": "Podstawowe informacje o przeslanych plikach fastq.gz. Lista. Wymagany."
+        },
+        "plasmids_data": {
+          "$ref": "output_subschemes/plasmids.json",
+          "$comment": "Statystyczne informacje o zidewntyfikowanych w probce plazmidach. Wymagany, jesli pathogen to bacteria."
+        },
+        "antigenic_data": {
+          "$ref": "output_subschemes/profil_antygenowy.json",
+          "$comment": "Informacja o antygenach o i h. Wymagany, jesli pathogen to bacteria."
+        },
+        "geny_wirulencji_data": {
+          "$ref": "output_subschemes/virulence_genes.json",
+          "$comment": "Informacja o genach wirulencji zidentyfikowanych przy pomocy programow VFDB i/lub Virulencefinder. Wymagany, jesli pathogen to bacteria."
+        },
+        "wyspy_wirulencji_data": {
+          "$ref": "output_subschemes/virulence_islands.json",
+          "$comment": "Informacja o wyspach wirulencji zidentyfikowanych przy pomocy programow spifinder. Wymagany, jesli pathogen to bacteria."
+        }
+      },
+      "required": [
+        "pathogen",
+        "pipeline_version"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "pathogen": {
+                "const": "bacteria"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "MLST_data",
+              "antybiotykoopornosc_data",
+              "contamination_data",
+              "bacterial_genome_data",
+              "sequencing_summary_data",
+              "plasmids_data",
+              "antigenic_data",
+              "geny_wirulencji_data",
+              "wyspy_wirulencji_data"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "output"
+  ]
+}

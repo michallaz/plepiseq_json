@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output, resistance to antibiotics.",
+  "$comment": "Schemat do danych o stwierdzonej antybiotykoopornosci.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "program_nazwa": {
+        "type": "string",
+        "enum": [
+          "AMRFinderPlus",
+          "ResFinder/PointFinder"
+        ],
+        "$comment": "Program uzywany do przewidywania opornosci. Wymagany."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "Tak",
+          "Nie",
+          "Blad"
+        ],
+        "$comment": "informacja czy poprawnie zakonczono obliczenia. Wymagany."
+      },
+      "komunikat_bledu": {
+        "type": "string",
+        "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas liczenia profilu. Wymagany, jesli status to Blad"
+      },
+      "program_data": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "antybiotyk_nazwa": {
+              "type": "string",
+              "enum": [
+                "Aminoglycoside",
+                "Beta-lactam",
+                "Colistin",
+                "Fluoroquinolone",
+                "Fosfomycin",
+                "Fusidic Acid",
+                "Glycopeptide",
+                "Misc",
+                "MLS - Macrolide, Lincosamide and Streptogramin B",
+                "Nitroimidazole",
+                "Oxazolidinone",
+                "Phenicol",
+                "Pseudomonic Acid",
+                "Rifampicin",
+                "Sulphonamide",
+                "Tetracycline",
+                "Trimethoprim",
+                "Aminoglycoside"
+              ],
+              "$comment": "Lista zgodnie z dokumentem Tomka. Wymagany"
+            },
+            "antybiotyk_status": {
+              "type": "string",
+              "enum": [
+                "oporny",
+                "wrazliwy",
+                "inny"
+              ],
+              "$comment": "Status opornosci na dany antybiotyk, do wyboru oporny, wrazliwy, lub inny. Wymagany."
+            },
+            "antybiotyk_opornosc_czynnik": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "czynnik_nazwa": {
+                    "type": "string",
+                    "$comment": "Nazwa czynnika powodujacego oprnosc. Wymagany"
+                  },
+                  "czynnik_lokalizacja_contig_nazwa": {
+                    "type": "string",
+                    "$comment": "Nazwa contig-u na ktorym zidentyfikowano czynnik.Wymagany"
+                  },
+                  "czynnik_identycznosc_sekwencyjna_do_referencji": {
+                    "type": "number",
+                    "$comment": "Identycznosc sekwencyjna czynnka zlokalizowanego w probce do jego sekwencji referencyjnej. Wartosc od 0 do 100. Wymagany",
+                    "minimum": 0,
+                    "maximum": 100
+                  },
+                  "czynnik_pokrycie_sekwencyjna_do_referencji": {
+                    "type": "number",
+                    "$comment": "Procent dlugosci sekwencji referencyjnej zlokalizowany w probce. Wartosc od 0 do 100. Wymagany",
+                    "minimum": 0,
+                    "maximum": 100
+                  },
+                  "czynnik_referencja_nazwa": {
+                    "type": "string",
+                    "$comment": "Nazwa czynnika referencyjnego"
+                  },
+                  "czynnik_referencja_typ": {
+                    "type": "string",
+                    "enum": [
+                      "Mutacja Punktowa",
+                      "Gen"
+                    ],
+                    "comment": "Typ czynnika, albo mutacja punktowa w genie, lub obecnosc genu niosacego oprnosc. Wymagany."
+                  }
+                },
+                "required": [
+                  "czynnik_nazwa",
+                  "czynnik_lokalizacja_contig_nazwa",
+                  "czynnik_identycznosc_sekwencyjna_do_referencji",
+                  "czynnik_pokrycie_sekwencyjna_do_referencji",
+                  "czynnik_referencja_nazwa",
+                  "czynnik_referencja_typ"
+                ]
+              },
+              "comment": "Lista czynnikow powodujacych opornosc na dany antybiotyk. Opcjonalny, pisany pod output/"
+            }
+          },
+          "required": [
+            "antybiotyk_nazwa",
+            "antybiotyk_status"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "antybiotyk_status": {
+                    "const": "oporny"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "antybiotyk_opornosc_czynnik"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "required": [
+      "status"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "status": {
+              "const": "Tak"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "program_data"
+          ]
+        },
+        "else": {
+          "required": [
+            "komunikat_bledu"
+          ]
+        }
+      }
+    ]
+  }
+}

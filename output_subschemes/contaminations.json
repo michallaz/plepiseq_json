@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output,summary of contaminations related data",
+  "$comment": "Schemat dla outputu, Podsumowanie wynikow predykcji zanieczysczen.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "program_nazwa": {
+        "type": "string",
+        "enum": [
+          "kraken2",
+          "metaphlan",
+          "kmerfinder"
+        ],
+        "$comment": "Nazwa programu stosowanego do predykcji zanieczyszczen. Wymagany"
+      },
+      "komunikat_bledu": {
+        "type": "string",
+        "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "Tak",
+          "Nie",
+          "Blad"
+        ],
+        "$comment": "informacja czy policzono profil, niepoliczono, zwrocnono blad. Wymagany."
+      },
+      "zanieszczyszenie_glowny_rodzaj_nazwa": {
+        "type": "string",
+        "$comment": "Nazwa glownego rodzaju (genus) zidentyfikowanego w probce."
+      },
+      "zanieszczyszenie_dodatkowy_rodzaj_nazwa": {
+        "type": "string",
+        "$comment": "Nazwa drugiego najczesciej wystepujacego rodzaju (genus) zidentyfikowanego w probce."
+      },
+      "zanieszczyszenie_glowny_gatunek_nazwa": {
+        "type": "string",
+        "$comment": "Nazwa glownego gatunku (species) zidentyfikowanego w probce."
+      },
+      "zanieszczyszenie_dodatkowy_gatunek_nazwa": {
+        "type": "string",
+        "$comment": "Nazwa drugiego najczesciej wystepujacego gatunku (species) zidentyfikowanego w probce."
+      },
+      "zanieszczyszenie_glowny_rodzaj_ilosc": {
+        "type": "string",
+        "pattern": "^.*\\.\\d\\d$",
+        "$comment": "Procent odczytow nalezacych do glownego rodzaju (genus) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
+      },
+      "zanieszczyszenie_glowny_rodzaj_pokrycie": {
+        "type": "string",
+        "pattern": "^.*\\.\\d\\d$",
+        "$comment": "Hipotetyczne pokrycie dla glownego rodzaju (genus) zidentyfikowanego w probce.Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kmerfinder"
+      },
+      "zanieszczyszenie_dodatkowy_rodzaj_ilosc": {
+        "type": "string",
+        "pattern": "^.*\\.\\d\\d$",
+        "$comment": "Procent odczytow nalezacych do drugiego najczesciej wystepujacego rodzaju (genus) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
+      },
+      "zanieszczyszenie_dodatkowy_rodzaj_pokrycie": {
+        "type": "string",
+        "pattern": "^.*\\.\\d\\d$",
+        "$comment": "Hipotetyczne pokrycie dla drugiego najczesciej wystepujacego rodzaju (genus) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kmerfinder."
+      },
+      "zanieszczyszenie_glowny_gatunek_ilosc": {
+        "type": "string",
+        "pattern": "^.*\\.\\d\\d$",
+        "$comment": "Procent odczytow nalezacych do glownego gatunku (species) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
+      },
+      "zanieszczyszenie_glowny_gatunek_pokrycie": {
+        "type": "string",
+        "pattern": "^.*\\.\\d\\d$",
+        "$comment": "Hipotetyczne pokrycie dla najczesciej wystepujacego gatunku (species) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kmerfinder."
+      },
+      "zanieszczyszenie_dodatkowy_gatunek_ilosc": {
+        "type": "string",
+        "pattern": "^.*\\.\\d\\d$",
+        "$comment": "Procent odczytow nalezacych do drugiego najczesciej wystepujacego gatunku (species) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
+      },
+      "zanieszczyszenie_dodatkowy_gatunek_pokrycie": {
+        "type": "string",
+        "pattern": "^.*\\.\\d\\d$",
+        "$comment": "Hipotetyczne pokrycie dla drugiego najczesciej wystepujacego gatunku (species) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kmerfinder."
+      }
+    },
+    "required": [
+      "program_nazwa",
+      "status"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "status": {
+              "const": "Tak"
+            }
+          }
+        },
+        "then": {
+          "allOf": [
+            {
+              "required": [
+                "zanieszczyszenie_glowny_rodzaj_nazwa",
+                "zanieszczyszenie_dodatkowy_rodzaj_nazwa",
+                "zanieszczyszenie_glowny_gatunek_nazwa",
+                "zanieszczyszenie_dodatkowy_gatunek_nazwa"
+              ]
+            },
+            {
+              "if": {
+                "properties": {
+                  "program_nazwa": {
+                    "const": "kmerfinder"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "zanieszczyszenie_glowny_rodzaj_pokrycie",
+                  "zanieszczyszenie_dodatkowy_rodzaj_pokrycie",
+                  "zanieszczyszenie_glowny_gatunek_pokrycie",
+                  "zanieszczyszenie_dodatkowy_gatunek_pokrycie"
+                ]
+              },
+              "else": {
+                "required": [
+                  "zanieszczyszenie_glowny_rodzaj_wartosc",
+                  "zanieszczyszenie_dodatkowy_rodzaj_wartosc",
+                  "zanieszczyszenie_glowny_gatunek_wartosc",
+                  "zanieszczyszenie_dodatkowy_gatunek_wartosc"
+                ]
+              }
+            }
+          ]
+        },
+        "else": {
+          "required": [
+            "komunikat_bledu"
+          ]
+        }
+      }
+    ]
+  }
+}

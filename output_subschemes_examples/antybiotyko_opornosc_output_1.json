@@ -1,0 +1,31 @@
+[
+  {
+    "program_nazwa": "AMRFinderPlus",
+    "status": "Tak",
+    "program_data": [
+      {
+        "antybiotyk_nazwa": "Aminoglycoside",
+        "antybiotyk_status": "oporny",
+        "antybiotyk_opornosc_czynnik": [
+          {
+            "czynnik_nazwa": "gezZ",
+            "czynnik_lokalizacja_contig_nazwa": "contig10",
+            "czynnik_identycznosc_sekwencyjna_do_referencji": 100,
+            "czynnik_pokrycie_sekwencyjna_do_referencji": 90,
+            "czynnik_referencja_nazwa": "ala",
+            "czynnik_referencja_typ": "Gen"
+          }
+        ]
+      },
+      {
+        "antybiotyk_nazwa": "Colistin",
+        "antybiotyk_status": "wrazliwy"
+      }
+    ]
+  },
+  {
+    "program_nazwa": "ResFinder/PointFinder",
+    "status": "Blad",
+    "komunikat_bledu": "tekst_bledu"
+  }
+]

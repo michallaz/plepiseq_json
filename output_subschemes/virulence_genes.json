@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output,summary of predicted virulence genes.",
+  "$comment": "Schemat dla outputu, Podsumowanie predykcji genow wirulencji.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "Tak",
+          "Nie",
+          "Blad"
+        ],
+        "$comment": "Informacja czy przewidzano jakiekoliwek czynnik wirulencji. Dwie mozliwosci Tak i Nie. Wymagany"
+      },
+      "komunikat_bledu": {
+        "type": "string",
+        "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
+      },
+      "program_nazwa": {
+        "type": "string",
+        "enum": [
+          "VFDB",
+          "Virulencefinder"
+        ],
+        "$comment": "Informacja o programie wykorzystanym do genow wirulencji. Dwie mozliwosci VFDB i Virulencefinder, ten drugi tylko dla Salmonella.. Wymagany"
+      },
+      "patotyp": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "patotyp_nazwa": {
+              "type": "string",
+              "enum": [
+                "STEC",
+                "EIEC"
+              ],
+              "$comment": "Nazwa patotypu tylko dla Ecoli"
+            }
+          },
+          "$comment": "Patotyp dla E.coli. Mozna wybrac wiele nazw z listy.",
+          "required": [
+            "patotyp_nazwa"
+          ]
+        }
+      },
+      "lista_genow": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "czynnik_nazwa": {
+              "type": "string",
+              "$comment": "Nazwa genu wirulencji. Wymagany"
+            },
+            "czynnik_identycznosc_sekwencyjna": {
+              "type": "string",
+              "pattern": "^.*\\.\\d\\d$",
+              "$comment": "Identycznosc sekwencyjna miedzy sekwencja znaleziona w probce, a sekwencja referencyjna."
+            },
+            "czynnik_zakres": {
+              "type": "string",
+              "pattern": "^.*\\.\\d\\d$",
+              "$comment": "Procent dlugosci sekwencji referencyjnej zidentyfikowany w probce."
+            },
+            "czynnik_contig_id": {
+              "type": "string",
+              "$comment": "Identyfikator contigu na ktorym zidentyfikowano gen wirulencji."
+            },
+            "czynnik_accession_id": {
+              "type": "string",
+              "$comment": "Accession id sekwencji referencyjnej"
+            }
+          },
+          "required": [
+            "czynnik_nazwa",
+            "czynnik_identycznosc_sekwencyjna",
+            "czynnik_zakres",
+            "czynnik_contig_id",
+            "czynnik_accession_id"
+          ]
+        }
+      }
+    },
+    "required": [
+      "program_nazwa",
+      "status"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "status": {
+              "const": "Tak"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "lista_genow"
+          ]
+        },
+        "else": {
+          "required": [
+            "komunikat_bledu"
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+[
+  {
+    "program_nazwa": "seqsero",
+    "status": "Blad",
+    "komunikat_bledu": "ala"
+  },
+  {
+    "program_nazwa": "seqsero",
+    "status": "Tak",
+    "antygen_o": [
+      {
+        "antygen_o_wartosc": "7"
+      }
+    ],
+    "antygen_h1": [
+      {
+        "antygen_h1_wartosc": "g"
+      },
+      {
+        "antygen_h1_wartosc": "h"
+      }
+    ],
+    "antygen_h2": [
+      {
+        "antygen_h2_wartosc": "-"
+      }
+    ],
+    "serotyp_nazwa": "Rissen"
+  },
+  {
+    "program_nazwa": "ECTyper",
+    "status": "Tak",
+    "antygen_o": [
+      {
+        "antygen_o_wartosc": "7"
+      }
+    ],
+    "antygen_h": [
+      {
+        "antygen_h1_wartosc": "g"
+      },
+      {
+        "antygen_h1_wartosc": "h"
+      }
+    ],
+    "serotyp_nazwa": "Rissen"
+  }
+]

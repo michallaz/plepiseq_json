@@ -1,0 +1,27 @@
+[
+  {
+    "etap": "pre-filtering",
+    "status": "Tak",
+    "genom_calkowita_dlugosc": 1234567,
+    "genom_ilosc_segmentow": 10,
+    "genom_srednie_pokrycie": 10.20,
+    "genom_N50": 200000,
+    "genom_L50": 10,
+    "genom_liczba_N": 100
+  },
+  {
+    "etap": "post-filtering",
+    "status": "Tak",
+    "genom_calkowita_dlugosc": 1234567,
+    "genom_ilosc_segmentow": 10,
+    "genom_srednie_pokrycie": 30,
+    "genom_N50": 200000,
+    "genom_L50": 10,
+    "genom_liczba_N": 100
+  },
+  {
+    "etap": "post-filtering",
+    "status": "Blad",
+    "komunikat_bledu": "Blad"
+  }
+]

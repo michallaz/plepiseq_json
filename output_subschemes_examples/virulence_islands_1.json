@@ -1,0 +1,19 @@
+{
+  "status": "Tak",
+  "wyspy_lista": [
+    {
+      "SPI_nazwa": "C63PI",
+      "SPI_identycznosc_sekwencyjna": "90.02",
+      "SPI_zakres": "99.00",
+      "SPI_contig_id": "contig1",
+      "SPI_accesion_id": "AF128999"
+    },
+    {
+      "SPI_nazwa": "Not_named",
+      "SPI_identycznosc_sekwencyjna": "89.94",
+      "SPI_zakres": "100.00",
+      "SPI_contig_id": "contig2",
+      "SPI_accesion_id": "some_text"
+    }
+  ]
+}

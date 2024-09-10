@@ -1,0 +1,74 @@
+[
+  {
+    "schemat_nazwa": "MLST",
+    "schemat_profile_id": "local_10",
+    "status": "Tak",
+    "schemat_profile_allel_list": [
+      {
+        "locus_name": "a10",
+        "lucus_allel": 20
+      },
+      {
+        "locus_name": "a20",
+        "lucus_allel": 202
+      }
+    ]
+  },
+  {
+    "schemat_nazwa": "cgMLST",
+    "status": "Tak",
+    "schemat_profile_id": "540000",
+    "schemat_profile_allel_list": [
+      {
+        "locus_name": "a20",
+        "lucus_allel": 20
+      },
+      {
+        "locus_name": "a30",
+        "lucus_allel": 202
+      }
+    ],
+    "schemat_HierCC_clustering_external": [
+      {
+        "level": "0",
+        "group": "0"
+      },
+      {
+        "level": "50",
+        "group": "20"
+      }
+    ],
+    "schemat_HierCC_clustering_internal": [
+      {
+        "level": "0",
+        "group": "0"
+      },
+      {
+        "level": "2",
+        "group": "200"
+      }
+    ],
+    "schemat_HierCC_historical_data": [
+      {
+        "level": "5",
+        "data": [
+          {
+            "kraj": "USA",
+            "rok": 2009,
+            "ilosc": 20
+          },
+          {
+            "kraj": "Polska",
+            "rok": 2010,
+            "ilosc": 23
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schemat_nazwa": "cgMLST",
+    "status": "Blad",
+    "komunikat_bledu": "540000"
+  }
+]

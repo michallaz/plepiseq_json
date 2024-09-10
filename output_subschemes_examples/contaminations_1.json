@@ -1,0 +1,31 @@
+[
+  {
+    "program_nazwa": "kraken2",
+    "status": "Tak",
+    "zanieszczyszenie_glowny_rodzaj_nazwa": "Salmonella",
+    "zanieszczyszenie_dodatkowy_rodzaj_nazwa": "Homo",
+    "zanieszczyszenie_glowny_gatunek_nazwa": "Salmonella",
+    "zanieszczyszenie_dodatkowy_gatunek_nazwa": "Homo",
+    "zanieszczyszenie_glowny_rodzaj_wartosc": "90.09",
+    "zanieszczyszenie_dodatkowy_rodzaj_wartosc": "10.90",
+    "zanieszczyszenie_glowny_gatunek_wartosc": "90.09",
+    "zanieszczyszenie_dodatkowy_gatunek_wartosc": "10.92"
+  },
+  {
+    "program_nazwa": "kmerfinder",
+    "status": "Tak",
+    "zanieszczyszenie_glowny_rodzaj_nazwa": "Salmonella",
+    "zanieszczyszenie_dodatkowy_rodzaj_nazwa": "Homo",
+    "zanieszczyszenie_glowny_gatunek_nazwa": "Salmonella",
+    "zanieszczyszenie_dodatkowy_gatunek_nazwa": "Homo",
+    "zanieszczyszenie_glowny_rodzaj_pokrycie": "90.09",
+    "zanieszczyszenie_dodatkowy_rodzaj_pokrycie": "10.90",
+    "zanieszczyszenie_glowny_gatunek_pokrycie": "90.09",
+    "zanieszczyszenie_dodatkowy_gatunek_pokrycie": "10.92"
+  },
+  {
+    "program_nazwa": "metaphlan",
+    "status": "Blad",
+    "komunikat_bledu": "Some_text"
+  }
+]

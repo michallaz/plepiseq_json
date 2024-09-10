@@ -1,0 +1,362 @@
+{
+  "output": {
+    "pathogen": "bacteria",
+    "pipeline_version": "some_version_control",
+    "MLST_data": [
+      {
+        "schemat_nazwa": "MLST",
+        "schemat_profile_id": "local_10",
+        "status": "Tak",
+        "schemat_profile_allel_list": [
+          {
+            "locus_name": "a10",
+            "lucus_allel": 20
+          },
+          {
+            "locus_name": "a20",
+            "lucus_allel": 202
+          }
+        ]
+      },
+      {
+        "schemat_nazwa": "cgMLST",
+        "status": "Tak",
+        "schemat_profile_id": "540000",
+        "schemat_profile_allel_list": [
+          {
+            "locus_name": "a20",
+            "lucus_allel": 20
+          },
+          {
+            "locus_name": "a30",
+            "lucus_allel": 202
+          }
+        ],
+        "schemat_HierCC_clustering_external": [
+          {
+            "level": "0",
+            "group": "0"
+          },
+          {
+            "level": "50",
+            "group": "20"
+          }
+        ],
+        "schemat_HierCC_clustering_internal": [
+          {
+            "level": "0",
+            "group": "0"
+          },
+          {
+            "level": "2",
+            "group": "200"
+          }
+        ],
+        "schemat_HierCC_historical_data": [
+          {
+            "level": "5",
+            "data": [
+              {
+                "kraj": "USA",
+                "rok": 2009,
+                "ilosc": 20
+              },
+              {
+                "kraj": "Polska",
+                "rok": 2010,
+                "ilosc": 23
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "schemat_nazwa": "cgMLST",
+        "status": "Blad",
+        "komunikat_bledu": "540000"
+      }
+    ],
+    "antybiotykoopornosc_data": [
+      {
+        "program_nazwa": "AMRFinderPlus",
+        "status": "Tak",
+        "program_data": [
+          {
+            "antybiotyk_nazwa": "Aminoglycoside",
+            "antybiotyk_status": "oporny",
+            "antybiotyk_opornosc_czynnik": [
+              {
+                "czynnik_nazwa": "gezZ",
+                "czynnik_lokalizacja_contig_nazwa": "contig10",
+                "czynnik_identycznosc_sekwencyjna_do_referencji": 100,
+                "czynnik_pokrycie_sekwencyjna_do_referencji": 90,
+                "czynnik_referencja_nazwa": "ala",
+                "czynnik_referencja_typ": "Gen"
+              }
+            ]
+          },
+          {
+            "antybiotyk_nazwa": "Colistin",
+            "antybiotyk_status": "wrazliwy"
+          }
+        ]
+      },
+      {
+        "program_nazwa": "ResFinder/PointFinder",
+        "status": "Blad",
+        "komunikat_bledu": "tekst_bledu"
+      }
+    ],
+    "contamination_data": [
+      {
+        "program_nazwa": "kraken2",
+        "status": "Tak",
+        "zanieszczyszenie_glowny_rodzaj_nazwa": "Salmonella",
+        "zanieszczyszenie_dodatkowy_rodzaj_nazwa": "Homo",
+        "zanieszczyszenie_glowny_gatunek_nazwa": "Salmonella",
+        "zanieszczyszenie_dodatkowy_gatunek_nazwa": "Homo",
+        "zanieszczyszenie_glowny_rodzaj_wartosc": "90.09",
+        "zanieszczyszenie_dodatkowy_rodzaj_wartosc": "10.90",
+        "zanieszczyszenie_glowny_gatunek_wartosc": "90.09",
+        "zanieszczyszenie_dodatkowy_gatunek_wartosc": "10.92"
+      },
+      {
+        "program_nazwa": "kmerfinder",
+        "status": "Tak",
+        "zanieszczyszenie_glowny_rodzaj_nazwa": "Salmonella",
+        "zanieszczyszenie_dodatkowy_rodzaj_nazwa": "Homo",
+        "zanieszczyszenie_glowny_gatunek_nazwa": "Salmonella",
+        "zanieszczyszenie_dodatkowy_gatunek_nazwa": "Homo",
+        "zanieszczyszenie_glowny_rodzaj_pokrycie": "90.09",
+        "zanieszczyszenie_dodatkowy_rodzaj_pokrycie": "10.90",
+        "zanieszczyszenie_glowny_gatunek_pokrycie": "90.09",
+        "zanieszczyszenie_dodatkowy_gatunek_pokrycie": "10.92"
+      },
+      {
+        "program_nazwa": "metaphlan",
+        "status": "Blad",
+        "komunikat_bledu": "Some_text"
+      }
+    ],
+    "bacterial_genome_data": [
+      {
+        "etap": "pre-filtering",
+        "status": "Tak",
+        "genom_calkowita_dlugosc": 1234567,
+        "genom_ilosc_segmentow": 10,
+        "genom_srednie_pokrycie": 10.20,
+        "genom_N50": 200000,
+        "genom_L50": 10,
+        "genom_liczba_N": 100
+      },
+      {
+        "etap": "post-filtering",
+        "status": "Tak",
+        "genom_calkowita_dlugosc": 1234567,
+        "genom_ilosc_segmentow": 10,
+        "genom_srednie_pokrycie": 30,
+        "genom_N50": 200000,
+        "genom_L50": 10,
+        "genom_liczba_N": 100
+      },
+      {
+        "etap": "post-filtering",
+        "status": "Blad",
+        "komunikat_bledu": "Blad"
+      }
+    ],
+    "sequencing_summary_data": [
+      {
+        "plik_nazwa": "ala.fastq",
+        "status": "Tak",
+        "etap": "oryginalne",
+        "odczyty_calkowita_liczba": 1000,
+        "odczyty_calkowita_liczba_zasad": 10000,
+        "odczyty_dlugosc_mediana": 150,
+        "odczyty_dlugosc_histogram": [
+          {
+            "zakres_dlugosci": "10-20",
+            "wartosc": 30
+          },
+          {
+            "zakres_dlugosci": "20-30",
+            "wartosc": 30
+          },
+          {
+            "zakres_dlugosci": "30+",
+            "wartosc": 30
+          }
+        ],
+        "odczyty_jakosc_mediana": 30,
+        "odczyty_jakosc_histogram": [
+          {
+            "zakres_jakosci": "10-20",
+            "wartosc": 30
+          },
+          {
+            "zakres_jakosci": "20-30",
+            "wartosc": 30
+          },
+          {
+            "zakres_jakosci": "30+",
+            "wartosc": 30
+          }
+        ]
+      },
+      {
+        "plik_nazwa": "ala2.fastq.gz",
+        "status": "Tak",
+        "etap": "oryginalne",
+        "odczyty_calkowita_liczba": 10020,
+        "odczyty_calkowita_liczba_zasad": 100200,
+        "odczyty_dlugosc_mediana": 1250,
+        "odczyty_dlugosc_histogram": [
+          {
+            "zakres_dlugosci": "10-20",
+            "wartosc": 30
+          },
+          {
+            "zakres_dlugosci": "20-30",
+            "wartosc": 30
+          },
+          {
+            "zakres_dlugosci": "30+",
+            "wartosc": 30
+          }
+        ],
+        "odczyty_jakosc_mediana": 30,
+        "odczyty_jakosc_histogram": [
+          {
+            "zakres_jakosci": "10-20",
+            "wartosc": 30
+          },
+          {
+            "zakres_jakosci": "20-30",
+            "wartosc": 30
+          },
+          {
+            "zakres_jakosci": "30+",
+            "wartosc": 30
+          }
+        ]
+      },
+      {
+        "plik_nazwa": "forward.fastq",
+        "status": "Blad",
+        "etap": "post-filtering",
+        "komunikat_bledu": ""
+      }
+    ],
+    "plasmids_data": {
+      "status": "Tak",
+      "plazmidy_lista": [
+        {
+          "plazmid_nazwa": "IncFIA(HI1)",
+          "plazmid_identycznosc_sekwencyjna": "100.00",
+          "plazmid_zakres": "99.98",
+          "plazmid_contig_id": "contig10",
+          "plazmid_accesion_id": "AF250878"
+        }
+      ]
+    },
+    "antigenic_data": [
+      {
+        "program_nazwa": "seqsero",
+        "status": "Blad",
+        "komunikat_bledu": "ala"
+      },
+      {
+        "program_nazwa": "seqsero",
+        "status": "Tak",
+        "antygen_o": [
+          {
+            "antygen_o_wartosc": "7"
+          }
+        ],
+        "antygen_h1": [
+          {
+            "antygen_h1_wartosc": "g"
+          },
+          {
+            "antygen_h1_wartosc": "h"
+          }
+        ],
+        "antygen_h2": [
+          {
+            "antygen_h2_wartosc": "-"
+          }
+        ],
+        "serotyp_nazwa": "Rissen"
+      },
+      {
+        "program_nazwa": "ECTyper",
+        "status": "Tak",
+        "antygen_o": [
+          {
+            "antygen_o_wartosc": "7"
+          }
+        ],
+        "antygen_h": [
+          {
+            "antygen_h1_wartosc": "g"
+          },
+          {
+            "antygen_h1_wartosc": "h"
+          }
+        ],
+        "serotyp_nazwa": "Rissen"
+      }
+    ],
+    "geny_wirulencji_data": [
+      {
+        "status": "Tak",
+        "program_nazwa": "VFDB",
+        "patotyp": [
+          {
+            "patotyp_nazwa": "STEC"
+          }
+        ],
+        "lista_genow": [
+          {
+            "czynnik_nazwa": "stx2A",
+            "czynnik_identycznosc_sekwencyjna": "100.00",
+            "czynnik_zakres": "99.98",
+            "czynnik_contig_id": "contig1",
+            "czynnik_accession_id": "OBGFDJBI_02609"
+          },
+          {
+            "czynnik_nazwa": "stx2A",
+            "czynnik_identycznosc_sekwencyjna": "100.00",
+            "czynnik_zakres": "99.98",
+            "czynnik_contig_id": "contig1",
+            "czynnik_accession_id": "OBGFDJBI_02609"
+          }
+        ]
+      },
+      {
+        "status": "Blad",
+        "program_nazwa": "Virulencefinder",
+        "komunikat_bledu": "Some text"
+      }
+    ],
+    "wyspy_wirulencji_data": {
+      "status": "Tak",
+      "wyspy_lista": [
+        {
+          "SPI_nazwa": "C63PI",
+          "SPI_identycznosc_sekwencyjna": "90.02",
+          "SPI_zakres": "99.00",
+          "SPI_contig_id": "contig1",
+          "SPI_accesion_id": "AF128999"
+        },
+        {
+          "SPI_nazwa": "Not_named",
+          "SPI_identycznosc_sekwencyjna": "89.94",
+          "SPI_zakres": "100.00",
+          "SPI_contig_id": "contig2",
+          "SPI_accesion_id": "some_text"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "status": "Tak",
+    "program_nazwa": "VFDB",
+    "patotyp": [
+      {
+        "patotyp_nazwa": "STEC"
+      }
+    ],
+    "lista_genow": [
+      {
+        "czynnik_nazwa": "stx2A",
+        "czynnik_identycznosc_sekwencyjna": "100.00",
+        "czynnik_zakres": "99.98",
+        "czynnik_contig_id": "contig1",
+        "czynnik_accession_id": "OBGFDJBI_02609"
+      },
+      {
+        "czynnik_nazwa": "stx2A",
+        "czynnik_identycznosc_sekwencyjna": "100.00",
+        "czynnik_zakres": "99.98",
+        "czynnik_contig_id": "contig1",
+        "czynnik_accession_id": "OBGFDJBI_02609"
+      }
+    ]
+  },
+  {
+    "status": "Blad",
+    "program_nazwa": "Virulencefinder",
+    "komunikat_bledu": "Some text"
+  }
+]

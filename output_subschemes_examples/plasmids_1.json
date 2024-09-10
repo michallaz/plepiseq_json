@@ -1,0 +1,12 @@
+{
+  "status": "Tak",
+  "plazmidy_lista": [
+    {
+      "plazmid_nazwa": "IncFIA(HI1)",
+      "plazmid_identycznosc_sekwencyjna": "100.00",
+      "plazmid_zakres": "99.98",
+      "plazmid_contig_id": "contig10",
+      "plazmid_accesion_id": "AF250878"
+    }
+  ]
+}
