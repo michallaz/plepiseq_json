@@ -33,7 +33,7 @@
         "items": {
           "type": "object",
           "properties": {
-            "antygen_o_wartosc": {
+            "antygen_wartosc": {
               "type": "string"
             }
           },
@@ -45,7 +45,7 @@
         "items": {
           "type": "object",
           "properties": {
-            "antygen_h1_wartosc": {
+            "antygen_wartosc": {
               "type": "string"
             }
           }
@@ -57,7 +57,7 @@
         "items": {
           "type": "object",
           "properties": {
-            "antygen_h2_wartosc": {
+            "antygen_wartosc": {
               "type": "string"
             }
           }
@@ -69,7 +69,7 @@
         "items": {
           "type": "object",
           "properties": {
-            "antygen_h_wartosc": {
+            "antygen_wartosc": {
               "type": "string"
             }
           }

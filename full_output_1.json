@@ -268,20 +268,20 @@
         "status": "Tak",
         "antygen_o": [
           {
-            "antygen_o_wartosc": "7"
+            "antygen_wartosc": "7"
           }
         ],
         "antygen_h1": [
           {
-            "antygen_h1_wartosc": "g"
+            "antygen_wartosc": "g"
           },
           {
-            "antygen_h1_wartosc": "h"
+            "antygen_wartosc": "h"
           }
         ],
         "antygen_h2": [
           {
-            "antygen_h2_wartosc": "-"
+            "antygen_wartosc": "-"
           }
         ],
         "serotyp_nazwa": "Rissen"
@@ -291,15 +291,15 @@
         "status": "Tak",
         "antygen_o": [
           {
-            "antygen_o_wartosc": "7"
+            "antygen_wartosc": "7"
           }
         ],
         "antygen_h": [
           {
-            "antygen_h1_wartosc": "g"
+            "antygen_wartosc": "g"
           },
           {
-            "antygen_h1_wartosc": "h"
+            "antygen_wartosc": "h"
           }
         ],
         "serotyp_nazwa": "Rissen"
