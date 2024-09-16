@@ -1,0 +1,46 @@
+{
+  "status": "Tak",
+  "genom_calkowita_dlugosc": 30000,
+  "genom_srednie_pokrycie": 30.01,
+  "genom_liczba_N": 10,
+  "genom_pokrycie_histogram": [
+    {
+      "zakres": "10",
+      "wartosc": 20
+    },
+    {
+      "zakres": "11",
+      "wartosc": 23
+    }
+  ],
+  "genom_pokrycie_barplot": [
+    {
+      "nazwa_segmentu": "HA",
+      "wartosc_plot_data": [
+        {
+          "pozycja": 1,
+          "wartosc": 20
+        }
+      ]
+    },
+    {
+      "nazwa_segmentu": "NA",
+      "wartosc_plot_data": [
+        {
+          "pozycja": 1,
+          "wartosc": 20
+        },
+        {
+          "pozycja": 2,
+          "wartosc": 22
+        }
+      ]
+    }
+  ],
+  "genom_primer_usage": [
+    {
+      "primer_name": "Primer10",
+      "primer_usage": 20
+    }
+  ]
+}

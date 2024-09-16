@@ -11,9 +11,11 @@
           "type": "string",
           "enum": [
             "bacteria",
-            "virus"
+            "SARS2",
+            "Influenza",
+            "RSV"
           ],
-          "$comment": "Rodzaj wybranego pipeline'u, mamy dwa - bakteryjny lub wirusowy. Wymagany."
+          "$comment": "Rodzaj wybranego pipeline'u, mamy dwa - bakteryjny lub wirusowy. Wirusowy wymaga podania jednak jako outputu organizmu, Wymagany."
         },
         "pipeline_version": {
           "type": "string",
@@ -21,19 +23,19 @@
         },
         "MLST_data": {
           "$ref": "output_subschemes/MLST.json",
-          "$comment": "Informacje o typowaniu bakterii przy pomocy schematow MLST/cgMLST. Lista. Wymagany, jesli pathogen to bacteria"
+          "$comment": "Informacje o typowaniu bakterii przy pomocy schematow MLST/cgMLST. Lista. Wymagany, jesli pathogen to bacteria."
         },
         "antybiotykoopornosc_data": {
           "$ref": "output_subschemes/antybiotyko_opornosc_output.json",
-          "$comment": "Informacje o antybiotykoopornosci bakterii przy pomocy programow AMRFinderPlus lub Resfinder. Lista. Wymagany, jesli pathogen to bacteria"
+          "$comment": "Informacje o antybiotykoopornosci bakterii przy pomocy programow AMRFinderPlus lub Resfinder. Lista. Wymagany, jesli pathogen to bacteria."
         },
         "contamination_data": {
           "$ref": "output_subschemes/contaminations.json",
-          "$comment": "Informacje o glownych organizmach obecnych w probce. Lista. Wymagany. "
+          "$comment": "Informacje o glownych organizmach obecnych w probce. Lista. Wymagany."
         },
         "bacterial_genome_data": {
           "$ref": "output_subschemes/genome_statistics.json",
-          "$comment": "Statystyczne informacje o proponowanym de novo genomie dla probek bakteryjnych. Lista. Wymagany, jesli pathogen to bacteria"
+          "$comment": "Statystyczne informacje o proponowanym de novo genomie dla probek bakteryjnych. Lista. Wymagany, jesli pathogen to bacteria."
         },
         "sequencing_summary_data": {
           "$ref": "output_subschemes/odczyty_initial_stats.json",
@@ -55,6 +57,30 @@
           "$ref": "output_subschemes/virulence_islands.json",
           "$comment": "Informacja o wyspach wirulencji zidentyfikowanych przy pomocy programow spifinder. Wymagany, jesli pathogen to bacteria."
         },
+        "viral_genome_data": {
+          "$ref": "output_subschemes/viral_genome_data.json",
+          "$comment": "Statystyczne informacje o genomie wirusowym. Lista. Wymagany, jesli pathogen to virus."
+        },
+        "viral_classification_data": {
+          "$ref": "output_subschemes/viral_classification_data.json",
+          "$comment": "Informacje o klasyfikacji wirusa do linii ewolucyjnej na podstawie danych Pango/nextclade. Wymagany jesli pathogen to virus."
+        },
+        "viral_mutation_data": {
+          "$ref": "output_subschemes/viral_mutation_data.json",
+          "$comment": "Informacje o mutacjach w probce wzgledem genomu referencyjnego. Wymagany jesli pathogen to virus."
+        },
+        "sars_data": {
+          "$ref": "output_subschemes/sars_data.json",
+          "$comment": "Rozne inforrmacje specyficzne dla SARS. Wymagany jesli pathogen to SARS2."
+        },
+        "infl_data": {
+          "$ref": "output_subschemes/infl_data.json",
+          "$comment": "Rozne inforrmacje specyficzne dla wirusa grypy. Wymagany jesli pathogen to Influenza."
+        },
+        "rsv_data": {
+          "$ref": "output_subschemes/rsv_data.json",
+          "$comment": "Rozne inforrmacje specyficzne dla wirusa RSV. Wymagany jesli pathogen to RSV."
+        },
         "genome_files": {
           "type": "array",
           "items": {
@@ -62,16 +88,16 @@
             "properties": {
               "segment_nazwa": {
                 "type": "string",
-                "$comment": "Nazwa segmentu. Wymagany."
+                "$comment": "Nazwa/Naglowek segmentu. Wymagany."
               },
-              "segment_plik_sciezka": {
+              "segment_sekwencja": {
                 "type": "string",
-                "$comment": "Sciezka do pliku z sekwencja segmentu w formacie FASTA. Wymagany."
+                "$comment": "Sekwencja segmentu (bez naglowka). Wymagany."
               }
             },
             "required": [
               "segment_nazwa",
-              "segment_plik_sciezka"
+              "segment_sekwencja"
             ]
           }
         }
@@ -79,7 +105,7 @@
       "required": [
         "pathogen",
         "pipeline_version",
-	"genome_files"
+        "genome_files"
       ],
       "allOf": [
         {
@@ -101,6 +127,55 @@
               "antigenic_data",
               "geny_wirulencji_data",
               "wyspy_wirulencji_data"
+            ]
+          },
+          "else": {
+            "required": [
+              "viral_genome_data",
+              "viral_classification_data",
+              "viral_mutation_data"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "pathogen": {
+                "const": "SARS2"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sars_data"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "pathogen": {
+                "const": "Influenza"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "infl_data"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "pathogen": {
+                "const": "RSV"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "rsv_data"
             ]
           }
         }
