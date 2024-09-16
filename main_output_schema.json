@@ -54,11 +54,32 @@
         "wyspy_wirulencji_data": {
           "$ref": "output_subschemes/virulence_islands.json",
           "$comment": "Informacja o wyspach wirulencji zidentyfikowanych przy pomocy programow spifinder. Wymagany, jesli pathogen to bacteria."
+        },
+        "genome_files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "segment_nazwa": {
+                "type": "string",
+                "$comment": "Nazwa segmentu. Wymagany."
+              },
+              "segment_plik_sciezka": {
+                "type": "string",
+                "$comment": "Sciezka do pliku z sekwencja segmentu w formacie FASTA. Wymagany."
+              }
+            },
+            "required": [
+              "segment_nazwa",
+              "segment_plik_sciezka"
+            ]
+          }
         }
       },
       "required": [
         "pathogen",
-        "pipeline_version"
+        "pipeline_version",
+	"genome_files"
       ],
       "allOf": [
         {

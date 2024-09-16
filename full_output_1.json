@@ -2,6 +2,7 @@
   "output": {
     "pathogen": "bacteria",
     "pipeline_version": "some_version_control",
+    "genome_files" : [{"segment_nazwa" : "contig_1", "segment_plik_sciezka" : "/some/path/to/fasta"},{"segment_nazwa" : "contig_1", "segment_plik_sciezka" : "/some/path/to/fasta2"}],
     "MLST_data": [
       {
         "schemat_nazwa": "MLST",
