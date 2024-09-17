@@ -58,15 +58,15 @@
           "$comment": "Informacja o wyspach wirulencji zidentyfikowanych przy pomocy programow spifinder. Wymagany, jesli pathogen to bacteria."
         },
         "viral_genome_data": {
-          "$ref": "output_subschemes/viral_genome_data.json",
+          "$ref": "output_subschemes/viral_genome.json",
           "$comment": "Statystyczne informacje o genomie wirusowym. Lista. Wymagany, jesli pathogen to virus."
         },
         "viral_classification_data": {
-          "$ref": "output_subschemes/viral_classification_data.json",
+          "$ref": "output_subschemes/viral_classification.json",
           "$comment": "Informacje o klasyfikacji wirusa do linii ewolucyjnej na podstawie danych Pango/nextclade. Wymagany jesli pathogen to virus."
         },
         "viral_mutation_data": {
-          "$ref": "output_subschemes/viral_mutation_data.json",
+          "$ref": "output_subschemes/viral_mutation.json",
           "$comment": "Informacje o mutacjach w probce wzgledem genomu referencyjnego. Wymagany jesli pathogen to virus."
         },
         "sars_data": {

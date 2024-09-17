@@ -1,0 +1,121 @@
+{
+  "output": {
+    "pathogen": "SARS2",
+    "pipeline_version": "ver1",
+    "genome_files": [
+      {
+        "segment_nazwa": "contig_1",
+        "segment_plik_sciezka": "/some/path/to/fasta"
+      },
+      {
+        "segment_nazwa": "contig_1",
+        "segment_plik_sciezka": "/some/path/to/fasta2"
+      }
+    ],
+    "viral_genome_data": {
+      "status": "Tak",
+      "genom_calkowita_dlugosc": 30000,
+      "genom_srednie_pokrycie": 30.01,
+      "genom_liczba_N": 10,
+      "genom_pokrycie_histogram": [
+        {
+          "zakres": "10",
+          "wartosc": 20
+        },
+        {
+          "zakres": "11",
+          "wartosc": 23
+        }
+      ],
+      "genom_pokrycie_barplot": [
+        {
+          "nazwa_segmentu": "HA",
+          "wartosc_plot_data": [
+            {
+              "pozycja": 1,
+              "wartosc": 20
+            }
+          ]
+        },
+        {
+          "nazwa_segmentu": "NA",
+          "wartosc_plot_data": [
+            {
+              "pozycja": 1,
+              "wartosc": 20
+            },
+            {
+              "pozycja": 2,
+              "wartosc": 22
+            }
+          ]
+        }
+      ],
+      "genom_primer_usage": [
+        {
+          "primer_name": "Primer10",
+          "primer_usage": 20
+        }
+      ]
+    },
+    "viral_classification_data": [
+      {
+        "status": "Tak",
+        "baza_nazwa": "Pango",
+        "baza_wersja": "1.2.1",
+        "program_nazwa": "scorpion",
+        "program_wersja": "4.5.6",
+        "wariant_nazwa": "JN.1",
+        "wariant_qc": "pass"
+      }
+    ],
+    "viral_mutation_data": [
+      {
+        "mutacja_lokalizacja": "mn90.4",
+        "mutacja_pozycja": 15738,
+        "mutacja_referencja": "C",
+        "mutacja_probka": "G",
+        "mutacja_gen": "orf1ab",
+        "mutacja_typ": "synonymous_variant",
+        "mutacja_efekt": "p.Glu6597Glu",
+        "mutacja_pokrycie": 100,
+        "mutacja_uzycie": 99
+      },
+      {
+        "mutacja_lokalizacja": "chr4_HA",
+        "mutacja_pozycja": 157,
+        "mutacja_referencja": "C",
+        "mutacja_probka": "del11",
+        "mutacja_gen": "HA",
+        "mutacja_typ": "deletion",
+        "mutacja_efekt": "p.Glu6597Glu",
+        "mutacja_pokrycie": 76,
+        "mutacja_uzycie": 86.82
+      }
+    ],
+    "sars_data": [
+      {
+        "mutacja_lokalizacja": "mn90.4",
+        "mutacja_pozycja": 15738,
+        "mutacja_referencja": "C",
+        "mutacja_probka": "G",
+        "mutacja_gen": "orf1ab",
+        "mutacja_typ": "synonymous_variant",
+        "mutacja_efekt": "p.Glu6597Glu",
+        "mutacja_pokrycie": 100,
+        "mutacja_uzycie": 99
+      },
+      {
+        "mutacja_lokalizacja": "chr4_HA",
+        "mutacja_pozycja": 157,
+        "mutacja_referencja": "C",
+        "mutacja_probka": "del11",
+        "mutacja_gen": "HA",
+        "mutacja_typ": "deletion",
+        "mutacja_efekt": "p.Glu6597Glu",
+        "mutacja_pokrycie": 76,
+        "mutacja_uzycie": 86.82
+      }
+    ]
+  }
+}

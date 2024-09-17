@@ -1,0 +1,44 @@
+{
+  "reassortment_data": [
+    {
+      "segment": "chr4_HA",
+      "reference_subtype": "H1N1"
+    },
+    {
+      "segment": "chr6_NA",
+      "reference_subtype": "H1N1"
+    }
+  ],
+  "typ": "A",
+  "podtyp": "H5N1",
+  "bialka_grypa": [
+    {
+      "protein_name": "HA",
+      "protein_path": "/path/to/some.pdb"
+    }
+  ],
+  "opornosc_grypa": [
+    {
+      "lek_nazwa": "Oseltamivir",
+      "lek_opornosc_status": "HRI",
+      "lek_mutacje_numeracja_probka": [
+        {
+          "mutacja_nazwa": "E23K",
+          "mutacja_efekt": "HRI"
+        }
+      ],
+      "lek_mutacje_numeracja_reference": [
+        {
+          "mutacja_nazwa": "E27K",
+          "mutacja_efekt": "HRI"
+        }
+      ],
+      "lek_mutacje_numeracja_N2": [
+        {
+          "mutacja_nazwa": "E27K",
+          "mutacja_efekt": "HRI"
+        }
+      ]
+    }
+  ]
+}

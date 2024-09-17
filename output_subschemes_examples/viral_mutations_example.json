@@ -1,0 +1,24 @@
+[
+  {
+    "mutacja_lokalizacja": "mn90.4",
+    "mutacja_pozycja": 15738,
+    "mutacja_referencja": "C",
+    "mutacja_probka": "G",
+    "mutacja_gen": "orf1ab",
+    "mutacja_typ": "synonymous_variant",
+    "mutacja_efekt": "p.Glu6597Glu",
+    "mutacja_pokrycie": 100,
+    "mutacja_uzycie": 99
+  },
+  {
+    "mutacja_lokalizacja": "chr4_HA",
+    "mutacja_pozycja": 157,
+    "mutacja_referencja": "C",
+    "mutacja_probka": "del11",
+    "mutacja_gen": "HA",
+    "mutacja_typ": "deletion",
+    "mutacja_efekt": "p.Glu6597Glu",
+    "mutacja_pokrycie": 76,
+    "mutacja_uzycie": 86.82
+  }
+]

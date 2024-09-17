@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output, SARS-CoV-2 specific data",
+  "$comment": "Schemat dla outputu, informacja specyficzne dla wirusa SARS-CoV-2",
+  "type": "object",
+  "properties": {
+    "coinfections_status": {
+      "type": "string",
+      "enum": [
+        "Tak",
+        "Nie",
+        "Mozliwe"
+      ],
+      "$comment": "Informacja o mozliwosci wystepowania koinfekcji inna linia ewolucyjna wirusa SARS-CoV-2. Oparta o moja analize rozkladu czestosci alleli w probce. Status /mozliwe/ wynika z faktu, ze probka nie jest podobna do wszystkich probek koinfekowanych wzorcowych. Wymagany."
+    },
+    "coinfections_komentarz": {
+      "type": "string",
+      "$comment": "Komentarz zwracany przez moj skrypt. Poki co jest to string, zastanowic sie nad przepisaniem, aby zwracal liste p-value kstestu. Wymagany."
+    },
+    "coinfections_histogram": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "zakres": {
+            "type": "string",
+            "$comment": "Zakres do histogramu, procentowy udzial minor allelu w odczytach"
+          },
+          "wartosc": {
+            "type": "number",
+            "$comment": "Ilosc mutacji, w ktorych minor allel ma procentowy udzial taki jak zdefiniowany w zakres"
+          }
+        },
+        "required": [
+          "zakres",
+          "wartosc"
+        ]
+      }
+    },
+    "freyja_lineage1_name": {
+      "type": "string",
+      "$comment": "Glowna linia ewolucyjna zidentyfikowana w probce. Wymagany."
+    },
+    "freyja_lineage2_name": {
+      "type": "string",
+      "$comment": "Druga linia ewolucyjna zidentyfikowana w probce. Opcjonalny."
+    },
+    "freyja_lineage1_abundance": {
+      "type": "number",
+      "$comment": "Szacowana ilosc materialu genetycznego w probce pochodzacego od pierwszej linii ewolucyjnej. Wymagany."
+    },
+    "freyja_lineage2_abundance": {
+      "type": "number",
+      "$comment": "Szacowana ilosc materialu genetycznego w probce pochodzacego od drugiej linii ewolucyjnej. Wymagany."
+    },
+    "bialka_sars": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "protein_name": {
+            "type": "string",
+            "$comment": "Nazwa bialka. Wymagany."
+          },
+          "protein_path": {
+            "type": "string",
+            "$comment": "Sciezka do pliku tekstowego w formacie PDB ze struktura. Wymagany."
+          }
+        },
+      "required": [
+        "protein_name",
+        "protein_path"
+      ]
+      }
+    }
+  },
+  "required": [
+    "coinfections_status",
+    "coinfections_komentarz",
+    "coinfections_histogram",
+    "freyja_lineage1_name",
+    "freyja_lineage2_name",
+    "freyja_lineage1_abundance",
+    "freyja_lineage2_abundance",
+    "bialka_sars"
+  ]
+}
+

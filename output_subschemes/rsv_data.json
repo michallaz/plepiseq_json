@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output, RSVspecific data",
+  "$comment": "Schemat dla outputu, informacja specyficzne dla wirusa RSV",
+  "type": "object",
+  "properties": {
+    "typ": {
+      "type": "string",
+      "enum": [
+        "A",
+        "B",
+        "unk"
+      ],
+      "$comment": "Informacja o typie wirusa grypy zidentyfikowanego w próbce, 'unk' w przypadku problemu z okresleniem podtypu. Wymagany."
+    }
+  },
+  "required": [
+    "typ"
+  ]
+}
