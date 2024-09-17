@@ -66,7 +66,7 @@
           "$comment": "Informacje o klasyfikacji wirusa do linii ewolucyjnej na podstawie danych Pango/nextclade. Wymagany jesli pathogen to virus."
         },
         "viral_mutation_data": {
-          "$ref": "output_subschemes/viral_mutation.json",
+          "$ref": "output_subschemes/viral_mutations.json",
           "$comment": "Informacje o mutacjach w probce wzgledem genomu referencyjnego. Wymagany jesli pathogen to virus."
         },
         "sars_data": {
