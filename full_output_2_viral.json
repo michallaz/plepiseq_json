@@ -2,6 +2,7 @@
   "output": {
     "pathogen": "SARS2",
     "pipeline_version": "ver1",
+    "dehumanized_fastq" : [{"plik_nazwa" : "forwawrd", "plik_path" : "/some/path/forward.fastq.gz" }],
     "genome_files": [
       {
         "segment_nazwa": "contig_1",
