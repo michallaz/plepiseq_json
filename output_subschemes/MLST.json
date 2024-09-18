@@ -31,6 +31,14 @@
         "type": "string",
         "$comment": "Numer zidentyfikowanego profilu."
       },
+      "schemat_profile_id_closest": {
+        "type": "string",
+        "$comment": "Numer profilu z zewnetrznej bazy ktory jest najbardziej zblizony do profilu probki. Wymagany, jesli schemat nazwa to cgMLST"
+      },
+      "schemat_profile_id_closest_distance": {
+        "type": "number",
+        "$comment": "Podobienstwo miedzy najblizszym profilem z zewnetrznej bazy a profile probki. Wymagany, jesli schemat nazwa to cgMLST"
+      },
       "schemat_profile_allel_list": {
         "type": "array",
         "items": {
@@ -188,7 +196,9 @@
               },
               "then": {
                 "required": [
-                  "schemat_HierCC_clustering_external"
+                  "schemat_HierCC_clustering_external",
+                  "schemat_profile_id_closest",
+                  "schemat_profile_id_closest_distance"
                 ]
               }
             }

@@ -18,6 +18,8 @@
     "schemat_nazwa": "cgMLST",
     "status": "Tak",
     "schemat_profile_id": "540000",
+    "schemat_profile_id_closest": "540000",
+    "schemat_profile_id_closest_distance": 0,
     "schemat_profile_allel_list": [
       {
         "locus_name": "a20",
