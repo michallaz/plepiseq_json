@@ -126,8 +126,6 @@
       {
         "program_nazwa": "kmerfinder",
         "status": "Tak",
-        "zanieszczyszenie_glowny_rodzaj_nazwa": "Salmonella",
-        "zanieszczyszenie_dodatkowy_rodzaj_nazwa": "Homo",
         "zanieszczyszenie_glowny_gatunek_nazwa": "Salmonella",
         "zanieszczyszenie_dodatkowy_gatunek_nazwa": "Homo",
         "zanieszczyszenie_glowny_gatunek_pokrycie": "90.09",

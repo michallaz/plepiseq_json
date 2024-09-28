@@ -44,17 +44,17 @@
         "type": "string",
         "$comment": "Nazwa drugiego najczesciej wystepujacego gatunku (species) zidentyfikowanego w probce."
       },
-      "zanieszczyszenie_glowny_rodzaj_ilosc": {
+      "zanieszczyszenie_glowny_rodzaj_wartosc": {
         "type": "string",
         "pattern": "^.*\\.\\d\\d$",
         "$comment": "Procent odczytow nalezacych do glownego rodzaju (genus) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
       },
-      "zanieszczyszenie_dodatkowy_rodzaj_ilosc": {
+      "zanieszczyszenie_dodatkowy_rodzaj_wartosc": {
         "type": "string",
         "pattern": "^.*\\.\\d\\d$",
         "$comment": "Procent odczytow nalezacych do drugiego najczesciej wystepujacego rodzaju (genus) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
       },
-      "zanieszczyszenie_glowny_gatunek_ilosc": {
+      "zanieszczyszenie_glowny_gatunek_wartosc": {
         "type": "string",
         "pattern": "^.*\\.\\d\\d$",
         "$comment": "Procent odczytow nalezacych do glownego gatunku (species) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
@@ -64,7 +64,7 @@
         "pattern": "^.*\\.\\d\\d$",
         "$comment": "Hipotetyczne pokrycie dla najczesciej wystepujacego gatunku (species) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kmerfinder."
       },
-      "zanieszczyszenie_dodatkowy_gatunek_ilosc": {
+      "zanieszczyszenie_dodatkowy_gatunek_wartosc": {
         "type": "string",
         "pattern": "^.*\\.\\d\\d$",
         "$comment": "Procent odczytow nalezacych do drugiego najczesciej wystepujacego gatunku (species) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
@@ -92,8 +92,6 @@
           "allOf": [
             {
               "required": [
-                "zanieszczyszenie_glowny_rodzaj_nazwa",
-                "zanieszczyszenie_dodatkowy_rodzaj_nazwa",
                 "zanieszczyszenie_glowny_gatunek_nazwa",
                 "zanieszczyszenie_dodatkowy_gatunek_nazwa"
               ]
@@ -114,6 +112,8 @@
               },
               "else": {
                 "required": [
+		  "zanieszczyszenie_glowny_rodzaj_nazwa",
+		  "zanieszczyszenie_dodatkowy_rodzaj_nazwa",
                   "zanieszczyszenie_glowny_rodzaj_wartosc",
                   "zanieszczyszenie_dodatkowy_rodzaj_wartosc",
                   "zanieszczyszenie_glowny_gatunek_wartosc",
