@@ -6,7 +6,7 @@
   "items": {
     "type": "object",
     "properties": {
-      "program_nazwa": {
+      "program_name": {
         "type": "string",
         "enum": [
           "kraken2",
@@ -15,68 +15,68 @@
         ],
         "$comment": "Nazwa programu stosowanego do predykcji zanieczyszczen. Wymagany"
       },
-      "komunikat_bledu": {
+      "error_message": {
         "type": "string",
         "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
       },
       "status": {
         "type": "string",
         "enum": [
-          "Tak",
-          "Nie",
-          "Blad"
+          "tak",
+          "nie",
+          "blad"
         ],
         "$comment": "informacja czy policzono profil, niepoliczono, zwrocnono blad. Wymagany."
       },
-      "zanieszczyszenie_glowny_rodzaj_nazwa": {
+      "main_genus_names": {
         "type": "string",
         "$comment": "Nazwa glownego rodzaju (genus) zidentyfikowanego w probce."
       },
-      "zanieszczyszenie_dodatkowy_rodzaj_nazwa": {
+      "additional_genus_names": {
         "type": "string",
         "$comment": "Nazwa drugiego najczesciej wystepujacego rodzaju (genus) zidentyfikowanego w probce."
       },
-      "zanieszczyszenie_glowny_gatunek_nazwa": {
+      "main_species_name": {
         "type": "string",
         "$comment": "Nazwa glownego gatunku (species) zidentyfikowanego w probce."
       },
-      "zanieszczyszenie_dodatkowy_gatunek_nazwa": {
+      "secondary_species_name": {
         "type": "string",
         "$comment": "Nazwa drugiego najczesciej wystepujacego gatunku (species) zidentyfikowanego w probce."
       },
-      "zanieszczyszenie_glowny_rodzaj_wartosc": {
+      "main_genus_value": {
         "type": "string",
-        "pattern": "^.*\\.\\d\\d$",
+        "pattern": "^(\\d{1,3}\\.\\d{2})$",
         "$comment": "Procent odczytow nalezacych do glownego rodzaju (genus) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
       },
-      "zanieszczyszenie_dodatkowy_rodzaj_wartosc": {
+      "secondary_genus_value": {
         "type": "string",
-        "pattern": "^.*\\.\\d\\d$",
+        "pattern": "^(\\d{1,3}\\.\\d{2})$",
         "$comment": "Procent odczytow nalezacych do drugiego najczesciej wystepujacego rodzaju (genus) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
       },
-      "zanieszczyszenie_glowny_gatunek_wartosc": {
+      "main_species_value": {
         "type": "string",
-        "pattern": "^.*\\.\\d\\d$",
+        "pattern": "^(\\d{1,3}\\.\\d{2})$",
         "$comment": "Procent odczytow nalezacych do glownego gatunku (species) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
       },
-      "zanieszczyszenie_glowny_gatunek_pokrycie": {
+      "main_species_coverage": {
         "type": "string",
         "pattern": "^.*\\.\\d\\d$",
         "$comment": "Hipotetyczne pokrycie dla najczesciej wystepujacego gatunku (species) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kmerfinder."
       },
-      "zanieszczyszenie_dodatkowy_gatunek_wartosc": {
+      "secondary_species_value": {
         "type": "string",
-        "pattern": "^.*\\.\\d\\d$",
+        "pattern": "^(\\d{1,3}\\.\\d{2})$",
         "$comment": "Procent odczytow nalezacych do drugiego najczesciej wystepujacego gatunku (species) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kraken2 lub metaphlan."
       },
-      "zanieszczyszenie_dodatkowy_gatunek_pokrycie": {
+      "secondary_species_coverage": {
         "type": "string",
         "pattern": "^.*\\.\\d\\d$",
         "$comment": "Hipotetyczne pokrycie dla drugiego najczesciej wystepujacego gatunku (species) zidentyfikowanego w probce. Podawane z dokladnoscia dwoch miejsc dziesietnych. Wymagany, jesli programy to kmerfinder."
       }
     },
     "required": [
-      "program_nazwa",
+      "program_name",
       "status"
     ],
     "allOf": [
@@ -84,7 +84,7 @@
         "if": {
           "properties": {
             "status": {
-              "const": "Tak"
+              "const": "tak"
             }
           }
         },
@@ -92,32 +92,32 @@
           "allOf": [
             {
               "required": [
-                "zanieszczyszenie_glowny_gatunek_nazwa",
-                "zanieszczyszenie_dodatkowy_gatunek_nazwa"
+                "main_species_name",
+                "secondary_species_name"
               ]
             },
             {
               "if": {
                 "properties": {
-                  "program_nazwa": {
+                  "program_name": {
                     "const": "kmerfinder"
                   }
                 }
               },
               "then": {
                 "required": [
-                  "zanieszczyszenie_glowny_gatunek_pokrycie",
-                  "zanieszczyszenie_dodatkowy_gatunek_pokrycie"
+                  "main_species_coverage",
+                  "secondary_species_coverage"
                 ]
               },
               "else": {
                 "required": [
-		  "zanieszczyszenie_glowny_rodzaj_nazwa",
-		  "zanieszczyszenie_dodatkowy_rodzaj_nazwa",
-                  "zanieszczyszenie_glowny_rodzaj_wartosc",
-                  "zanieszczyszenie_dodatkowy_rodzaj_wartosc",
-                  "zanieszczyszenie_glowny_gatunek_wartosc",
-                  "zanieszczyszenie_dodatkowy_gatunek_wartosc"
+                  "main_genus_names",
+                  "additional_genus_names",
+                  "main_genus_value",
+                  "secondary_genus_value",
+                  "main_species_value",
+                  "secondary_species_value"
                 ]
               }
             }
@@ -125,7 +125,7 @@
         },
         "else": {
           "required": [
-            "komunikat_bledu"
+            "error_message"
           ]
         }
       }

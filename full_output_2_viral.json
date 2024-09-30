@@ -13,6 +13,20 @@
         "segment_sekwencja": "AAAAAATTTGGGAAA"
       }
     ],
+    "contamination_data": [
+  {
+    "program_name": "kraken2",
+    "status": "tak",
+    "main_genus_names": "Salmonella",
+    "additional_genus_names": "Homo",
+    "main_species_name": "Salmonella",
+    "secondary_species_name": "Homo",
+    "main_genus_value": "90.09",
+    "secondary_genus_value": "10.90",
+    "main_species_value": "90.09",
+    "secondary_species_value": "10.92"
+  }
+    ],
     "viral_genome_data": {
       "status": "Tak",
       "genom_calkowita_dlugosc": 30000,

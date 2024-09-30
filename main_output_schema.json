@@ -121,7 +121,8 @@
       "required": [
         "pathogen",
         "pipeline_version",
-        "genome_files"
+        "genome_files",
+	"contamination_data"
       ],
       "allOf": [
         {
@@ -136,7 +137,6 @@
             "required": [
               "MLST_data",
               "antybiotykoopornosc_data",
-              "contamination_data",
               "bacterial_genome_data",
               "sequencing_summary_data",
               "plasmids_data",

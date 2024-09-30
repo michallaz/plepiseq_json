@@ -111,31 +111,31 @@
       }
     ],
     "contamination_data": [
-      {
-        "program_nazwa": "kraken2",
-        "status": "Tak",
-        "zanieszczyszenie_glowny_rodzaj_nazwa": "Salmonella",
-        "zanieszczyszenie_dodatkowy_rodzaj_nazwa": "Homo",
-        "zanieszczyszenie_glowny_gatunek_nazwa": "Salmonella",
-        "zanieszczyszenie_dodatkowy_gatunek_nazwa": "Homo",
-        "zanieszczyszenie_glowny_rodzaj_wartosc": "90.09",
-        "zanieszczyszenie_dodatkowy_rodzaj_wartosc": "10.90",
-        "zanieszczyszenie_glowny_gatunek_wartosc": "90.09",
-        "zanieszczyszenie_dodatkowy_gatunek_wartosc": "10.92"
-      },
-      {
-        "program_nazwa": "kmerfinder",
-        "status": "Tak",
-        "zanieszczyszenie_glowny_gatunek_nazwa": "Salmonella",
-        "zanieszczyszenie_dodatkowy_gatunek_nazwa": "Homo",
-        "zanieszczyszenie_glowny_gatunek_pokrycie": "90.09",
-        "zanieszczyszenie_dodatkowy_gatunek_pokrycie": "10.92"
-      },
-      {
-        "program_nazwa": "metaphlan",
-        "status": "Blad",
-        "komunikat_bledu": "Some_text"
-      }
+  {
+    "program_name": "kraken2",
+    "status": "tak",
+    "main_genus_names": "Salmonella",
+    "additional_genus_names": "Homo",
+    "main_species_name": "Salmonella",
+    "secondary_species_name": "Homo",
+    "main_genus_value": "90.09",
+    "secondary_genus_value": "10.90",
+    "main_species_value": "90.09",
+    "secondary_species_value": "10.92"
+  },
+  {
+    "program_name": "kmerfinder",
+    "status": "tak",
+    "main_species_name": "Salmonella",
+    "secondary_species_name": "Homo",
+    "main_species_coverage": "90.09",
+    "secondary_species_coverage": "10.92"
+  },
+  {
+    "program_name": "metaphlan",
+    "status": "blad",
+    "error_message": "Some_text"
+  }
     ],
     "bacterial_genome_data": [
       {
