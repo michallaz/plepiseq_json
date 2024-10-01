@@ -110,26 +110,17 @@
       }
     ],
     "sars_data": {
-      "coinfections_status": "Tak",
-      "coinfections_komentarz": "Some string of text that will include p-values",
-      "coinfections_histogram": [
-        {
-          "zakres": "10-20",
-          "wartosc": 3
-        },
-        {
-          "zakres": "20-30",
-          "wartosc": 2
-        }
-      ],
+      "coinfections_status": "prawdopodobny",
+      "coinfection_message": "Some string of text that will include p-values",
+      "coinfection_histogram_file": "/some/path",
       "freyja_lineage1_name": "Omicron",
       "freyja_lineage2_name": "Delta",
       "freyja_lineage1_abundance": 90,
-      "freyja_lineage2_abundance": 10,
-      "bialka_sars": [
+      "freyja_lineage2_abundance": 10.24,
+      "protein_structure_data": [
         {
           "protein_name": "Spike",
-          "protein_path": "/Some/path/to.pdb"
+          "pdb_file": "/Some/path/to.pdb"
         }
       ]
     }
