@@ -1,46 +1,37 @@
 {
-  "status": "Tak",
-  "genom_calkowita_dlugosc": 30000,
-  "genom_srednie_pokrycie": 30.01,
-  "genom_liczba_N": 10,
-  "genom_pokrycie_histogram": [
+  "status": "tak",
+  "total_length_value": 100,
+  "average_coverage_value": 100.34,
+  "number_of_Ns_value": 34,
+  "coverage_histogram_data": [
     {
-      "zakres": "10",
-      "wartosc": 20
+      "segment_name": "MN09345",
+      "data_file_path": "/path/to/a/file"
     },
     {
-      "zakres": "11",
-      "wartosc": 23
+      "segment_name": "MN09345",
+      "data_file_path": "/path/to/a/file"
     }
   ],
-  "genom_pokrycie_barplot": [
+  "coverage_barplot_data": [
     {
-      "nazwa_segmentu": "HA",
-      "wartosc_plot_data": [
-        {
-          "pozycja": 1,
-          "wartosc": 20
-        }
-      ]
-    },
+      "segment_name": "MN09345",
+      "data_file_path": "/path/to/a/file"
+    }
+  ],
+  "primer_usage_data": [
     {
-      "nazwa_segmentu": "NA",
-      "wartosc_plot_data": [
+      "segment_name": "chr4_HA",
+      "primer_data": [
         {
-          "pozycja": 1,
-          "wartosc": 20
+          "primer_name": "Primer1",
+          "primer_usage": 10
         },
         {
-          "pozycja": 2,
-          "wartosc": 22
+          "primer_name": "Primer1",
+          "primer_usage": 10
         }
       ]
-    }
-  ],
-  "genom_primer_usage": [
-    {
-      "primer_name": "Primer10",
-      "primer_usage": 20
     }
   ]
 }

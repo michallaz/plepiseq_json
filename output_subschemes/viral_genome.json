@@ -4,106 +4,111 @@
   "$comment": "Schemat dla outputu, statystyczne informacja o genomie wirusowym proponowanym dla probki.",
   "type": "object",
   "properties": {
-    "komunikat_bledu": {
+    "error_message": {
       "type": "string",
       "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
     },
     "status": {
       "type": "string",
       "enum": [
-        "Tak",
-        "Nie",
-        "Blad"
+        "tak",
+        "nie",
+        "blad"
       ],
       "$comment": "informacja czy policzono profil, niepoliczono, zwrocnono blad. Wymagany."
     },
-    "genom_calkowita_dlugosc": {
+    "total_length_value": {
       "type": "number",
+      "multipleOf": 1,
       "$comment": "Calkowita dlugosc genomu. Wymagany."
     },
-    "genom_srednie_pokrycie": {
+    "average_coverage_value": {
       "type": "number",
       "multipleOf": 0.01,
-      "$comment": "Srednie pokrycie dla zapronowanego genomu, z dokladnoscia maksymalnie do 2 miejsca po przecinku. Wymagany."
+      "$comment": "Srednie pokrycie dla zapronowanego genomu, z dokladnoscia do maksymalnie do 2 miejsca po przecinku. Wymagany."
     },
-    "genom_liczba_N": {
+    "number_of_Ns_value": {
       "type": "number",
+      "multipleOf": 1,
       "$comment": "Ilosc nieokreslonych nukleotydow zidentyfikowana w gnomie."
     },
-    "genom_pokrycie_histogram": {
+    "coverage_histogram_data": {
       "type": "array",
       "$comment": "Dane informujaca jakie w jakich zakresach jest pokrycie. Dane sa zbiorcze dla wszystkich segmentow.",
       "items": {
         "type": "object",
         "properties": {
-          "zakres": {
+          "segment_name": {
             "type": "string",
-            "$comment": "Zakres pokrycia. Wymagany."
+            "$comment": "Nazwa segmentu dla ktorego rysujemy histogram pokrycia. Wymagany."
           },
-          "wartosc": {
-            "type": "number",
-            "$comment": "Ilosc pozycji w genomie, dla ktorych pokrycie jest w zakres. Wymagany."
+          "data_file_path": {
+            "type": "string",
+            "$comment": "Sciezka do pliku zawierajacego plik pozwalajacy narysowac histogram. Patrz dokumentacja w excelu.. Wymagany."
           }
         },
         "required": [
-          "zakres",
-          "wartosc"
+          "segment_name",
+          "data_file_path"
         ]
       }
     },
-    "genom_pokrycie_barplot": {
+    "coverage_barplot_data": {
       "type": "array",
-      "$comment": "Dane informujaca o pokryciu na kazdej pozycji. Kazdy segment ma oddzielne dane.",  
+      "$comment": "Dane informujaca o pokryciu na kazdej pozycji. Kazdy segment ma oddzielne dane.",
       "items": {
         "type": "object",
         "properties": {
-          "nazwa_segmentu": {
+          "segment_name": {
             "type": "string",
-            "$comment": "Nazwa segmentu dla ktorego liczymy dane. Wymagany."  
+            "$comment": "Nazwa segmentu dla ktorego prezentujemy dane. Wymagany."
           },
-          "wartosc_plot_data": {
+          "data_file_path": {
+            "type": "string",
+            "$comment": "Sciezka do pliku zawierajacego plik pozwalajacy narysowac barplot z pokryciem. Patrz dokumentacja w excelu.. Wymagany."
+          }
+        },
+        "required": [
+          "segment_name",
+          "data_file_path"
+        ]
+      }
+    },
+    "primer_usage_data": {
+      "type": "array",
+      "$comment": "Lista uzycia primerow oddzielnie dla kazdego z segmentow.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "segment_name": {
+            "type": "string",
+            "$comment": "Nazwa segmentu dla ktorego podajemy uzycie primerow."
+          },
+          "primer_data": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "pozycja": {
-                  "type": "number"
+                "primer_name": {
+                  "type": "string",
+                  "$comment": "Nazwa primeru"
                 },
-                "wartosc": {
-                  "type": "number"
+                "primer_usage": {
+                  "type": "number",
+                  "multipleOf": 1,
+                  "$comment": "Ilosc odczytow mapujacych sie 5' lub 3' koncem na primer"
                 }
-              }
-            },
-            "required": [
-              "pozycja",
-              "wartosc"
-            ]
+              },
+              "required": [
+                "primer_name",
+                "primer_usage"
+              ]
+            }
           }
         },
         "required": [
-          "nazwa_segmentu",
-          "wartosc_plot_data"
-        ]
-      }
-    },
-    "genom_primer_usage": {
-      "type": "array",
-      "$comment": "Lista uzycia primerow.",
-      "items": {
-        "type": "object",
-        "properties": {
-          "primer_name": {
-            "type": "string",
-            "$comment": "Nazwa pary primerow."
-          },
-          "primer_usage": {
-            "type": "number",
-            "$comment": "Ilosc odczytow ktorych 5' lub 3' koniec mapuje sie na primer."
-          }
-        },
-        "required": [
-          "primer_name",
-          "primer_usage"
+          "segment_name",
+          "primer_data"
         ]
       }
     }
@@ -116,26 +121,37 @@
       "if": {
         "properties": {
           "status": {
-            "const": "Tak"
+            "const": "tak"
           }
         }
       },
       "then": {
         "required": [
-          "genom_calkowita_dlugosc",
-          "genom_primer_usage",
-          "genom_pokrycie_barplot",
-          "genom_pokrycie_histogram",
-          "genom_srednie_pokrycie",
-          "genom_liczba_N"
+          "total_length_value",
+          "average_coverage_value",
+          "number_of_Ns_value",
+          "coverage_histogram_data",
+          "coverage_barplot_data",
+          "primer_usage_data"
         ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "nie",
+              "blad"
+            ]
+          }
+        }
       },
-      "else": {
+      "then": {
         "required": [
-          "komunikat_bledu"
+          "error_message"
         ]
       }
     }
   ]
 }
-
