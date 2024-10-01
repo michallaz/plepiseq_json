@@ -4,17 +4,19 @@
   "$comment": "Schemat dla outputu, informacja o mutacjach w probce w stosunku do referencji i ich potencjalnemu efektowi.",
   "type": "array",
   "items": {
+    "type": "object",
     "properties": {
-      "mutacja_lokalizacja": {
+      "segment_name": {
         "type": "string",
         "$comment": "Nazwa chromosomu/segmentu na ktorym zlokalizowano mutacje. Wymagany."
       },
-      "mutacja_pozycja": {
+      "position_value": {
         "type": "number",
-        "minimum": 0,
+        "minimum": 1,
+        "multipleOf": 1,
         "$comment": "Pozycja (1-based) na ktorej wystepuje mutacja. Wymagany."
       },
-      "mutacja_referencja": {
+      "reference_allele_name": {
         "type": "string",
         "enum": [
           "A",
@@ -24,15 +26,15 @@
         ],
         "$comment": "Allel referencyjny na danej pozycji na danym chromosomie. Wymagany."
       },
-      "mutacja_probka": {
+      "sample_allele_name": {
         "type": "string",
         "$comment": "Allel wystepujacy na danej pozycji na danym chromosomie w probce, alternatywnie w przypadku indeli stosujemy typowe dla nich nazwnictwo del12, ins15 itd. Wymagany."
       },
-      "mutacja_gen": {
+      "gene_name": {
         "type": "string",
         "$comment": "Nazwa genu w jaki wpada mutacja. W przypadku mutacji intergenowych podajemy '-'. Wymagany."
       },
-      "mutacja_efekt": {
+      "mutation_effect": {
         "type": "string",
         "$comment": "Efekt mutacji na strukture bialka, jesli wystepuje. Wymagany.",
         "examples": [
@@ -40,16 +42,17 @@
           "p.Tyr145del"
         ]
       },
-      "mutacja_typ": {
+      "mutation_type_name": {
         "type": "string",
         "$comment": "Typ mutacji, missense, synonymous, frameshift itd. Wymagany."
       },
-      "mutacja_pokrycie": {
+      "mutation_coverage_value": {
         "type": "number",
         "minimum": 0,
+        "multipleOf": 1,
         "$comment": "Ilosc odczytow mapujacych sie na pozycje mutacji. W przypadku delecji oznaczeniem jest '-'. Wymagany."
       },
-      "mutacja_uzycie": {
+      "mutation_usage_value": {
         "type": "number",
         "multipleOf": 0.01,
         "maximum": 100,
@@ -58,15 +61,15 @@
       }
     },
     "required": [
-      "mutacja_lokalizacja",
-      "mutacja_pozycja",
-      "mutacja_referencja",
-      "mutacja_probka",
-      "mutacja_gen",
-      "mutacja_efekt",
-      "mutacja_typ",
-      "mutacja_pokrycie",
-      "mutacja_uzycie"
+      "segment_name",
+      "position_value",
+      "reference_allele_name",
+      "sample_allele_name",
+      "gene_name",
+      "mutation_effect",
+      "mutation_type_name",
+      "mutation_coverage_value",
+      "mutation_usage_value"
     ]
   }
 }

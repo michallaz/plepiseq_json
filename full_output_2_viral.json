@@ -87,26 +87,26 @@
     ],
     "viral_mutation_data": [
       {
-        "mutacja_lokalizacja": "mn90.4",
-        "mutacja_pozycja": 15738,
-        "mutacja_referencja": "C",
-        "mutacja_probka": "G",
-        "mutacja_gen": "orf1ab",
-        "mutacja_typ": "synonymous_variant",
-        "mutacja_efekt": "p.Glu6597Glu",
-        "mutacja_pokrycie": 100,
-        "mutacja_uzycie": 99
+        "segment_name": "mn90.4",
+        "position_value": 15738,
+        "reference_allele_name": "C",
+        "sample_allele_name": "G",
+        "gene_name": "orf1ab",
+        "mutation_type_name": "synonymous_variant",
+        "mutation_effect": "p.Glu6597Glu",
+        "mutation_coverage_value": 100,
+        "mutation_usage_value": 99
       },
       {
-        "mutacja_lokalizacja": "chr4_HA",
-        "mutacja_pozycja": 157,
-        "mutacja_referencja": "C",
-        "mutacja_probka": "del11",
-        "mutacja_gen": "HA",
-        "mutacja_typ": "deletion",
-        "mutacja_efekt": "p.Glu6597Glu",
-        "mutacja_pokrycie": 76,
-        "mutacja_uzycie": 86.82
+        "segment_name": "chr4_HA",
+        "position_value": 157,
+        "reference_allele_name": "C",
+        "sample_allele_name": "del11",
+        "gene_name": "HA",
+        "mutation_type_name": "deletion",
+        "mutation_effect": "p.Glu6597Glu",
+        "mutation_coverage_value": 76,
+        "mutation_usage_value": 86.82
       }
     ],
     "sars_data": {
