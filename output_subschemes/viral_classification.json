@@ -1,82 +1,79 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Subschema for plepiseq output, viral classification with Pango/Nextclade",
-  "$comment": "Schemat dla outputu, klasyfikacja wirusa do linii ewolucyjnej na podstawie danych pango/nextclade.",  
+  "$comment": "Schemat dla outputu, klasyfikacja wirusa do linii ewolucyjnej na podstawie danych pango/nextclade.",
   "type": "array",
   "items": {
     "properties": {
-      "komunikat_bledu": {
+      "error_message": {
         "type": "string",
-        "$comment": "Dowolny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"  
+        "$comment": "Dowolny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
       },
       "status": {
         "type": "string",
         "enum": [
-          "Tak",
-          "Nie",
-          "Blad"
+          "tak",
+          "nie",
+          "blad"
         ],
-        "$comment": "Informacja czy policzono profil, niepoliczono, zwrocono blad. Wymagany." 
+        "$comment": "Informacja czy policzono profil, niepoliczono, zwrocono blad. Wymagany."
       },
-      "baza_nazwa": {
+      "database_name": {
         "type": "string",
         "$comment": "Nazwa bazy na podstawie ktorej przewidywana jest linia ewolucyjna. Wymagany."
       },
-      "baza_wersja": {
+      "database_version": {
         "type": "string",
         "$comment": "Wersja bazy na podstawie ktorej okreslamy linie ewolucyjna. Wymagany."
       },
-      "program_nazwa": {
+      "program_name": {
         "type": "string",
-        "$comment": "Nazwa programu uzywanego do okreslenia linii ewolucyjnej. Wymagany."  
+        "$comment": "Nazwa programu uzywanego do okreslenia linii ewolucyjnej. Wymagany."
       },
-      "program_wersja": {
+      "program_version": {
         "type": "string",
-        "$comment": "Wersja programu uzywanego do okreslenia linii ewolucyjnej. Wymagany." 
+        "$comment": "Wersja programu uzywanego do okreslenia linii ewolucyjnej. Wymagany."
       },
-      "wariant_nazwa": {
+      "variant_name": {
         "type": "string",
         "$comment": "Nazwa przewidzianego wariantu. Wymagany."
       },
-      "wariant_qc": {
+      "variant_qc_status": {
         "type": "string",
         "enum": [
           "pass",
-          "fail",
           "warning"
         ],
-        "$comment": "Informacja o przydatnosci genomu do predykcji wariantu. Wymagany."
+        "$comment": "Informacja o przydatnosci genomu do predykcji wariantu jesli program ja zwraca. Opcjonalny."
       }
     },
     "required": [
-      "status"
+      "status",
+      "database_name"
     ],
     "allOf": [
       {
         "if": {
           "properties": {
             "status": {
-              "const": "Tak"
+              "const": "tak"
             }
           }
         },
         "then": {
           "required": [
-            "baza_nazwa",
-            "baza_wersja",
-            "program_nazwa",
-            "program_wersja",
-            "wariant_nazwa",
-            "wariant_qc"
+            "database_version",
+            "program_name",
+            "program_version",
+            "variant_name"
           ]
         },
         "else": {
           "required": [
-            "komunikat_bledu"
+            "error_message"
           ]
         }
       }
     ]
   }
 }
-
