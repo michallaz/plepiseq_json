@@ -4,7 +4,7 @@
   "$comment": "Schemat dla outputu, informacja specyficzne dla wirusa RSV",
   "type": "object",
   "properties": {
-    "typ": {
+    "type": {
       "type": "string",
       "enum": [
         "A",
@@ -15,6 +15,6 @@
     }
   },
   "required": [
-    "typ"
+    "type"
   ]
 }

@@ -1,42 +1,42 @@
 {
   "reassortment_data": [
     {
-      "segment": "chr4_HA",
-      "reference_subtype": "H1N1"
+      "segment_name": "chr4_HA",
+      "reference_subtype_name": "H1N1"
     },
     {
-      "segment": "chr6_NA",
-      "reference_subtype": "H1N1"
+      "segment_name": "chr6_NA",
+      "reference_subtype_name": "H1N1"
     }
   ],
-  "typ": "A",
-  "podtyp": "H5N1",
-  "bialka_grypa": [
+  "type_name": "A",
+  "subtype_name": "H5N1",
+  "protein_structure_data": [
     {
       "protein_name": "HA",
-      "protein_path": "/path/to/some.pdb"
+      "pdb_file": "/path/to/some.pdb"
     }
   ],
-  "opornosc_grypa": [
+  "resistance_data": [
     {
-      "lek_nazwa": "Oseltamivir",
-      "lek_opornosc_status": "HRI",
-      "lek_mutacje_numeracja_probka": [
+      "drug_name": "Oseltamivir",
+      "drug_resistance_status": "HRI",
+      "mutation_list_data": [
         {
-          "mutacja_nazwa": "E23K",
-          "mutacja_efekt": "HRI"
+          "mutation_name": "E23K",
+          "mutation_effect": "HRI"
         }
       ],
-      "lek_mutacje_numeracja_reference": [
+      "mutation_list_data_reference_numbering": [
         {
-          "mutacja_nazwa": "E27K",
-          "mutacja_efekt": "HRI"
+          "mutation_name": "E27K",
+          "mutation_effect": "HRI"
         }
       ],
-      "lek_mutacje_numeracja_N2": [
+      "mutation_list_data_N2_numbering": [
         {
-          "mutacja_nazwa": "E27K",
-          "mutacja_efekt": "HRI"
+          "mutation_name": "E27K",
+          "mutation_effect": "HRI"
         }
       ]
     }

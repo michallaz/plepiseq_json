@@ -9,31 +9,31 @@
       "items": {
         "type": "object",
         "properties": {
-          "segment": {
+          "segment_name": {
             "type": "string",
             "$comment": "Nazwa segmentu wirusa grypy"
           },
-          "reference_subtype": {
+          "reference_subtype_name": {
             "type": "string",
-            "$comment": "Naza podtypu jaki został wybrany jako referencja dla danego segmentu"
+            "$comment": "Nazwa podtypu jaki zostal wybrany jako referencja dla danego segmentu"
           }
         },
         "required": [
-          "segment",
-          "reference_subtype"
+          "segment_name",
+          "reference_subtype_name"
         ]
       }
     },
-    "typ": {
+    "type_name": {
       "type": "string",
       "enum": [
         "A",
         "B",
         "unk"
       ],
-      "$comment": "Informacja o typie wirusa grypy zidentyfikowanego w próbce, 'unk' tylko w przypadku gdy mamy reassortment tzn. nie wszystkie segmenty mają taki sam podtyp referencyjny. Wymagany."
+      "$comment": "Informacja o typie wirusa grypy zidentyfikowanego w próbce. 'unk' tylko w przypadku gdy mamy reassortment, tzn. nie wszystkie segmenty mają taki sam podtyp referencyjny. Wymagany."
     },
-    "podtyp": {
+    "subtype_name": {
       "type": "string",
       "enum": [
         "H1N1",
@@ -44,7 +44,7 @@
       ],
       "$comment": "Informacja o podtypie wirusa grypy zidentyfikowanego w próbce. Do uzupełnienia brakujące podtypy, tutaj wskazujemy to, co umie analizować pipeline, nie ma więc typów takich jak H16N10. Wymagany."
     },
-    "bialka_grypa": {
+    "protein_structure_data": {
       "type": "array",
       "items": {
         "type": "object",
@@ -53,24 +53,24 @@
             "type": "string",
             "$comment": "Nazwa białka. Wymagany."
           },
-          "protein_path": {
+          "pdb_file": {
             "type": "string",
             "$comment": "Ścieżka do pliku tekstowego w formacie PDB ze strukturą. Wymagany."
           }
         },
         "required": [
           "protein_name",
-          "protein_path"
+          "pdb_file"
         ]
       }
     },
-    "opornosc_grypa": {
+    "resistance_data": {
       "type": "array",
-      "$comment": "Informacja o występowaniu mutacji wskazanych przez WHO jako powodujące oporność na leki przeciwwirusowe. Jest specjalne pole zbliżone do viral mutation data, ale grypa potrzebuje tutaj trochę innych rzeczy. Wymagany.",
+      "$comment": "Informacja o występowaniu mutacji wskazanych przez WHO jako powodujące oporność na leki przeciwirusowe. Wymagany.",
       "items": {
         "type": "object",
         "properties": {
-          "lek_nazwa": {
+          "drug_name": {
             "type": "string",
             "enum": [
               "Oseltamivir",
@@ -81,7 +81,7 @@
             ],
             "$comment": "Nazwa leku przeciwwirusowego. Tylko te leki występują w tabeli WHO. Wymagany."
           },
-          "lek_opornosc_status": {
+          "drug_resistance_status": {
             "type": "string",
             "enum": [
               "NI",
@@ -91,20 +91,20 @@
             ],
             "$comment": "Nazewnictwo zgodnie z dokumentem WHO. W przypadku wielu mutacji oporność na lek determinowana jest mutacją o największym efekcie. Wymagany."
           },
-          "lek_mutacje_numeracja_probka": {
+          "mutation_list_data": {
             "type": "array",
             "$comment": "Lista mutacji zidentyfikowanych w próbce, które w dokumencie WHO są wypisane jako przebadane pod kątem powodowania oporności na dany lek antywirusowy. Pozycja mutacji jest określona według sekwencji białka z próbki. Oporność na leki oparta jest o badanie mutacji w białku. Wymagany.",
             "items": {
               "type": "object",
               "properties": {
-                "mutacja_nazwa": {
+                "mutation_name": {
                   "type": "string",
                   "$comment": "Nazwa mutacji, wersja skrócona",
                   "examples": [
                     "E23K"
                   ]
                 },
-                "mutacja_efekt": {
+                "mutation_effect": {
                   "type": "string",
                   "enum": [
                     "NI",
@@ -115,25 +115,25 @@
                 }
               },
               "required": [
-                "mutacja_nazwa",
-                "mutacja_efekt"
+                "mutation_name",
+                "mutation_effect"
               ]
             }
           },
-          "lek_mutacje_numeracja_reference": {
+          "mutation_list_data_reference_numbering": {
             "type": "array",
             "$comment": "Lista mutacji zidentyfikowanych w próbce, które w dokumencie WHO są wypisane jako przebadane pod kątem powodowania oporności na dany lek antywirusowy. Pozycja mutacji jest określona według sekwencji białka referencyjnego dla danego podtypu określonej przez WHO. Oporność na leki oparta jest o badanie mutacji w białku. Wymagany.",
             "items": {
               "type": "object",
               "properties": {
-                "mutacja_nazwa": {
+                "mutation_name": {
                   "type": "string",
                   "$comment": "Nazwa mutacji, wersja skrócona",
                   "examples": [
                     "E23K"
                   ]
                 },
-                "mutacja_efekt": {
+                "mutation_effect": {
                   "type": "string",
                   "enum": [
                     "NI",
@@ -144,25 +144,25 @@
                 }
               },
               "required": [
-                "mutacja_nazwa",
-                "mutacja_efekt"
+                "mutation_name",
+                "mutation_effect"
               ]
             }
           },
-          "lek_mutacje_numeracja_N2": {
+          "mutation_list_data_N2_numbering": {
             "type": "array",
             "$comment": "Lista mutacji zidentyfikowanych w próbce, które w dokumencie WHO są wypisane jako przebadane pod kątem powodowania oporności na dany lek antywirusowy. Pozycja mutacji jest określona według sekwencji referencyjnej białka NA z podtypu 2, stosowanego historycznie. Oporność na leki oparta jest o badanie mutacji w białku. Opcjonalny.",
             "items": {
               "type": "object",
               "properties": {
-                "mutacja_nazwa": {
+                "mutation_name": {
                   "type": "string",
                   "$comment": "Nazwa mutacji, wersja skrócona",
                   "examples": [
                     "E23K"
                   ]
                 },
-                "mutacja_efekt": {
+                "mutation_effect": {
                   "type": "string",
                   "enum": [
                     "NI",
@@ -173,26 +173,48 @@
                 }
               },
               "required": [
-                "mutacja_nazwa",
-                "mutacja_efekt"
+                "mutation_name",
+                "mutation_effect"
               ]
             }
           }
         },
         "required": [
-          "lek_nazwa",
-          "lek_opornosc_status",
-          "lek_mutacje_numeracja_probka",
-          "lek_mutacje_numeracja_reference"
+          "drug_name",
+          "drug_resistance_status",
+          "mutation_list_data_reference_numbering",
+          "mutation_list_data"
         ]
       }
     }
   },
   "required": [
     "reassortment_data",
-    "typ",
-    "bialka_grypa",
-    "opornosc_grypa"
+    "type_name",
+    "subtype_name",
+    "protein_structure_data"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "H1N1",
+              "H3N2",
+              "H5N1",
+              "H7N9",
+              "Yamagata",
+              "Victoria"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "resistance_data"
+        ]
+      }
+    }
   ]
 }
-
