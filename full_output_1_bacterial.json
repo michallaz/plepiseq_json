@@ -2,7 +2,16 @@
   "output": {
     "pathogen": "bacteria",
     "pipeline_version": "some_version_control",
-    "genome_files" : [{"segment_nazwa" : "contig_1", "segment_sekwencja" : "AAAAAAAAA"},{"segment_nazwa" : "contig_12", "segment_sekwencja" : "LLLLLLLLLLLLLLLAAA"}],
+    "genome_files_data": [
+      {
+        "segment_name": "contig_1",
+        "segment_path": "/some/path"
+      },
+      {
+        "segment_name": "contig_2",
+        "segment_path": "/some/path"
+      }
+    ],
     "MLST_data": [
       {
         "schemat_nazwa": "MLST",

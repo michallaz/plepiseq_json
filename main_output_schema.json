@@ -11,9 +11,9 @@
           "type": "string",
           "enum": [
             "bacteria",
-            "SARS2",
-            "Influenza",
-            "RSV"
+            "sars2",
+            "influenza",
+            "rsv"
           ],
           "$comment": "Rodzaj wybranego pipeline'u, mamy dwa - bakteryjny lub wirusowy. Wirusowy wymaga podania jednak jako outputu organizmu, Wymagany."
         },
@@ -21,11 +21,11 @@
           "type": "string",
           "$comment": "Informacja o wersji pipeline stosowanego do analizy probki. Wymagany."
         },
-        "MLST_data": {
+        "mlst_data": {
           "$ref": "output_subschemes/MLST.json",
           "$comment": "Informacje o typowaniu bakterii przy pomocy schematow MLST/cgMLST. Lista. Wymagany, jesli pathogen to bacteria."
         },
-        "antybiotykoopornosc_data": {
+        "drug_resistance_data": {
           "$ref": "output_subschemes/antybiotyko_opornosc_output.json",
           "$comment": "Informacje o antybiotykoopornosci bakterii przy pomocy programow AMRFinderPlus lub Resfinder. Lista. Wymagany, jesli pathogen to bacteria."
         },
@@ -49,11 +49,11 @@
           "$ref": "output_subschemes/profil_antygenowy.json",
           "$comment": "Informacja o antygenach o i h. Wymagany, jesli pathogen to bacteria."
         },
-        "geny_wirulencji_data": {
+        "virulence_genes_data": {
           "$ref": "output_subschemes/virulence_genes.json",
           "$comment": "Informacja o genach wirulencji zidentyfikowanych przy pomocy programow VFDB i/lub Virulencefinder. Wymagany, jesli pathogen to bacteria."
         },
-        "wyspy_wirulencji_data": {
+        "virulence_islands_data": {
           "$ref": "output_subschemes/virulence_islands.json",
           "$comment": "Informacja o wyspach wirulencji zidentyfikowanych przy pomocy programow spifinder. Wymagany, jesli pathogen to bacteria."
         },
@@ -81,35 +81,32 @@
           "$ref": "output_subschemes/rsv_data.json",
           "$comment": "Rozne inforrmacje specyficzne dla wirusa RSV. Wymagany jesli pathogen to RSV."
         },
-        "genome_files": {
+        "genome_files_data": {
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
-              "segment_nazwa": {
+              "segment_name": {
                 "type": "string",
                 "$comment": "Nazwa/Naglowek segmentu. Wymagany."
               },
-              "segment_sekwencja": {
+              "segment_path": {
                 "type": "string",
                 "$comment": "Sekwencja segmentu (bez naglowka). Wymagany."
               }
             },
             "required": [
-              "segment_nazwa",
-              "segment_sekwencja"
+              "segment_name",
+              "segment_path"
             ]
           }
         },
-        "dehumanized_fastq": {
+        "dehumanized_fastq_data": {
           "type": "array",
           "$comment": "Lista sciezek do plikow w formacie fastq.gz pozbawionych odczytow nie mapujacych sie na docelowy origanizm",
           "items": {
             "properties": {
-              "plik_nazwa": {
-                "type": "string"
-              },
-              "plik_path": {
+              "dehumanized_fastq_path": {
                 "type": "string",
                 "$comment": "Sciezka do pliku .fastq.gz",
                 "pattern": "^.*\\.fastq(.gz)?$"
@@ -121,7 +118,7 @@
       "required": [
         "pathogen",
         "pipeline_version",
-        "genome_files",
+        "genome_files_data",
 	"contamination_data"
       ],
       "allOf": [
@@ -135,14 +132,14 @@
           },
           "then": {
             "required": [
-              "MLST_data",
-              "antybiotykoopornosc_data",
+              "mlst_data",
+              "drug_resistance_data",
               "bacterial_genome_data",
               "sequencing_summary_data",
               "plasmids_data",
               "antigenic_data",
-              "geny_wirulencji_data",
-              "wyspy_wirulencji_data"
+              "virulence_genes_data",
+              "virulence_islands_data"
             ]
           },
           "else": {
@@ -150,7 +147,7 @@
               "viral_genome_data",
               "viral_classification_data",
               "viral_mutation_data",
-              "dehumanized_fastq"
+              "dehumanized_fastq_data"
             ]
           }
         },
@@ -158,7 +155,7 @@
           "if": {
             "properties": {
               "pathogen": {
-                "const": "SARS2"
+                "const": "sars2"
               }
             }
           },
@@ -172,7 +169,7 @@
           "if": {
             "properties": {
               "pathogen": {
-                "const": "Influenza"
+                "const": "influenza"
               }
             }
           },
@@ -186,7 +183,7 @@
           "if": {
             "properties": {
               "pathogen": {
-                "const": "RSV"
+                "const": "rsv"
               }
             }
           },

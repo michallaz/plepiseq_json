@@ -1,21 +1,20 @@
 {
   "output": {
-    "pathogen": "SARS2",
+    "pathogen": "sars2",
     "pipeline_version": "ver1",
-    "dehumanized_fastq": [
+    "dehumanized_fastq_data": [
       {
-        "plik_nazwa": "forwawrd",
-        "plik_path": "/some/path/forward.fastq.gz"
+        "dehumanized_fastq_path": "/some/path/forward.fastq.gz"
       }
     ],
-    "genome_files": [
+    "genome_files_data": [
       {
-        "segment_nazwa": "contig_1",
-        "segment_sekwencja": "AAATTTTAAAGGGAA"
+        "segment_name": "contig_1",
+        "segment_path": "/some/path"
       },
       {
-        "segment_nazwa": "contig_2",
-        "segment_sekwencja": "AAAAAATTTGGGAAA"
+        "segment_name": "contig_2",
+        "segment_path": "/some/path"
       }
     ],
     "contamination_data": [
