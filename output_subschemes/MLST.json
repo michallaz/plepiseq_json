@@ -6,7 +6,7 @@
   "items": {
     "type": "object",
     "properties": {
-      "schemat_nazwa": {
+      "scheme_name": {
         "type": "string",
         "enum": [
           "MLST",
@@ -14,54 +14,59 @@
         ],
         "$comment": "Informacja o stosowanym schemacie. Wymagany."
       },
-      "komunikat_bledu": {
+      "error_message": {
         "type": "string",
-        "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas liczenia profilu. Wymagany, jesli status to Blad"
+        "$comment": "Dowolny tekst zwracany jako komunikat błędu podczas liczenia profilu. Wymagany, jeśli status to 'błąd'."
       },
       "status": {
         "type": "string",
         "enum": [
-          "Tak",
-          "Nie",
-          "Blad"
+          "tak",
+          "nie",
+          "blad"
         ],
-        "$comment": "informacja czy policzono profil, niepoliczono, zwrocnono blad. Wymagan"
+        "$comment": "Informacja, czy policzono profil, niepoliczono, czy zwrócono błąd. Wymagany."
       },
-      "schemat_profile_id": {
+      "profile_id": {
         "type": "string",
-        "$comment": "Numer zidentyfikowanego profilu."
+        "$comment": "Numer zidentyfikowanego profilu. Z zewnętrznej bazy, jeśli jest, inaczej identyfikator nadawany jest lokalnie."
       },
-      "schemat_profile_id_closest": {
+      "closest_external_profile_id": {
         "type": "string",
-        "$comment": "Numer profilu z zewnetrznej bazy ktory jest najbardziej zblizony do profilu probki. Wymagany, jesli schemat nazwa to cgMLST"
+        "$comment": "Identyfikator profilu z zewnętrznej bazy, który jest najbardziej zbliżony do profilu próbki. Wymagany, jeśli schemat to cgMLST."
       },
-      "schemat_profile_id_closest_distance": {
+      "closest_external_profile_distance": {
         "type": "number",
-        "$comment": "Podobienstwo miedzy najblizszym profilem z zewnetrznej bazy a profile probki. Wymagany, jesli schemat nazwa to cgMLST"
+        "$comment": "Podobieństwo między najbliższym profilem z zewnętrznej bazy a profilem próbki. Wymagany, jeśli schemat to cgMLST."
       },
-      "schemat_profile_allel_list": {
+      "missing_allels_number": {
+        "type": "number"
+      },
+      "duplicated_allels_number": {
+        "type": "number"
+      },
+      "profile_allel_list": {
         "type": "array",
         "items": {
           "type": "object",
           "properties": {
             "locus_name": {
               "type": "string",
-              "$comment": "Naza danego locus. Wymagany."
+              "$comment": "Nazwa danego locus. Wymagany."
             },
-            "lucus_allel": {
+            "locus_allel_id": {
               "type": "number",
-              "$comment": "Identyfikator allelu zidentyfikowanego dla danego locus.Wymagany."
+              "$comment": "Identyfikator allelu zidentyfikowanego dla danego locus. Wymagany."
             }
           },
           "required": [
             "locus_name",
-            "lucus_allel"
-          ],
-          "comment": "Lista loci i zidentyfikowanych dla nich alleli dla danego profilu. Wymagany."
+            "locus_allel_id"
+          ]
         },
-        "$comment": "Lista"
+        "$comment": "Lista loci i zidentyfikowanych dla nich alleli dla danego profilu. Wymagany."
       },
-      "schemat_HierCC_clustering_external": {
+      "hiercc_clustering_external": {
         "type": "array",
         "items": {
           "type": "object",
@@ -77,22 +82,21 @@
                 "25",
                 "50"
               ],
-              "$comment": "Poziom odciecia w trakcie clusteringu. PubMLST wystawia poziomy 5, 10, 25, 50, 100 i 200, inne niz poziomy wystawiane przez Enterobase. Wymagany."
+              "$comment": "Poziom odcięcia w trakcie clusteringu. PubMLST wystawia poziomy 5, 10, 25, 50, inne niż poziomy wystawiane przez Enterobase. Wymagany."
             },
-            "group": {
+            "group_id": {
               "type": "string",
-              "$comment": "Identyfikator grupy do ktorej nalezy probka na danym poziomie. Wymagany."
+              "$comment": "Identyfikator grupy, do której należy próbka na danym poziomie. Wymagany."
             }
           },
           "required": [
             "level",
-            "group"
-          ],
-          "comment": "Przynaleznosc do grupy profili na podstawie podobiensta profilu. Obliczany z wykorzystaniem zewnetrznej bazy (enterobase ub pubmlst) Wymgany, jesli schemat_nazwa to cgMLST"
+            "group_id"
+          ]
         },
-        "$comment": "Lista"
+        "$comment": "Przynależność do grupy profili na podstawie podobieństwa profilu. Obliczany z wykorzystaniem zewnętrznej bazy (Enterobase lub PubMLST). Wymagany, jeśli schemat to cgMLST."
       },
-      "schemat_HierCC_clustering_internal": {
+      "hiercc_clustering_internal": {
         "type": "array",
         "items": {
           "type": "object",
@@ -108,22 +112,21 @@
                 "25",
                 "50"
               ],
-              "comment": "Poziom odciecia w trakcie clusteringu. W celu zachowania spojnosci z bazami external zachowuje oryginalna liste poziomow. Wymagany."
+              "$comment": "Poziom odcięcia w trakcie clusteringu. W celu zachowania spójności z bazami zewnętrznymi zachowano oryginalną listę poziomów. Wymagany."
             },
-            "group": {
+            "group_id": {
               "type": "string",
-              "$comment": "Identyfikator grupy. Wymagany"
+              "$comment": "Identyfikator grupy. Wymagany."
             }
           },
           "required": [
             "level",
-            "group"
-          ],
-          "comment": "Przynaleznosc do grupy profili na podstawie podobiensta profilu. Obliczany wewnetrznie w PZH. Opcjonalny."
+            "group_id"
+          ]
         },
-        "$comment": "Lista"
+        "$comment": "Przynależność do grupy profili na podstawie podobieństwa profilu. Obliczany wewnętrznie w PZH. Opcjonalny."
       },
-      "schemat_HierCC_historical_data": {
+      "hiercc_historical_data": {
         "type": "array",
         "items": {
           "type": "object",
@@ -134,39 +137,22 @@
                 "5",
                 "20"
               ],
-              "$comment": "Poziom odciecia. Szczepy z publicznej bazy ktore naleza do tej samej grupy na tym poziomie sa analizowane. Wymagany."
+              "$comment": "Poziom odcięcia. Szczepy z publicznej bazy, które należą do tej samej grupy na tym poziomie, są analizowane. Wymagany."
             },
-            "data": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "kraj": {
-                    "type": "string",
-                    "$comment": "Nazwa kraju. Wymagany."
-                  },
-                  "rok": {
-                    "type": "number",
-                    "$comment": "Rok. Wymagany"
-                  },
-                  "ilosc": {
-                    "type": "number",
-                    "$comment": "Liczba szczepow wystepujaca w danym kraju w danym roku. Wymagany."
-                  }
-                },
-                "required": [
-                  "kraj",
-                  "rok",
-                  "ilosc"
-                ]
-              }
+            "data_path": {
+              "type": "string",
+              "$comment": "Ścieżka do pliku w formacie CSV, co zawiera plik, opisano w Excelu."
             }
-          }
+          },
+          "required": [
+            "level",
+            "data_path"
+          ]
         }
       }
     },
     "required": [
-      "schemat_nazwa",
+      "scheme_name",
       "status"
     ],
     "allOf": [
@@ -174,7 +160,7 @@
         "if": {
           "properties": {
             "status": {
-              "const": "Tak"
+              "const": "tak"
             }
           }
         },
@@ -182,23 +168,26 @@
           "allOf": [
             {
               "required": [
-                "schemat_profile_id",
-                "schemat_profile_allel_list"
+                "profile_id",
+                "profile_allel_list",
+                "missing_allels_number",
+                "duplicated_allels_number"
               ]
             },
             {
               "if": {
                 "properties": {
-                  "schemat_nazwa": {
+                  "scheme_name": {
                     "const": "cgMLST"
                   }
                 }
               },
               "then": {
                 "required": [
-                  "schemat_HierCC_clustering_external",
-                  "schemat_profile_id_closest",
-                  "schemat_profile_id_closest_distance"
+                  "hiercc_clustering_external",
+                  "closest_external_profile_id",
+                  "closest_external_profile_distance",
+                  "hiercc_historical_data"
                 ]
               }
             }
@@ -206,10 +195,11 @@
         },
         "else": {
           "required": [
-            "komunikat_bledu"
+            "error_message"
           ]
         }
       }
     ]
   }
 }
+

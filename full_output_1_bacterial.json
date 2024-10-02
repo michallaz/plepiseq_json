@@ -12,83 +12,78 @@
         "segment_path": "/some/path"
       }
     ],
-    "MLST_data": [
+    "mlst_data": [
+    
+  {
+    "scheme_name": "MLST",
+    "profile_id": "local_10",
+    "status": "tak",
+    "missing_allels_number": 0,
+    "duplicated_allels_number": 0,
+    "profile_allel_list": [
       {
-        "schemat_nazwa": "MLST",
-        "schemat_profile_id": "local_10",
-        "status": "Tak",
-        "schemat_profile_allel_list": [
-          {
-            "locus_name": "a10",
-            "lucus_allel": 20
-          },
-          {
-            "locus_name": "a20",
-            "lucus_allel": 202
-          }
-        ]
+        "locus_name": "a10",
+        "locus_allel_id": 20
       },
       {
-        "schemat_nazwa": "cgMLST",
-        "status": "Tak",
-        "schemat_profile_id": "540000",
-        "schemat_profile_id_closest": "540000",
-        "schemat_profile_id_closest_distance": 0,
-        "schemat_profile_allel_list": [
-          {
-            "locus_name": "a20",
-            "lucus_allel": 20
-          },
-          {
-            "locus_name": "a30",
-            "lucus_allel": 202
-          }
-        ],
-        "schemat_HierCC_clustering_external": [
-          {
-            "level": "0",
-            "group": "0"
-          },
-          {
-            "level": "50",
-            "group": "20"
-          }
-        ],
-        "schemat_HierCC_clustering_internal": [
-          {
-            "level": "0",
-            "group": "0"
-          },
-          {
-            "level": "2",
-            "group": "200"
-          }
-        ],
-        "schemat_HierCC_historical_data": [
-          {
-            "level": "5",
-            "data": [
-              {
-                "kraj": "USA",
-                "rok": 2009,
-                "ilosc": 20
-              },
-              {
-                "kraj": "Polska",
-                "rok": 2010,
-                "ilosc": 23
-              }
-            ]
-          }
-        ]
+        "locus_name": "a20",
+        "locus_allel_id": 202
+      }
+    ]
+  },
+  {
+    "scheme_name": "cgMLST",
+    "status": "tak",
+    "profile_id": "540000",
+    "missing_allels_number": 0,
+    "duplicated_allels_number": 10,
+    "closest_external_profile_id": "540000",
+    "closest_external_profile_distance": 0,
+    "profile_allel_list": [
+      {
+        "locus_name": "a20",
+        "locus_allel_id": 20
       },
       {
-        "schemat_nazwa": "cgMLST",
-        "status": "Blad",
-        "komunikat_bledu": "540000"
+        "locus_name": "a30",
+        "locus_allel_id": 202
       }
     ],
-    "antybiotykoopornosc_data": [
+    "hiercc_clustering_external": [
+      {
+        "level": "0",
+        "group_id": "0"
+      },
+      {
+        "level": "50",
+        "group_id": "20"
+      }
+    ],
+    "HierCC_clustering_internal": [
+      {
+        "level": "0",
+        "group_id": "0"
+      },
+      {
+        "level": "2",
+        "group_id": "200"
+      }
+    ],
+    "hiercc_historical_data": [
+      {
+        "level": "5",
+        "data_path": "/some/path"
+      }
+    ]
+  },
+  {
+    "scheme_name": "cgMLST",
+    "status": "blad",
+    "error_message": "540000"
+  }
+
+    ],
+    "drug_resistance_data": [
       {
         "program_nazwa": "AMRFinderPlus",
         "status": "Tak",
@@ -315,7 +310,7 @@
         "serotyp_nazwa": "Rissen"
       }
     ],
-    "geny_wirulencji_data": [
+    "virulence_genes_data": [
       {
         "status": "Tak",
         "program_nazwa": "VFDB",
@@ -347,7 +342,7 @@
         "komunikat_bledu": "Some text"
       }
     ],
-    "wyspy_wirulencji_data": {
+    "virulence_islands_data": {
       "status": "Tak",
       "wyspy_lista": [
         {

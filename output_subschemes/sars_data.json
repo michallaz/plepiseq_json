@@ -48,14 +48,14 @@
             "type": "string",
             "$comment": "Nazwa bialka. Wymagany."
           },
-          "pdb_file": {
+          "pdb_path": {
             "type": "string",
             "$comment": "Sciezka do pliku tekstowego w formacie PDB ze struktura. Wymagany."
           }
         },
         "required": [
           "protein_name",
-          "pdb_file"
+          "pdb_path"
         ]
       }
     }

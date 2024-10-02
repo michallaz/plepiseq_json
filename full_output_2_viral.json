@@ -119,7 +119,7 @@
       "protein_structure_data": [
         {
           "protein_name": "Spike",
-          "pdb_file": "/Some/path/to.pdb"
+          "pdb_path": "/Some/path/to.pdb"
         }
       ]
     }

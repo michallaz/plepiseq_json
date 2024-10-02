@@ -53,14 +53,14 @@
             "type": "string",
             "$comment": "Nazwa białka. Wymagany."
           },
-          "pdb_file": {
+          "pdb_path": {
             "type": "string",
             "$comment": "Ścieżka do pliku tekstowego w formacie PDB ze strukturą. Wymagany."
           }
         },
         "required": [
           "protein_name",
-          "pdb_file"
+          "pdb_path"
         ]
       }
     },

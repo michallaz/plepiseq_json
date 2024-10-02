@@ -14,7 +14,7 @@
   "protein_structure_data": [
     {
       "protein_name": "HA",
-      "pdb_file": "/path/to/some.pdb"
+      "pdb_path": "/path/to/some.pdb"
     }
   ],
   "resistance_data": [
