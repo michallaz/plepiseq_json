@@ -1,32 +1,32 @@
 [
   {
-    "status": "Tak",
-    "program_nazwa": "VFDB",
-    "patotyp": [
+    "status": "tak",
+    "program_name": "VFDB",
+    "patotpye_data": [
       {
-        "patotyp_nazwa": "STEC"
+        "patotype_name": "STEC"
       }
     ],
-    "lista_genow": [
+    "virulence_genes_data": [
       {
-        "czynnik_nazwa": "stx2A",
-        "czynnik_identycznosc_sekwencyjna": "100.00",
-        "czynnik_zakres": "99.98",
-        "czynnik_contig_id": "contig1",
-        "czynnik_accession_id": "OBGFDJBI_02609"
+        "gene_name": "stx2A",
+        "sequence_similarity_to_reference_value": 100.00,
+        "degree_of_overlap_with_reference_value": 99.98,
+        "contig_name": "contig1",
+        "reference_accession_name": "OBGFDJBI_02609"
       },
       {
-        "czynnik_nazwa": "stx2A",
-        "czynnik_identycznosc_sekwencyjna": "100.00",
-        "czynnik_zakres": "99.98",
-        "czynnik_contig_id": "contig1",
-        "czynnik_accession_id": "OBGFDJBI_02609"
+        "gene_name": "stx2A",
+        "sequence_similarity_to_reference_value": 100,
+        "degree_of_overlap_with_reference_value": 99,
+        "contig_name": "contig1",
+        "reference_accession_name": "OBGFDJBI_02609"
       }
     ]
   },
   {
-    "status": "Blad",
-    "program_nazwa": "Virulencefinder",
-    "komunikat_bledu": "Some text"
+    "status": "blad",
+    "program_name": "Virulencefinder",
+    "error_message": "Some text"
   }
 ]

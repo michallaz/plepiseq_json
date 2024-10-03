@@ -1,19 +1,19 @@
 {
-  "status": "Tak",
-  "wyspy_lista": [
+  "status": "tak",
+  "spi_data": [
     {
-      "SPI_nazwa": "C63PI",
-      "SPI_identycznosc_sekwencyjna": "90.02",
-      "SPI_zakres": "99.00",
-      "SPI_contig_id": "contig1",
-      "SPI_accesion_id": "AF128999"
+      "spi_name": "C63PI",
+      "sequence_similarity_to_reference_value": 90.02,
+      "degree_of_overlap_with_reference_value": 99.00,
+      "contig_name": "contig1",
+      "reference_accession_name": "AF128999"
     },
     {
-      "SPI_nazwa": "Not_named",
-      "SPI_identycznosc_sekwencyjna": "89.94",
-      "SPI_zakres": "100.00",
-      "SPI_contig_id": "contig2",
-      "SPI_accesion_id": "some_text"
+      "spi_name": "Not_named",
+      "sequence_similarity_to_reference_value": 89.9,
+      "degree_of_overlap_with_reference_value": 100.0,
+      "contig_name": "contig2",
+      "reference_accession_name": "some_text"
     }
   ]
 }

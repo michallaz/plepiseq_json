@@ -1,56 +1,63 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Subschema for plepiseq output,summary of predicted virulence islands. Only for Salmonella",
-  "$comment": "Schemat dla outputu, Podsumowanie predykcji wysp wirulencji, tylko dla Salmonelli",
+  "title": "Subschema for plepiseq output, summary of predicted virulence islands. Only for Salmonella",
+  "$comment": "Schemat dla outputu, Podsumowanie predykcji wysp wirulencji, tylko dla Salmonelli. Inne organizmy powinny zwrócić status 'nie' z komunikatem o złym organizmie.",
   "type": "object",
   "properties": {
     "status": {
       "type": "string",
       "enum": [
-        "Tak",
-        "Nie",
-        "Blad"
+        "tak",
+        "nie",
+        "blad"
       ],
-      "$comment": "Informacja czy przewidzano jakiekoliwek wyspu wirulencji. Dwie mozliwosci Tak i Nie. Wymagany"
+      "$comment": "Informacja, czy przewidziano jakiekolwiek wyspy wirulencji. Wymagany."
+
     },
-    "komunikat_bledu": {
+    "error_message": {
       "type": "string",
-      "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
+      "$comment": "Dowolny tekst zwracany jako komunikat błędu podczas obliczeń. Wymagany, jeśli status to 'nie' lub 'blad'."
+
     },
-    "wyspy_lista": {
+    "spi_data": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "SPI_nazwa": {
+          "spi_name": {
             "type": "string",
-            "$comment": "Nazwa wysypy wirulencji. Wymagany"
+            "$comment": "Nazwa wyspy wirulencji. Wymagany."
           },
-          "SPI_identycznosc_sekwencyjna": {
-            "type": "string",
-            "pattern": "^.*\\.\\d\\d$",
-            "$comment": "Identycznosc sekwencyjna miedzy sekwencja znaleziona w probce, a sekwencja referencyjna."
+          "sequence_similarity_to_reference_value": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "minimum": 0,
+            "maximum": 100,
+            "$comment": "Identyczność sekwencyjna między sekwencją znalezioną w próbce, a sekwencją referencyjną."
           },
-          "SPI_zakres": {
-            "type": "string",
-            "pattern": "^.*\\.\\d\\d$",
-            "$comment": "Procent dlugosci sekwencji referencyjnej zidentyfikowany w probce.."
+          "degree_of_overlap_with_reference_value": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "minimum": 0,
+            "maximum": 100,
+            "$comment": "Procent długości sekwencji referencyjnej zidentyfikowany w próbce."
+
           },
-          "SPI_contig_id": {
+          "contig_name": {
             "type": "string",
-            "$comment": "Identyfikator contigu na ktorym zidentyfikowano dana sekwencje"
+            "$comment": "Identyfikator contigu, na którym zidentyfikowano daną sekwencję."
           },
-          "SPI_accession_id": {
+          "reference_accession_name": {
             "type": "string",
-            "$comment": "Accession id sekwencji referencyjnej"
+            "$comment": "Accession ID sekwencji referencyjnej."
           }
         },
         "required": [
-          "SPI_nazwa",
-          "SPI_identycznosc_sekwencyjna",
-          "SPI_zakres",
-          "SPI_contig_id",
-          "SPI_accesion_id"
+          "spi_name",
+          "sequence_similarity_to_reference_value",
+          "degree_of_overlap_with_reference_value",
+          "contig_name",
+          "reference_accession_name"
         ]
       }
     }
@@ -63,20 +70,21 @@
       "if": {
         "properties": {
           "status": {
-            "const": "Tak"
+            "const": "tak"
           }
         }
       },
       "then": {
         "required": [
-          "wyspy_lista"
+          "spi_data"
         ]
       },
       "else": {
         "required": [
-          "komunikat_bledu"
+          "error_message"
         ]
       }
     }
   ]
 }
+

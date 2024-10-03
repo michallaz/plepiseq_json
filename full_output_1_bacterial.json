@@ -197,116 +197,113 @@
       }
     ],
     "plasmids_data": {
-  "status": "tak",
-  "plasmids_data": [
-    {
-      "plasmid_name": "IncFIA(HI1)",
-      "sequence_similarity_to_reference_value": 100.00,
-      "degree_of_overlap_with_reference_value": 99.9,
-      "contig_name": "contig10",
-      "reference_accession_name": "AF250878"
-    }
-  ]
-
+      "status": "tak",
+      "plasmids_data": [
+        {
+          "plasmid_name": "IncFIA(HI1)",
+          "sequence_similarity_to_reference_value": 100.00,
+          "degree_of_overlap_with_reference_value": 99.9,
+          "contig_name": "contig10",
+          "reference_accession_name": "AF250878"
+        }
+      ]
     },
     "antigenic_data": [
-    
-  {
-    "program_name": "seqsero",
-    "status": "blad",
-    "error_message": "ala"
-  },
-  {
-    "program_name": "seqsero",
-    "status": "tak",
-    "antigen_o_data": [
       {
-        "antigen_id": "7"
-      }
-    ],
-    "antigen_h1_data": [
-      {
-        "antigen_id": "g"
+        "program_name": "seqsero",
+        "status": "blad",
+        "error_message": "ala"
       },
       {
-        "antigen_id": "h"
-      }
-    ],
-    "antigen_h2_data": [
-      {
-        "antigen_id": "-"
-      }
-    ],
-    "serotype_name": "Rissen"
-  },
-  {
-    "program_name": "ectyper",
-    "status": "tak",
-    "antigen_o_data": [
-      {
-        "antigen_id": "7"
-      }
-    ],
-    "antigen_h_data": [
-      {
-        "antigen_id": "g"
-      },
-      {
-        "antigen_id": "h"
-      }
-    ],
-    "serotype_name": "Rissen"
-  }
-],
-	    
-	    "virulence_genes_data": [
-      {
-        "status": "Tak",
-        "program_nazwa": "VFDB",
-        "patotyp": [
+        "program_name": "seqsero",
+        "status": "tak",
+        "antigen_o_data": [
           {
-            "patotyp_nazwa": "STEC"
+            "antigen_id": "7"
           }
         ],
-        "lista_genow": [
+        "antigen_h1_data": [
           {
-            "czynnik_nazwa": "stx2A",
-            "czynnik_identycznosc_sekwencyjna": "100.00",
-            "czynnik_zakres": "99.98",
-            "czynnik_contig_id": "contig1",
-            "czynnik_accession_id": "OBGFDJBI_02609"
+            "antigen_id": "g"
           },
           {
-            "czynnik_nazwa": "stx2A",
-            "czynnik_identycznosc_sekwencyjna": "100.00",
-            "czynnik_zakres": "99.98",
-            "czynnik_contig_id": "contig1",
-            "czynnik_accession_id": "OBGFDJBI_02609"
+            "antigen_id": "h"
+          }
+        ],
+        "antigen_h2_data": [
+          {
+            "antigen_id": "-"
+          }
+        ],
+        "serotype_name": "Rissen"
+      },
+      {
+        "program_name": "ectyper",
+        "status": "tak",
+        "antigen_o_data": [
+          {
+            "antigen_id": "7"
+          }
+        ],
+        "antigen_h_data": [
+          {
+            "antigen_id": "g"
+          },
+          {
+            "antigen_id": "h"
+          }
+        ],
+        "serotype_name": "Rissen"
+      }
+    ],
+    "virulence_genes_data": [
+      {
+        "status": "tak",
+        "program_name": "VFDB",
+        "patotpye_data": [
+          {
+            "patotype_name": "STEC"
+          }
+        ],
+        "virulence_genes_data": [
+          {
+            "gene_name": "stx2A",
+            "sequence_similarity_to_reference_value": 100.00,
+            "degree_of_overlap_with_reference_value": 99.98,
+            "contig_name": "contig1",
+            "reference_accession_name": "OBGFDJBI_02609"
+          },
+          {
+            "gene_name": "stx2A",
+            "sequence_similarity_to_reference_value": 100,
+            "degree_of_overlap_with_reference_value": 99,
+            "contig_name": "contig1",
+            "reference_accession_name": "OBGFDJBI_02609"
           }
         ]
       },
       {
-        "status": "Blad",
-        "program_nazwa": "Virulencefinder",
-        "komunikat_bledu": "Some text"
+        "status": "blad",
+        "program_name": "Virulencefinder",
+        "error_message": "Some text"
       }
     ],
     "virulence_islands_data": {
-      "status": "Tak",
-      "wyspy_lista": [
+      "status": "tak",
+      "spi_data": [
         {
-          "SPI_nazwa": "C63PI",
-          "SPI_identycznosc_sekwencyjna": "90.02",
-          "SPI_zakres": "99.00",
-          "SPI_contig_id": "contig1",
-          "SPI_accesion_id": "AF128999"
+          "spi_name": "C63PI",
+          "sequence_similarity_to_reference_value": 90.02,
+          "degree_of_overlap_with_reference_value": 99.00,
+          "contig_name": "contig1",
+          "reference_accession_name": "AF128999"
         },
         {
-          "SPI_nazwa": "Not_named",
-          "SPI_identycznosc_sekwencyjna": "89.94",
-          "SPI_zakres": "100.00",
-          "SPI_contig_id": "contig2",
-          "SPI_accesion_id": "some_text"
+          "spi_name": "Not_named",
+          "sequence_similarity_to_reference_value": 89.9,
+          "degree_of_overlap_with_reference_value": 100.0,
+          "contig_name": "contig2",
+          "reference_accession_name": "some_text"
         }
       ]
     }
