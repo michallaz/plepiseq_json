@@ -3,8 +3,8 @@
     "scheme_name": "MLST",
     "profile_id": "local_10",
     "status": "tak",
-    "missing_allels_number": 0,
-    "duplicated_allels_number": 0,
+    "missing_allels_value": 0,
+    "duplicated_allels_value": 0,
     "profile_allel_list": [
       {
         "locus_name": "a10",
@@ -20,8 +20,8 @@
     "scheme_name": "cgMLST",
     "status": "tak",
     "profile_id": "540000",
-    "missing_allels_number": 0,
-    "duplicated_allels_number": 10,
+    "missing_allels_value": 0,
+    "duplicated_allels_value": 10,
     "closest_external_profile_id": "540000",
     "closest_external_profile_distance": 0,
     "profile_allel_list": [

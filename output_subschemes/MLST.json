@@ -39,10 +39,10 @@
         "type": "number",
         "$comment": "Podobieństwo między najbliższym profilem z zewnętrznej bazy a profilem próbki. Wymagany, jeśli schemat to cgMLST."
       },
-      "missing_allels_number": {
+      "missing_allels_value": {
         "type": "number"
       },
-      "duplicated_allels_number": {
+      "duplicated_allels_value": {
         "type": "number"
       },
       "profile_allel_list": {
@@ -170,8 +170,8 @@
               "required": [
                 "profile_id",
                 "profile_allel_list",
-                "missing_allels_number",
-                "duplicated_allels_number"
+                "missing_allels_value",
+                "duplicated_allels_value"
               ]
             },
             {

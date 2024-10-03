@@ -18,8 +18,8 @@
     "scheme_name": "MLST",
     "profile_id": "local_10",
     "status": "tak",
-    "missing_allels_number": 0,
-    "duplicated_allels_number": 0,
+    "missing_allels_value": 0,
+    "duplicated_allels_value": 0,
     "profile_allel_list": [
       {
         "locus_name": "a10",
@@ -35,8 +35,8 @@
     "scheme_name": "cgMLST",
     "status": "tak",
     "profile_id": "540000",
-    "missing_allels_number": 0,
-    "duplicated_allels_number": 10,
+    "missing_allels_value": 0,
+    "duplicated_allels_value": 10,
     "closest_external_profile_id": "540000",
     "closest_external_profile_distance": 0,
     "profile_allel_list": [
@@ -96,8 +96,8 @@
           {
             "factor_name": "gezZ",
             "factor_contig_name": "contig10",
-            "factor_sequence_similarity_to_reference_number": 100,
-            "factor_degree_of_overlap_with_reference_number": 90,
+            "factor_sequence_similarity_to_reference_value": 100,
+            "factor_degree_of_overlap_with_reference_value": 90,
             "factor_reference_name": "ala",
             "factor_type_name": "gen"
           }
@@ -144,33 +144,34 @@
   }
     ],
     "bacterial_genome_data": [
-      {
-        "etap": "pre-filtering",
-        "status": "Tak",
-        "genom_calkowita_dlugosc": 1234567,
-        "genom_ilosc_segmentow": 10,
-        "genom_srednie_pokrycie": 10.20,
-        "genom_N50": 200000,
-        "genom_L50": 10,
-        "genom_liczba_N": 100
-      },
-      {
-        "etap": "post-filtering",
-        "status": "Tak",
-        "genom_calkowita_dlugosc": 1234567,
-        "genom_ilosc_segmentow": 10,
-        "genom_srednie_pokrycie": 30,
-        "genom_N50": 200000,
-        "genom_L50": 10,
-        "genom_liczba_N": 100
-      },
-      {
-        "etap": "post-filtering",
-        "status": "Blad",
-        "komunikat_bledu": "Blad"
-      }
-    ],
-    "sequencing_summary_data": [
+  {
+    "step_name": "pre-filtering",
+    "status": "tak",
+    "total_length_value": 1234567,
+    "number_of_contigs_value": 10,
+    "average_coverage_value": 10.20,
+    "N50_value": 200000,
+    "L50_value": 10,
+    "number_of_Ns_value": 100
+  },
+  {
+    "step_name": "post-filtering",
+    "status": "tak",
+    "total_length_value": 1234567,
+    "number_of_contigs_value": 10,
+    "average_coverage_value": 30,
+    "N50_value": 200000,
+    "L50_value": 10,
+    "number_of_Ns_value": 100
+  },
+  {
+    "step_name": "post-filtering",
+    "status": "blad",
+    "error_message": "Blad"
+  }
+],
+    
+	    "sequencing_summary_data": [
       {
         "plik_nazwa": "ala.fastq",
         "status": "Tak",

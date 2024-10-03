@@ -10,8 +10,8 @@
           {
             "factor_name": "gezZ",
             "factor_contig_name": "contig10",
-            "factor_sequence_similarity_to_reference_number": 100,
-            "factor_degree_of_overlap_with_reference_number": 90,
+            "factor_sequence_similarity_to_reference_value": 100,
+            "factor_degree_of_overlap_with_reference_value": 90,
             "factor_reference_name": "ala",
             "factor_type_name": "gen"
           }

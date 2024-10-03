@@ -77,13 +77,13 @@
                     "type": "string",
                     "$comment": "Nazwa contig-u na ktorym zidentyfikowano czynnik.Wymagany"
                   },
-                  "factor_sequence_similarity_to_reference_number": {
+                  "factor_sequence_similarity_to_reference_value": {
                     "type": "number",
                     "$comment": "Identycznosc sekwencyjna czynnka zlokalizowanego w probce do jego sekwencji referencyjnej. Wartosc od 0 do 100. Wymagany",
                     "minimum": 0,
                     "maximum": 100
                   },
-                  "factor_degree_of_overlap_with_reference_number": {
+                  "factor_degree_of_overlap_with_reference_value": {
                     "type": "number",
                     "$comment": "Procent dlugosci sekwencji referencyjnej zlokalizowany w probce. Wartosc od 0 do 100. Wymagany",
                     "minimum": 0,
@@ -105,8 +105,8 @@
                 "required": [
                   "factor_name",
                   "factor_contig_name",
-                  "factor_sequence_similarity_to_reference_number",
-                  "factor_degree_of_overlap_with_reference_number",
+                  "factor_sequence_similarity_to_reference_value",
+                  "factor_degree_of_overlap_with_reference_value",
                   "factor_reference_name",
                   "factor_type_name"
                 ]

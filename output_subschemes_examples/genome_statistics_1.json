@@ -1,27 +1,27 @@
 [
   {
-    "etap": "pre-filtering",
-    "status": "Tak",
-    "genom_calkowita_dlugosc": 1234567,
-    "genom_ilosc_segmentow": 10,
-    "genom_srednie_pokrycie": 10.20,
-    "genom_N50": 200000,
-    "genom_L50": 10,
-    "genom_liczba_N": 100
+    "step_name": "pre-filtering",
+    "status": "tak",
+    "total_length_value": 1234567,
+    "number_of_contigs_value": 10,
+    "average_coverage_value": 10.20,
+    "N50_value": 200000,
+    "L50_value": 10,
+    "number_of_Ns_value": 100
   },
   {
-    "etap": "post-filtering",
-    "status": "Tak",
-    "genom_calkowita_dlugosc": 1234567,
-    "genom_ilosc_segmentow": 10,
-    "genom_srednie_pokrycie": 30,
-    "genom_N50": 200000,
-    "genom_L50": 10,
-    "genom_liczba_N": 100
+    "step_name": "post-filtering",
+    "status": "tak",
+    "total_length_value": 1234567,
+    "number_of_contigs_value": 10,
+    "average_coverage_value": 30,
+    "N50_value": 200000,
+    "L50_value": 10,
+    "number_of_Ns_value": 100
   },
   {
-    "etap": "post-filtering",
-    "status": "Blad",
-    "komunikat_bledu": "Blad"
+    "step_name": "post-filtering",
+    "status": "blad",
+    "error_message": "Blad"
   }
 ]
