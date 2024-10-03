@@ -34,7 +34,7 @@
         "locus_allel_id": 202
       }
     ],
-    "hiercc_clustering_external": [
+    "hiercc_clustering_external_data": [
       {
         "level": "0",
         "group_id": "0"
@@ -44,7 +44,7 @@
         "group_id": "20"
       }
     ],
-    "HierCC_clustering_internal": [
+    "hiercc_clustering_internal_data": [
       {
         "level": "0",
         "group_id": "0"

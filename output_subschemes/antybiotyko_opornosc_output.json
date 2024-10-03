@@ -6,7 +6,7 @@
   "items": {
     "type": "object",
     "properties": {
-      "program_nazwa": {
+      "program_name": {
         "type": "string",
         "enum": [
           "AMRFinderPlus",
@@ -17,13 +17,13 @@
       "status": {
         "type": "string",
         "enum": [
-          "Tak",
-          "Nie",
-          "Blad"
+          "tak",
+          "nie",
+          "blad"
         ],
         "$comment": "informacja czy poprawnie zakonczono obliczenia. Wymagany."
       },
-      "komunikat_bledu": {
+      "error_message": {
         "type": "string",
         "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas liczenia profilu. Wymagany, jesli status to Blad"
       },
@@ -32,7 +32,7 @@
         "items": {
           "type": "object",
           "properties": {
-            "antybiotyk_nazwa": {
+            "antibiotic_name": {
               "type": "string",
               "enum": [
                 "Aminoglycoside",
@@ -51,12 +51,11 @@
                 "Rifampicin",
                 "Sulphonamide",
                 "Tetracycline",
-                "Trimethoprim",
-                "Aminoglycoside"
+                "Trimethoprim"
               ],
               "$comment": "Lista zgodnie z dokumentem Tomka. Wymagany"
             },
-            "antybiotyk_status": {
+            "antibiotic_status": {
               "type": "string",
               "enum": [
                 "oporny",
@@ -65,72 +64,72 @@
               ],
               "$comment": "Status opornosci na dany antybiotyk, do wyboru oporny, wrazliwy, lub inny. Wymagany."
             },
-            "antybiotyk_opornosc_czynnik": {
+            "antibiotic_resistance_data": {
               "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
-                  "czynnik_nazwa": {
+                  "factor_name": {
                     "type": "string",
                     "$comment": "Nazwa czynnika powodujacego oprnosc. Wymagany"
                   },
-                  "czynnik_lokalizacja_contig_nazwa": {
+                  "factor_contig_name": {
                     "type": "string",
                     "$comment": "Nazwa contig-u na ktorym zidentyfikowano czynnik.Wymagany"
                   },
-                  "czynnik_identycznosc_sekwencyjna_do_referencji": {
+                  "factor_sequence_similarity_to_reference_number": {
                     "type": "number",
                     "$comment": "Identycznosc sekwencyjna czynnka zlokalizowanego w probce do jego sekwencji referencyjnej. Wartosc od 0 do 100. Wymagany",
                     "minimum": 0,
                     "maximum": 100
                   },
-                  "czynnik_pokrycie_sekwencyjna_do_referencji": {
+                  "factor_degree_of_overlap_with_reference_number": {
                     "type": "number",
                     "$comment": "Procent dlugosci sekwencji referencyjnej zlokalizowany w probce. Wartosc od 0 do 100. Wymagany",
                     "minimum": 0,
                     "maximum": 100
                   },
-                  "czynnik_referencja_nazwa": {
+                  "factor_reference_name": {
                     "type": "string",
                     "$comment": "Nazwa czynnika referencyjnego"
                   },
-                  "czynnik_referencja_typ": {
+                  "factor_type_name": {
                     "type": "string",
                     "enum": [
-                      "Mutacja Punktowa",
-                      "Gen"
+                      "mutacja_punktowa",
+                      "gen"
                     ],
-                    "comment": "Typ czynnika, albo mutacja punktowa w genie, lub obecnosc genu niosacego oprnosc. Wymagany."
+                    "$comment": "Typ czynnika, albo mutacja punktowa w genie, lub obecnosc genu niosacego oprnosc. Wymagany."
                   }
                 },
                 "required": [
-                  "czynnik_nazwa",
-                  "czynnik_lokalizacja_contig_nazwa",
-                  "czynnik_identycznosc_sekwencyjna_do_referencji",
-                  "czynnik_pokrycie_sekwencyjna_do_referencji",
-                  "czynnik_referencja_nazwa",
-                  "czynnik_referencja_typ"
+                  "factor_name",
+                  "factor_contig_name",
+                  "factor_sequence_similarity_to_reference_number",
+                  "factor_degree_of_overlap_with_reference_number",
+                  "factor_reference_name",
+                  "factor_type_name"
                 ]
               },
-              "comment": "Lista czynnikow powodujacych opornosc na dany antybiotyk. Opcjonalny, pisany pod output/"
+              "$comment": "Lista czynnikow powodujacych opornosc na dany antybiotyk. Opcjonalny, pisany pod output/"
             }
           },
           "required": [
-            "antybiotyk_nazwa",
-            "antybiotyk_status"
+            "antibiotic_name",
+            "antibiotic_status"
           ],
           "allOf": [
             {
               "if": {
                 "properties": {
-                  "antybiotyk_status": {
+                  "antibiotic_status": {
                     "const": "oporny"
                   }
                 }
               },
               "then": {
                 "required": [
-                  "antybiotyk_opornosc_czynnik"
+                  "antibiotic_resistance_data"
                 ]
               }
             }
@@ -139,14 +138,15 @@
       }
     },
     "required": [
-      "status"
+      "status",
+      "program_name"
     ],
     "allOf": [
       {
         "if": {
           "properties": {
             "status": {
-              "const": "Tak"
+              "const": "tak"
             }
           }
         },
@@ -157,7 +157,7 @@
         },
         "else": {
           "required": [
-            "komunikat_bledu"
+            "error_message"
           ]
         }
       }

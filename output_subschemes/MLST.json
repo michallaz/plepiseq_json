@@ -66,7 +66,7 @@
         },
         "$comment": "Lista loci i zidentyfikowanych dla nich alleli dla danego profilu. Wymagany."
       },
-      "hiercc_clustering_external": {
+      "hiercc_clustering_external_data": {
         "type": "array",
         "items": {
           "type": "object",
@@ -96,7 +96,7 @@
         },
         "$comment": "Przynależność do grupy profili na podstawie podobieństwa profilu. Obliczany z wykorzystaniem zewnętrznej bazy (Enterobase lub PubMLST). Wymagany, jeśli schemat to cgMLST."
       },
-      "hiercc_clustering_internal": {
+      "hiercc_clustering_internal_data": {
         "type": "array",
         "items": {
           "type": "object",
@@ -184,7 +184,7 @@
               },
               "then": {
                 "required": [
-                  "hiercc_clustering_external",
+                  "hiercc_clustering_external_data",
                   "closest_external_profile_id",
                   "closest_external_profile_distance",
                   "hiercc_historical_data"

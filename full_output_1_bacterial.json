@@ -49,7 +49,7 @@
         "locus_allel_id": 202
       }
     ],
-    "hiercc_clustering_external": [
+    "hiercc_clustering_external_data": [
       {
         "level": "0",
         "group_id": "0"
@@ -59,7 +59,7 @@
         "group_id": "20"
       }
     ],
-    "HierCC_clustering_internal": [
+    "hiercc_clustering_internal_data": [
       {
         "level": "0",
         "group_id": "0"
@@ -84,37 +84,39 @@
 
     ],
     "drug_resistance_data": [
+    
+  {
+    "program_name": "AMRFinderPlus",
+    "status": "tak",
+    "program_data": [
       {
-        "program_nazwa": "AMRFinderPlus",
-        "status": "Tak",
-        "program_data": [
+        "antibiotic_name": "Aminoglycoside",
+        "antibiotic_status": "oporny",
+        "antibiotic_resistance_data": [
           {
-            "antybiotyk_nazwa": "Aminoglycoside",
-            "antybiotyk_status": "oporny",
-            "antybiotyk_opornosc_czynnik": [
-              {
-                "czynnik_nazwa": "gezZ",
-                "czynnik_lokalizacja_contig_nazwa": "contig10",
-                "czynnik_identycznosc_sekwencyjna_do_referencji": 100,
-                "czynnik_pokrycie_sekwencyjna_do_referencji": 90,
-                "czynnik_referencja_nazwa": "ala",
-                "czynnik_referencja_typ": "Gen"
-              }
-            ]
-          },
-          {
-            "antybiotyk_nazwa": "Colistin",
-            "antybiotyk_status": "wrazliwy"
+            "factor_name": "gezZ",
+            "factor_contig_name": "contig10",
+            "factor_sequence_similarity_to_reference_number": 100,
+            "factor_degree_of_overlap_with_reference_number": 90,
+            "factor_reference_name": "ala",
+            "factor_type_name": "gen"
           }
         ]
       },
       {
-        "program_nazwa": "ResFinder/PointFinder",
-        "status": "Blad",
-        "komunikat_bledu": "tekst_bledu"
+        "antibiotic_name": "Colistin",
+        "antibiotic_status": "wrazliwy"
       }
+    ]
+  },
+  {
+    "program_name": "ResFinder/PointFinder",
+    "status": "blad",
+    "error_message": "tekst_bledu"
+  }
     ],
-    "contamination_data": [
+	    
+	    "contamination_data": [
   {
     "program_name": "kraken2",
     "status": "tak",
