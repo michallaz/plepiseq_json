@@ -17,6 +17,36 @@
         "segment_path": "/some/path"
       }
     ],
+    "sequencing_summary_data": [
+      {
+        "file_name": "ala.fastq",
+        "status": "tak",
+        "step_name": "pre-filtering",
+        "number_of_reads_value": 1000,
+        "number_of_bases_value": 10000,
+        "reads_median_length_value": 150,
+        "reads_length_histogram_path": "/some/path",
+        "reads_median_quality_value": 30,
+        "reads_quality_histogram_path": "/some/path"
+      },
+      {
+        "file_name": "ala2.fastq.gz",
+        "status": "tak",
+        "step_name": "pre-filtering",
+        "number_of_reads_value": 10020,
+        "number_of_bases_value": 100200,
+        "reads_median_length_value": 1250,
+        "reads_length_histogram_path": "/some/path",
+        "reads_median_quality_value": 30,
+        "reads_quality_histogram_path": "/some/path"
+      },
+      {
+        "file_name": "forward.fastq",
+        "status": "blad",
+        "step_name": "post-filtering",
+        "error_message": ""
+      }
+    ],
     "contamination_data": [
       {
         "program_name": "kraken2",

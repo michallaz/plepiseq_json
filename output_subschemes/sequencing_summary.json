@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output, statistic information regarding reads.",
+  "$comment": "Schemat dla outputu, statystyczne informacja o odczytach.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "file_name": {
+        "type": "string",
+        "pattern": "^.*\\.fastq(.gz)?$",
+        "$comment": "Nazwa pliku poddanego analizie. Wymagany."
+      },
+      "step_name": {
+        "type": "string",
+        "enum": [
+          "pre-filtering",
+          "post-filtering"
+        ],
+        "$comment": "Infomacja czy analiza dotyczyla odczytow oryginalnych czy po filtrowaniu Wymagany."
+      },
+      "error_message": {
+        "type": "string",
+        "$comment": "Dowoln tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "tak",
+          "nie",
+          "blad"
+        ],
+        "$comment": "informacja czy udanie zakonczono obliczenia. Wymagany."
+      },
+      "number_of_reads_value": {
+        "type": "number",
+        "multipleOf": 1,
+        "$comment": "Calkowita liczba odczytow. Wymagany."
+      },
+      "number_of_bases_value": {
+        "type": "number",
+        "multipleOf": 1,
+        "$comment": "Calkowita ilosc zasad. Wymagany "
+      },
+      "reads_median_length_value": {
+        "type": "number",
+        "multipleOf": 0.01,
+        "$comment": "Mediana dlugosci odczytow. Wymagany "
+      },
+      "reads_length_histogram_path": {
+        "type": "string",
+        "$comment": "Sciezka do pliku pozwalajacego narysowac histogram dlugosci odczytow. Zawartość pliku opisana w dokumentacji. Wymagany "
+      },
+      "reads_median_quality_value": {
+        "type": "number",
+        "multipleOf": 0.01,
+        "$comment": "Mediana jakosci odczytow w skali PHRED+33. Wymagany "
+      },
+      "reads_quality_histogram_path": {
+        "type": "string",
+        "$comment": "Sciezka do pliku pozwalajacego narysowac histogram jakosci zasad w odczytach. Zawartość pliku opisana w dokumentacji. Wymagany "
+      }
+    },
+    "required": [
+      "file_name",
+      "step_name",
+      "status"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "status": {
+              "const": "tak"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "number_of_reads_value",
+            "number_of_bases_value",
+            "reads_median_length_value",
+            "reads_length_histogram_path",
+            "reads_median_quality_value",
+            "reads_quality_histogram_path"
+          ]
+        },
+        "else": {
+          "required": [
+            "error_message"
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -13,244 +13,187 @@
       }
     ],
     "mlst_data": [
-    
-  {
-    "scheme_name": "MLST",
-    "profile_id": "local_10",
-    "status": "tak",
-    "missing_allels_value": 0,
-    "duplicated_allels_value": 0,
-    "profile_allel_list": [
       {
-        "locus_name": "a10",
-        "locus_allel_id": 20
+        "scheme_name": "MLST",
+        "profile_id": "local_10",
+        "status": "tak",
+        "missing_allels_value": 0,
+        "duplicated_allels_value": 0,
+        "profile_allel_list": [
+          {
+            "locus_name": "a10",
+            "locus_allel_id": 20
+          },
+          {
+            "locus_name": "a20",
+            "locus_allel_id": 202
+          }
+        ]
       },
       {
-        "locus_name": "a20",
-        "locus_allel_id": 202
-      }
-    ]
-  },
-  {
-    "scheme_name": "cgMLST",
-    "status": "tak",
-    "profile_id": "540000",
-    "missing_allels_value": 0,
-    "duplicated_allels_value": 10,
-    "closest_external_profile_id": "540000",
-    "closest_external_profile_distance": 0,
-    "profile_allel_list": [
-      {
-        "locus_name": "a20",
-        "locus_allel_id": 20
+        "scheme_name": "cgMLST",
+        "status": "tak",
+        "profile_id": "540000",
+        "missing_allels_value": 0,
+        "duplicated_allels_value": 10,
+        "closest_external_profile_id": "540000",
+        "closest_external_profile_distance": 0,
+        "profile_allel_list": [
+          {
+            "locus_name": "a20",
+            "locus_allel_id": 20
+          },
+          {
+            "locus_name": "a30",
+            "locus_allel_id": 202
+          }
+        ],
+        "hiercc_clustering_external_data": [
+          {
+            "level": "0",
+            "group_id": "0"
+          },
+          {
+            "level": "50",
+            "group_id": "20"
+          }
+        ],
+        "hiercc_clustering_internal_data": [
+          {
+            "level": "0",
+            "group_id": "0"
+          },
+          {
+            "level": "2",
+            "group_id": "200"
+          }
+        ],
+        "hiercc_historical_data": [
+          {
+            "level": "5",
+            "data_path": "/some/path"
+          }
+        ]
       },
       {
-        "locus_name": "a30",
-        "locus_allel_id": 202
+        "scheme_name": "cgMLST",
+        "status": "blad",
+        "error_message": "540000"
       }
-    ],
-    "hiercc_clustering_external_data": [
-      {
-        "level": "0",
-        "group_id": "0"
-      },
-      {
-        "level": "50",
-        "group_id": "20"
-      }
-    ],
-    "hiercc_clustering_internal_data": [
-      {
-        "level": "0",
-        "group_id": "0"
-      },
-      {
-        "level": "2",
-        "group_id": "200"
-      }
-    ],
-    "hiercc_historical_data": [
-      {
-        "level": "5",
-        "data_path": "/some/path"
-      }
-    ]
-  },
-  {
-    "scheme_name": "cgMLST",
-    "status": "blad",
-    "error_message": "540000"
-  }
-
     ],
     "drug_resistance_data": [
-    
-  {
-    "program_name": "AMRFinderPlus",
-    "status": "tak",
-    "program_data": [
       {
-        "antibiotic_name": "Aminoglycoside",
-        "antibiotic_status": "oporny",
-        "antibiotic_resistance_data": [
+        "program_name": "AMRFinderPlus",
+        "status": "tak",
+        "program_data": [
           {
-            "factor_name": "gezZ",
-            "factor_contig_name": "contig10",
-            "factor_sequence_similarity_to_reference_value": 100,
-            "factor_degree_of_overlap_with_reference_value": 90,
-            "factor_reference_name": "ala",
-            "factor_type_name": "gen"
+            "antibiotic_name": "Aminoglycoside",
+            "antibiotic_status": "oporny",
+            "antibiotic_resistance_data": [
+              {
+                "factor_name": "gezZ",
+                "factor_contig_name": "contig10",
+                "factor_sequence_similarity_to_reference_value": 100,
+                "factor_degree_of_overlap_with_reference_value": 90,
+                "factor_reference_name": "ala",
+                "factor_type_name": "gen"
+              }
+            ]
+          },
+          {
+            "antibiotic_name": "Colistin",
+            "antibiotic_status": "wrazliwy"
           }
         ]
       },
       {
-        "antibiotic_name": "Colistin",
-        "antibiotic_status": "wrazliwy"
+        "program_name": "ResFinder/PointFinder",
+        "status": "blad",
+        "error_message": "tekst_bledu"
       }
-    ]
-  },
-  {
-    "program_name": "ResFinder/PointFinder",
-    "status": "blad",
-    "error_message": "tekst_bledu"
-  }
     ],
-	    
-	    "contamination_data": [
-  {
-    "program_name": "kraken2",
-    "status": "tak",
-    "main_genus_names": "Salmonella",
-    "additional_genus_names": "Homo",
-    "main_species_name": "Salmonella",
-    "secondary_species_name": "Homo",
-    "main_genus_value": "90.09",
-    "secondary_genus_value": "10.90",
-    "main_species_value": "90.09",
-    "secondary_species_value": "10.92"
-  },
-  {
-    "program_name": "kmerfinder",
-    "status": "tak",
-    "main_species_name": "Salmonella",
-    "secondary_species_name": "Homo",
-    "main_species_coverage": "90.09",
-    "secondary_species_coverage": "10.92"
-  },
-  {
-    "program_name": "metaphlan",
-    "status": "blad",
-    "error_message": "Some_text"
-  }
+    "contamination_data": [
+      {
+        "program_name": "kraken2",
+        "status": "tak",
+        "main_genus_names": "Salmonella",
+        "additional_genus_names": "Homo",
+        "main_species_name": "Salmonella",
+        "secondary_species_name": "Homo",
+        "main_genus_value": "90.09",
+        "secondary_genus_value": "10.90",
+        "main_species_value": "90.09",
+        "secondary_species_value": "10.92"
+      },
+      {
+        "program_name": "kmerfinder",
+        "status": "tak",
+        "main_species_name": "Salmonella",
+        "secondary_species_name": "Homo",
+        "main_species_coverage": "90.09",
+        "secondary_species_coverage": "10.92"
+      },
+      {
+        "program_name": "metaphlan",
+        "status": "blad",
+        "error_message": "Some_text"
+      }
     ],
     "bacterial_genome_data": [
-  {
-    "step_name": "pre-filtering",
-    "status": "tak",
-    "total_length_value": 1234567,
-    "number_of_contigs_value": 10,
-    "average_coverage_value": 10.20,
-    "N50_value": 200000,
-    "L50_value": 10,
-    "number_of_Ns_value": 100
-  },
-  {
-    "step_name": "post-filtering",
-    "status": "tak",
-    "total_length_value": 1234567,
-    "number_of_contigs_value": 10,
-    "average_coverage_value": 30,
-    "N50_value": 200000,
-    "L50_value": 10,
-    "number_of_Ns_value": 100
-  },
-  {
-    "step_name": "post-filtering",
-    "status": "blad",
-    "error_message": "Blad"
-  }
-],
-    
-	    "sequencing_summary_data": [
       {
-        "plik_nazwa": "ala.fastq",
-        "status": "Tak",
-        "etap": "oryginalne",
-        "odczyty_calkowita_liczba": 1000,
-        "odczyty_calkowita_liczba_zasad": 10000,
-        "odczyty_dlugosc_mediana": 150,
-        "odczyty_dlugosc_histogram": [
-          {
-            "zakres_dlugosci": "10-20",
-            "wartosc": 30
-          },
-          {
-            "zakres_dlugosci": "20-30",
-            "wartosc": 30
-          },
-          {
-            "zakres_dlugosci": "30+",
-            "wartosc": 30
-          }
-        ],
-        "odczyty_jakosc_mediana": 30,
-        "odczyty_jakosc_histogram": [
-          {
-            "zakres_jakosci": "10-20",
-            "wartosc": 30
-          },
-          {
-            "zakres_jakosci": "20-30",
-            "wartosc": 30
-          },
-          {
-            "zakres_jakosci": "30+",
-            "wartosc": 30
-          }
-        ]
+        "step_name": "pre-filtering",
+        "status": "tak",
+        "total_length_value": 1234567,
+        "number_of_contigs_value": 10,
+        "average_coverage_value": 10.20,
+        "N50_value": 200000,
+        "L50_value": 10,
+        "number_of_Ns_value": 100
       },
       {
-        "plik_nazwa": "ala2.fastq.gz",
-        "status": "Tak",
-        "etap": "oryginalne",
-        "odczyty_calkowita_liczba": 10020,
-        "odczyty_calkowita_liczba_zasad": 100200,
-        "odczyty_dlugosc_mediana": 1250,
-        "odczyty_dlugosc_histogram": [
-          {
-            "zakres_dlugosci": "10-20",
-            "wartosc": 30
-          },
-          {
-            "zakres_dlugosci": "20-30",
-            "wartosc": 30
-          },
-          {
-            "zakres_dlugosci": "30+",
-            "wartosc": 30
-          }
-        ],
-        "odczyty_jakosc_mediana": 30,
-        "odczyty_jakosc_histogram": [
-          {
-            "zakres_jakosci": "10-20",
-            "wartosc": 30
-          },
-          {
-            "zakres_jakosci": "20-30",
-            "wartosc": 30
-          },
-          {
-            "zakres_jakosci": "30+",
-            "wartosc": 30
-          }
-        ]
+        "step_name": "post-filtering",
+        "status": "tak",
+        "total_length_value": 1234567,
+        "number_of_contigs_value": 10,
+        "average_coverage_value": 30,
+        "N50_value": 200000,
+        "L50_value": 10,
+        "number_of_Ns_value": 100
       },
       {
-        "plik_nazwa": "forward.fastq",
-        "status": "Blad",
-        "etap": "post-filtering",
-        "komunikat_bledu": ""
+        "step_name": "post-filtering",
+        "status": "blad",
+        "error_message": "Blad"
+      }
+    ],
+    "sequencing_summary_data": [
+      {
+        "file_name": "ala.fastq",
+        "status": "tak",
+        "step_name": "pre-filtering",
+        "number_of_reads_value": 1000,
+        "number_of_bases_value": 10000,
+        "reads_median_length_value": 150,
+        "reads_length_histogram_path": "/some/path",
+        "reads_median_quality_value": 30,
+        "reads_quality_histogram_path": "/some/path"
+      },
+      {
+        "file_name": "ala2.fastq.gz",
+        "status": "tak",
+        "step_name": "pre-filtering",
+        "number_of_reads_value": 10020,
+        "number_of_bases_value": 100200,
+        "reads_median_length_value": 1250,
+        "reads_length_histogram_path": "/some/path",
+        "reads_median_quality_value": 30,
+        "reads_quality_histogram_path": "/some/path"
+      },
+      {
+        "file_name": "forward.fastq",
+        "status": "blad",
+        "step_name": "post-filtering",
+        "error_message": ""
       }
     ],
     "plasmids_data": {
