@@ -1,0 +1,48 @@
+[
+  {
+    "program_name": "seqsero",
+    "status": "blad",
+    "error_message": "ala"
+  },
+  {
+    "program_name": "seqsero",
+    "status": "tak",
+    "antigen_o_data": [
+      {
+        "antigen_id": "7"
+      }
+    ],
+    "antigen_h1_data": [
+      {
+        "antigen_id": "g"
+      },
+      {
+        "antigen_id": "h"
+      }
+    ],
+    "antigen_h2_data": [
+      {
+        "antigen_id": "-"
+      }
+    ],
+    "serotype_name": "Rissen"
+  },
+  {
+    "program_name": "ectyper",
+    "status": "tak",
+    "antigen_o_data": [
+      {
+        "antigen_id": "7"
+      }
+    ],
+    "antigen_h_data": [
+      {
+        "antigen_id": "g"
+      },
+      {
+        "antigen_id": "h"
+      }
+    ],
+    "serotype_name": "Rissen"
+  }
+]

@@ -210,54 +210,56 @@
 
     },
     "antigenic_data": [
+    
+  {
+    "program_name": "seqsero",
+    "status": "blad",
+    "error_message": "ala"
+  },
+  {
+    "program_name": "seqsero",
+    "status": "tak",
+    "antigen_o_data": [
       {
-        "program_nazwa": "seqsero",
-        "status": "Blad",
-        "komunikat_bledu": "ala"
-      },
-      {
-        "program_nazwa": "seqsero",
-        "status": "Tak",
-        "antygen_o": [
-          {
-            "antygen_wartosc": "7"
-          }
-        ],
-        "antygen_h1": [
-          {
-            "antygen_wartosc": "g"
-          },
-          {
-            "antygen_wartosc": "h"
-          }
-        ],
-        "antygen_h2": [
-          {
-            "antygen_wartosc": "-"
-          }
-        ],
-        "serotyp_nazwa": "Rissen"
-      },
-      {
-        "program_nazwa": "ECTyper",
-        "status": "Tak",
-        "antygen_o": [
-          {
-            "antygen_wartosc": "7"
-          }
-        ],
-        "antygen_h": [
-          {
-            "antygen_wartosc": "g"
-          },
-          {
-            "antygen_wartosc": "h"
-          }
-        ],
-        "serotyp_nazwa": "Rissen"
+        "antigen_id": "7"
       }
     ],
-    "virulence_genes_data": [
+    "antigen_h1_data": [
+      {
+        "antigen_id": "g"
+      },
+      {
+        "antigen_id": "h"
+      }
+    ],
+    "antigen_h2_data": [
+      {
+        "antigen_id": "-"
+      }
+    ],
+    "serotype_name": "Rissen"
+  },
+  {
+    "program_name": "ectyper",
+    "status": "tak",
+    "antigen_o_data": [
+      {
+        "antigen_id": "7"
+      }
+    ],
+    "antigen_h_data": [
+      {
+        "antigen_id": "g"
+      },
+      {
+        "antigen_id": "h"
+      }
+    ],
+    "serotype_name": "Rissen"
+  }
+],
+	    
+	    "virulence_genes_data": [
       {
         "status": "Tak",
         "program_nazwa": "VFDB",

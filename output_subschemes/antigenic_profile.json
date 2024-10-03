@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output, antigenic profile for Salmonella and Escherichia.",
+  "$comment": "Schemat dla profilu antygenowego dla Salmonelli (seqsero i sistr) oraz Escherichia (ECTyper).",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "program_name": {
+        "type": "string",
+        "enum": [
+          "sistr",
+          "seqsero",
+          "ectyper"
+        ],
+        "$comment": "Program używany do przewidywania profilu antygenowego. Wymagany."
+      },
+      "error_message": {
+        "type": "string",
+        "$comment": "Dowolny tekst zwracany jako komunikat błędu podczas obliczeń. Wymagany, jeśli status to 'blad'."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "tak",
+          "nie",
+          "blad"
+        ],
+        "$comment": "Informacja, czy policzono dane, niepoliczono, lub zwrócono błąd. Wymagany."
+
+      },
+      "antigen_o_data": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "antigen_id": {
+              "type": "string"
+            }
+          },
+          "$comment": "Wartość antygenu O, podawana w postaci listy. Wymagany."
+        }
+      },
+      "antigen_h1_data": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "antigen_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "antigen_id"
+          ]
+        },
+        "$comment": "Wartość antygenu H1, podawana w postaci listy. Lista ma jeden element antigen_id. Wymagany, jeśli program to seqsero lub sistr."
+      },
+      "antigen_h2_data": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "antigen_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "antigen_id"
+          ]
+        },
+        "$comment": "Wartość antygenu H2, podawana w postaci listy. Lista ma jeden element antigen_id. Wymagany, jeśli program to seqsero lub sistr."
+      },
+      "antigen_h_data": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "antigen_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "antigen_id"
+          ]
+        },
+        "$comment": "Wartość antygenu H, podawana w postaci listy. Lista ma jeden element antigen_id. Wymagany, jeśli program to ECTyper."
+      },
+      "serotype_name": {
+        "type": "string",
+        "$comment": "Nazwa zidentyfikowanego serotypu. Wymagany."
+      }
+    },
+    "required": [
+      "program_name",
+      "status"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "status": {
+              "const": "tak"
+            }
+          }
+        },
+        "then": {
+          "allOf": [
+            {
+              "required": [
+                "antigen_o_data",
+                "serotype_name"
+              ]
+            },
+            {
+              "if": {
+                "properties": {
+                  "program_name": {
+                    "const": "ectyper"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "antigen_h_data"
+                ]
+              },
+              "else": {
+                "required": [
+                  "antigen_h1_data",
+                  "antigen_h2_data"
+                ]
+              }
+            }
+          ]
+        },
+        "else": {
+          "required": [
+            "error_message"
+          ]
+        }
+      }
+    ]
+  }
+}
+

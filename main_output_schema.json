@@ -46,7 +46,7 @@
           "$comment": "Statystyczne informacje o zidewntyfikowanych w probce plazmidach. Wymagany, jesli pathogen to bacteria."
         },
         "antigenic_data": {
-          "$ref": "output_subschemes/profil_antygenowy.json",
+          "$ref": "output_subschemes/antigenic_profile.json",
           "$comment": "Informacja o antygenach o i h. Wymagany, jesli pathogen to bacteria."
         },
         "virulence_genes_data": {
