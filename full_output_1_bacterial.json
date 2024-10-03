@@ -197,16 +197,17 @@
       }
     ],
     "plasmids_data": {
-      "status": "Tak",
-      "plazmidy_lista": [
-        {
-          "plazmid_nazwa": "IncFIA(HI1)",
-          "plazmid_identycznosc_sekwencyjna": "100.00",
-          "plazmid_zakres": "99.98",
-          "plazmid_contig_id": "contig10",
-          "plazmid_accesion_id": "AF250878"
-        }
-      ]
+  "status": "tak",
+  "plasmids_data": [
+    {
+      "plasmid_name": "IncFIA(HI1)",
+      "sequence_similarity_to_reference_value": 100.00,
+      "degree_of_overlap_with_reference_value": 99.9,
+      "contig_name": "contig10",
+      "reference_accession_name": "AF250878"
+    }
+  ]
+
     },
     "antigenic_data": [
       {

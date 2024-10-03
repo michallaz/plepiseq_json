@@ -1,56 +1,60 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Subschema for plepiseq output,summary of predicted plasmids.",
-  "$comment": "Schemat dla outputu, Podsumowanie predykcji plazmidow.",
+  "title": "Subschema for plepiseq output, summary of predicted plasmids.",
+  "$comment": "Schemat dla outputu, podsumowanie predykcji plazmidów.",
   "type": "object",
   "properties": {
     "status": {
       "type": "string",
       "enum": [
-        "Tak",
-        "Nie",
-        "Blad"
+        "tak",
+        "nie",
+        "blad"
       ],
-      "$comment": "Informacja czy przewidzano jakiekoliwek plazmidy. Wymagany"
+      "$comment": "Informacja, czy przewidziano jakiekolwiek plazmidy. Wymagany."
     },
-    "komunikat_bledu": {
+    "error_message": {
       "type": "string",
-      "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
+      "$comment": "Dowolny tekst zwracany jako komunikat błędu podczas obliczeń. Wymagany, jeśli status to 'blad'."
     },
-    "plazmidy_lista": {
+    "plasmids_data": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "plazmid_nazwa": {
+          "plasmid_name": {
             "type": "string",
-            "$comment": "Nazwa plazmidu. Wymagany"
+            "$comment": "Nazwa plazmidu. Wymagany."
           },
-          "plazmid_identycznosc_sekwencyjna": {
-            "type": "string",
-            "pattern": "^.*\\.\\d\\d$",
-            "$comment": "Identycznosc sekwencyjna miedzy sekwencja znaleziona w probce, a sekwencja referencyjna."
+          "sequence_similarity_to_reference_value": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "minimum": 0,
+            "maximum": 100,
+            "$comment": "Identyczność sekwencyjna między sekwencją znalezioną w próbce a sekwencją referencyjną."
           },
-          "plazmid_zakres": {
-            "type": "string",
-            "pattern": "^.*\\.\\d\\d$",
-            "$comment": "Procent dlugosci sekwencji referencyjnej zidentyfikowany w probce."
+          "degree_of_overlap_with_reference_value": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "minimum": 0,
+            "maximum": 100,
+            "$comment": "Procent długości sekwencji referencyjnej zidentyfikowanej w próbce."
           },
-          "plazmid_contig_id": {
+          "contig_name": {
             "type": "string",
-            "$comment": "Identyfikator contigu na ktorym zidentyfikowano plazmid."
+            "$comment": "Identyfikator contigu, na którym zidentyfikowano plazmid."
           },
-          "plazmid_accession_id": {
+          "reference_accession_name": {
             "type": "string",
-            "$comment": "Accession id sekwencji referencyjnej"
+            "$comment": "Accession ID sekwencji referencyjnej."
           }
         },
         "required": [
-          "plazmid_nazwa",
-          "plazmid_identycznosc_sekwencyjna",
-          "plazmid_zakres",
-          "plazmid_contig_id",
-          "plazmid_accesion_id"
+          "plasmid_name",
+          "sequence_similarity_to_reference_value",
+          "degree_of_overlap_with_reference_value",
+          "contig_name",
+          "reference_accession_name"
         ]
       }
     }
@@ -63,18 +67,18 @@
       "if": {
         "properties": {
           "status": {
-            "const": "Tak"
+            "const": "tak"
           }
         }
       },
       "then": {
         "required": [
-          "plazmidy_lista"
+          "plasmids_data"
         ]
       },
       "else": {
         "required": [
-          "komunikat_bledu"
+          "error_message"
         ]
       }
     }
