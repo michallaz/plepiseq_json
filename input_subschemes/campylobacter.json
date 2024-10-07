@@ -48,7 +48,7 @@
       "$comment": "Informacje o okresleniu opornosci. Wymagany."
     },
     "antybiotyki_wartosc": {
-      "$ref": "antybiotyko_opornosc.json",
+      "$ref": "input_subschemes/antybiotyko_opornosc.json",
       "$comment": "Opornosc na antybiotyki, oddzielny schemat. antybiotyki_wartosc jest LISTA, wiec moze byc definiowana N-razy. Wymagany jesli antybiotyki_status to Tak."
     }
   },
