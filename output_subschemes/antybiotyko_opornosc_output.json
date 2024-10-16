@@ -34,26 +34,7 @@
           "properties": {
             "antibiotic_name": {
               "type": "string",
-              "enum": [
-                "Aminoglycoside",
-                "Beta-lactam",
-                "Colistin",
-                "Fluoroquinolone",
-                "Fosfomycin",
-                "Fusidic Acid",
-                "Glycopeptide",
-                "Misc",
-                "MLS - Macrolide, Lincosamide and Streptogramin B",
-                "Nitroimidazole",
-                "Oxazolidinone",
-                "Phenicol",
-                "Pseudomonic Acid",
-                "Rifampicin",
-                "Sulphonamide",
-                "Tetracycline",
-                "Trimethoprim"
-              ],
-              "$comment": "Lista zgodnie z dokumentem Tomka. Wymagany"
+              "$comment": "Lista zgodnie z dokumentem Tomka. CHWILOWO USUNIETY. Wymagany"
             },
             "antibiotic_status": {
               "type": "string",
