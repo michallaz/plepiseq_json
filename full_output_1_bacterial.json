@@ -2,16 +2,19 @@
   "output": {
     "pathogen": "bacteria",
     "pipeline_version": "some_version_control",
-    "genome_files_data": [
-      {
-        "segment_name": "contig_1",
-        "segment_path": "/some/path"
-      },
-      {
-        "segment_name": "contig_2",
-        "segment_path": "/some/path"
-      }
-    ],
+    "genome_files_data": {
+      "status": "tak",
+      "file_data": [
+        {
+          "segment_name": "NODE1_pilon_pilon_pilon_cov_20.862722668721787",
+          "segment_path": "pipeline_wyniki/S3_S5_L001/fastas/NODE1_pilon_pilon_pilon_cov_20.862722668721787.fasta"
+        },
+        {
+          "segment_name": "NODE2_pilon_pilon_pilon_cov_21.93405076896538",
+          "segment_path": "pipeline_wyniki/S3_S5_L001/fastas/NODE2_pilon_pilon_pilon_cov_21.93405076896538.fasta"
+        }
+      ]
+    },
     "mlst_data": [
       {
         "scheme_name": "MLST",

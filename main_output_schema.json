@@ -82,24 +82,65 @@
           "$comment": "Rozne inforrmacje specyficzne dla wirusa RSV. Wymagany jesli pathogen to RSV."
         },
         "genome_files_data": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "segment_name": {
-                "type": "string",
-                "$comment": "Nazwa/Naglowek segmentu. Wymagany."
-              },
-              "segment_path": {
-                "type": "string",
-                "$comment": "Sekwencja segmentu (bez naglowka). Wymagany."
-              }
+          "type": "object",
+          "properties": {
+            "error_message": {
+              "type": "string",
+              "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
             },
-            "required": [
-              "segment_name",
-              "segment_path"
-            ]
-          }
+            "status": {
+              "type": "string",
+              "enum": [
+                "tak",
+                "nie",
+                "blad"
+              ],
+              "$comment": "informacja czy policzono profil, niepoliczono, zwrocnono blad. Wymagany."
+            },
+            "file_data": {
+              "items": {
+                "type": "object",
+                "properties": {
+                  "segment_name": {
+                    "type": "string",
+                    "$comment": "Nazwa/Naglowek segmentu. Wymagany."
+                  },
+                  "segment_path": {
+                    "type": "string",
+                    "$comment": "Sekwencja segmentu (bez naglowka). Wymagany."
+                  }
+                },
+                "required": [
+                  "segment_name",
+                  "segment_path"
+                ]
+              }
+            }
+          },
+          "required": [
+            "status"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "tak"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "file_data"
+                ]
+              },
+              "else": {
+                "required": [
+                  "error_message"
+                ]
+              }
+            }
+          ]
         },
         "dehumanized_fastq_data": {
           "type": "array",
@@ -119,8 +160,8 @@
         "pathogen",
         "pipeline_version",
         "genome_files_data",
-	"contamination_data",
-	"sequencing_summary_data"
+        "contamination_data",
+        "sequencing_summary_data"
       ],
       "allOf": [
         {
