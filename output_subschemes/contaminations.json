@@ -32,7 +32,7 @@
         "type": "string",
         "$comment": "Nazwa glownego rodzaju (genus) zidentyfikowanego w probce."
       },
-      "additional_genus_names": {
+      "secondary_genus_names": {
         "type": "string",
         "$comment": "Nazwa drugiego najczesciej wystepujacego rodzaju (genus) zidentyfikowanego w probce."
       },
@@ -113,7 +113,7 @@
               "else": {
                 "required": [
                   "main_genus_names",
-                  "additional_genus_names",
+                  "secondary_genus_names",
                   "main_genus_value",
                   "secondary_genus_value",
                   "main_species_value",
