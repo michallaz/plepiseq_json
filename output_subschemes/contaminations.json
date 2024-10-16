@@ -28,11 +28,11 @@
         ],
         "$comment": "informacja czy policzono profil, niepoliczono, zwrocnono blad. Wymagany."
       },
-      "main_genus_names": {
+      "main_genus_name": {
         "type": "string",
         "$comment": "Nazwa glownego rodzaju (genus) zidentyfikowanego w probce."
       },
-      "secondary_genus_names": {
+      "secondary_genus_name": {
         "type": "string",
         "$comment": "Nazwa drugiego najczesciej wystepujacego rodzaju (genus) zidentyfikowanego w probce."
       },
@@ -112,8 +112,8 @@
               },
               "else": {
                 "required": [
-                  "main_genus_names",
-                  "secondary_genus_names",
+                  "main_genus_name",
+                  "secondary_genus_name",
                   "main_genus_value",
                   "secondary_genus_value",
                   "main_species_value",

@@ -2,8 +2,8 @@
   {
     "program_name": "kraken2",
     "status": "tak",
-    "main_genus_names": "Salmonella",
-    "secondary_genus_names": "Homo",
+    "main_genus_name": "Salmonella",
+    "secondary_genus_name": "Homo",
     "main_species_name": "Salmonella",
     "secondary_species_name": "Homo",
     "main_genus_value": "90.09",
