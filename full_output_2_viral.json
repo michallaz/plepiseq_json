@@ -2,6 +2,7 @@
   "output": {
     "pathogen": "sars2",
     "pipeline_version": "ver1",
+    "timestamp": "2024-10-17T20:25:26",
     "dehumanized_fastq_data": [
       {
         "dehumanized_fastq_path": "/some/path/forward.fastq.gz"

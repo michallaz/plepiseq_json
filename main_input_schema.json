@@ -60,7 +60,13 @@
           "$comment": "Influenza specific data obtain next to sequencing. Required to compare outputs of biochemical methods and sequencing."
         }
       },
-      "required": ["patient_data", "sample_data", "sequencing_data", "laboratory_data", "pathogen"],
+      "required": [
+        "patient_data",
+        "sample_data",
+        "sequencing_data",
+        "laboratory_data",
+        "pathogen"
+      ],
       "allOf": [
         {
           "if": {

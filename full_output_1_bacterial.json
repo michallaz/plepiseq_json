@@ -2,6 +2,7 @@
   "output": {
     "pathogen": "bacteria",
     "pipeline_version": "some_version_control",
+    "timestamp": "2024-10-17T20:25:26",
     "genome_files_data": {
       "status": "tak",
       "file_data": [

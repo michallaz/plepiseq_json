@@ -21,6 +21,11 @@
           "type": "string",
           "$comment": "Informacja o wersji pipeline stosowanego do analizy probki. Wymagany."
         },
+        "timestamp": {
+          "type": "string",
+          "$comment": "Moment utworzenia ostatecznego pliku json. Format zgodny z ISO8601 z dokladnosci do sekund",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+        },
         "mlst_data": {
           "$ref": "output_subschemes/MLST.json",
           "$comment": "Informacje o typowaniu bakterii przy pomocy schematow MLST/cgMLST. Lista. Wymagany, jesli pathogen to bacteria."
@@ -159,6 +164,7 @@
       "required": [
         "pathogen",
         "pipeline_version",
+        "timestamp",
         "genome_files_data",
         "contamination_data",
         "sequencing_summary_data"
