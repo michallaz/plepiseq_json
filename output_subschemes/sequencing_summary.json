@@ -32,6 +32,25 @@
         ],
         "$comment": "informacja czy udanie zakonczono obliczenia. Wymagany."
       },
+      "reads_min_length_value": {
+        "type": "number",
+        "multipleOf": 1,
+        "$comment": "Dlugosc najkrotszego odczytu zidentyfikowanego w probce. Liczba calkowita. Wymagany."
+      },
+      "reads_max_length_value": {
+        "type": "number",
+        "multipleOf": 1,
+        "$comment": "Dlugosc najdluzszego odczytu zidentyfikowanego w probce. Liczba calkowita. Wymagany."
+      },
+      "position_quality_plot_path": {
+        "type": "string",
+        "$comment": "Sciezka do pliku pozwalajacego narysowac wykres obrazujacy srednia jakosc odczytu uzyskana dla odczytow w zaleznosci od ich pozycji w odczycie . Zawartość pliku opisana w dokumentacji. Wymagany "
+      },
+      "gc_content_value": {
+        "type": "number",
+        "multipleOf": 0.01,
+        "$comment": "Procent par GC zidentyfikowany w probce podawana z dokladnoscia do 2 miejsca po przecinku. Wymagany "
+      },
       "number_of_reads_value": {
         "type": "number",
         "multipleOf": 1,
@@ -77,6 +96,10 @@
         },
         "then": {
           "required": [
+            "reads_min_length_value",
+            "reads_max_length_value",
+            "position_quality_plot_path",
+            "gc_content_value",
             "number_of_reads_value",
             "number_of_bases_value",
             "reads_median_length_value",

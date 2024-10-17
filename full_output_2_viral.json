@@ -23,26 +23,20 @@
     },
     "sequencing_summary_data": [
       {
-        "file_name": "ala.fastq",
         "status": "tak",
+        "file_name": "S3_S5_L001_R1_001.fastq.gz",
         "step_name": "pre-filtering",
-        "number_of_reads_value": 1000,
-        "number_of_bases_value": 10000,
-        "reads_median_length_value": 150,
-        "reads_length_histogram_path": "/some/path",
-        "reads_median_quality_value": 30,
-        "reads_quality_histogram_path": "/some/path"
-      },
-      {
-        "file_name": "ala2.fastq.gz",
-        "status": "tak",
-        "step_name": "pre-filtering",
-        "number_of_reads_value": 10020,
-        "number_of_bases_value": 100200,
-        "reads_median_length_value": 1250,
-        "reads_length_histogram_path": "/some/path",
-        "reads_median_quality_value": 30,
-        "reads_quality_histogram_path": "/some/path"
+        "error_message": "",
+        "number_of_reads_value": 398840,
+        "number_of_bases_value": 58900000,
+        "reads_median_length_value": 150.0,
+        "reads_min_length_value": 35,
+        "reads_max_length_value": 151,
+        "reads_median_quality_value": 36.0,
+        "reads_quality_histogram_path": "pipeline_wyniki/S3_S5_L001/QC/S3_S5_L001_R1_001_fastqc_reads_quality_histogram.csv",
+        "reads_length_histogram_path": "pipeline_wyniki/S3_S5_L001/QC/S3_S5_L001_R1_001_fastqc_reads_length_histogram.csv",
+        "position_quality_plot_path": "pipeline_wyniki/S3_S5_L001/QC/S3_S5_L001_R1_001_fastqc_position_quality_plot.csv",
+        "gc_content_value": 52.0
       },
       {
         "file_name": "forward.fastq",
