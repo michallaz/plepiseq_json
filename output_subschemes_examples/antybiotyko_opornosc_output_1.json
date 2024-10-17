@@ -14,6 +14,11 @@
             "factor_degree_of_overlap_with_reference_value": 90,
             "factor_reference_name": "ala",
             "factor_type_name": "gen"
+          },
+          {
+            "factor_name": "gezZ",
+            "factor_mutation": "S73L",
+            "factor_type_name": "mutacja_punktowa"
           }
         ]
       },

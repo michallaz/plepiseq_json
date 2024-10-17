@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Subschema for plepiseq output, resistance to antibiotics.",
-  "$comment": "Schemat do danych o stwierdzonej antybiotykoopornosci.",
+  "$comment": "Schema for antibiotic resistance data.",
   "type": "array",
   "items": {
     "type": "object",
@@ -12,7 +12,7 @@
           "AMRFinderPlus",
           "ResFinder/PointFinder"
         ],
-        "$comment": "Program uzywany do przewidywania opornosci. Wymagany."
+        "$comment": "Program used for resistance prediction. Required."
       },
       "status": {
         "type": "string",
@@ -21,11 +21,11 @@
           "nie",
           "blad"
         ],
-        "$comment": "informacja czy poprawnie zakonczono obliczenia. Wymagany."
+        "$comment": "Information on whether calculations were completed successfully. Required."
       },
       "error_message": {
         "type": "string",
-        "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas liczenia profilu. Wymagany, jesli status to Blad"
+        "$comment": "Any error message returned during profile calculation. Required if status is not tak."
       },
       "program_data": {
         "type": "array",
@@ -34,7 +34,7 @@
           "properties": {
             "antibiotic_name": {
               "type": "string",
-              "$comment": "Lista zgodnie z dokumentem Tomka. CHWILOWO USUNIETY. Wymagany"
+              "$comment": "Antibiotic name (based on Tomek's document). Required."
             },
             "antibiotic_status": {
               "type": "string",
@@ -43,7 +43,7 @@
                 "wrazliwy",
                 "inny"
               ],
-              "$comment": "Status opornosci na dany antybiotyk, do wyboru oporny, wrazliwy, lub inny. Wymagany."
+              "$comment": "Resistance status to a given antibiotic (oporny, wrażliwy, or inny). Required."
             },
             "antibiotic_resistance_data": {
               "type": "array",
@@ -52,27 +52,31 @@
                 "properties": {
                   "factor_name": {
                     "type": "string",
-                    "$comment": "Nazwa czynnika powodujacego oprnosc. Wymagany"
+                    "$comment": "Name of the factor causing resistance. Required."
                   },
                   "factor_contig_name": {
                     "type": "string",
-                    "$comment": "Nazwa contig-u na ktorym zidentyfikowano czynnik.Wymagany"
+                    "$comment": "Name of the contig where the factor was identified. Required."
+                  },
+                  "factor_mutation": {
+                    "type": "string",
+                    "$comment": "Name of the mutation causing resistance. Required if factor_type_name is 'mutacja_punktowa'."
                   },
                   "factor_sequence_similarity_to_reference_value": {
                     "type": "number",
-                    "$comment": "Identycznosc sekwencyjna czynnka zlokalizowanego w probce do jego sekwencji referencyjnej. Wartosc od 0 do 100. Wymagany",
+                    "$comment": "Sequence identity between the factor found in the sample and its reference sequence. Value between 0 and 100. Required if factor_type_name is 'gen'.",
                     "minimum": 0,
                     "maximum": 100
                   },
                   "factor_degree_of_overlap_with_reference_value": {
                     "type": "number",
-                    "$comment": "Procent dlugosci sekwencji referencyjnej zlokalizowany w probce. Wartosc od 0 do 100. Wymagany",
+                    "$comment": "Percentage of the reference sequence length identified in the sample. Value between 0 and 100. Required if factor_type_name is 'gen'.",
                     "minimum": 0,
                     "maximum": 100
                   },
                   "factor_reference_name": {
                     "type": "string",
-                    "$comment": "Nazwa czynnika referencyjnego"
+                    "$comment": "Name of the reference factor. Required if factor_type_name is 'gen'."
                   },
                   "factor_type_name": {
                     "type": "string",
@@ -80,19 +84,48 @@
                       "mutacja_punktowa",
                       "gen"
                     ],
-                    "$comment": "Typ czynnika, albo mutacja punktowa w genie, lub obecnosc genu niosacego oprnosc. Wymagany."
+                    "$comment": "Type of factor, either point mutation or gene presence. Required."
                   }
                 },
-                "required": [
-                  "factor_name",
-                  "factor_contig_name",
-                  "factor_sequence_similarity_to_reference_value",
-                  "factor_degree_of_overlap_with_reference_value",
-                  "factor_reference_name",
-                  "factor_type_name"
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "factor_type_name": {
+                          "const": "gen"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "factor_name",
+                        "factor_contig_name",
+                        "factor_sequence_similarity_to_reference_value",
+                        "factor_degree_of_overlap_with_reference_value",
+                        "factor_reference_name",
+                        "factor_type_name"
+                      ]
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "factor_type_name": {
+                          "const": "mutacja_punktowa"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "factor_name",
+                        "factor_mutation",
+                        "factor_type_name"
+                      ]
+                    }
+                  }
                 ]
               },
-              "$comment": "Lista czynnikow powodujacych opornosc na dany antybiotyk. Opcjonalny, pisany pod output/"
+              "$comment": "List of factors causing resistance to the given antibiotic. Optional, depending on output."
             }
           },
           "required": [
