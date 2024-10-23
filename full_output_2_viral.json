@@ -3,10 +3,9 @@
     "pathogen": "sars2",
     "pipeline_version": "ver1",
     "timestamp": "2024-10-17T20:25:26",
-    "dehumanized_fastq_data": [
-      {
-        "dehumanized_fastq_path": "/some/path/forward.fastq.gz"
-      }
+    "dehumanized_fastq_data":  [
+      "/some/path/forward.fastq.gz",
+      "/some/path/reverse.fastq.gz"
     ],
     "genome_files_data": {
       "status": "tak",

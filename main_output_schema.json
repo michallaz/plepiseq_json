@@ -151,13 +151,9 @@
           "type": "array",
           "$comment": "Lista sciezek do plikow w formacie fastq.gz pozbawionych odczytow nie mapujacych sie na docelowy origanizm",
           "items": {
-            "properties": {
-              "dehumanized_fastq_path": {
-                "type": "string",
-                "$comment": "Sciezka do pliku .fastq.gz",
-                "pattern": "^.*\\.fastq(.gz)?$"
-              }
-            }
+            "type": "string",
+            "$comment": "Sciezka do pliku .fastq.gz",
+            "pattern": "^.*\\.fastq(.gz)?$"
           }
         }
       },
