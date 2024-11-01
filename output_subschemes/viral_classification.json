@@ -3,7 +3,9 @@
   "title": "Subschema for plepiseq output, viral classification with Pango/Nextclade",
   "$comment": "Schemat dla outputu, klasyfikacja wirusa do linii ewolucyjnej na podstawie danych pango/nextclade.",
   "type": "array",
+  "minItems": 1,
   "items": {
+    "type": "object",
     "properties": {
       "error_message": {
         "type": "string",
