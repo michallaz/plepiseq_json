@@ -1,11 +1,16 @@
 [
   {
-    "status": "Tak",
-    "baza_nazwa": "Pango",
-    "baza_wersja": "1.2.1",
-    "program_nazwa": "scorpion",
-    "program_wersja": "4.5.6",
-    "wariant_nazwa": "JN.1",
-    "wariant_qc": "pass"
+    "status": "tak",
+    "database_name": "Pango",
+    "database_version": "1.2.1",
+    "program_name": "scorpion",
+    "program_version": "4.5.6",
+    "variant_name": "JN.1",
+    "variant_qc_status": "pass"
+  },
+  {
+    "status": "nie",
+    "database_name": "Nextclade",
+    "error_message": "Error was encountered"
   }
 ]
