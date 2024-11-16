@@ -22,29 +22,35 @@
       },
       "database_name": {
         "type": "string",
+        "minLength": 1,
         "$comment": "Nazwa bazy na podstawie ktorej przewidywana jest linia ewolucyjna. Wymagany."
       },
       "database_version": {
         "type": "string",
+        "minLength": 1,
         "$comment": "Wersja bazy na podstawie ktorej okreslamy linie ewolucyjna. Wymagany."
       },
       "program_name": {
         "type": "string",
+        "minLength": 1,
         "$comment": "Nazwa programu uzywanego do okreslenia linii ewolucyjnej. Wymagany."
       },
       "program_version": {
         "type": "string",
+        "minLength": 1,
         "$comment": "Wersja programu uzywanego do okreslenia linii ewolucyjnej. Wymagany."
       },
       "variant_name": {
         "type": "string",
+        "minLength": 1,
         "$comment": "Nazwa przewidzianego wariantu. Wymagany."
       },
       "variant_qc_status": {
         "type": "string",
         "enum": [
           "pass",
-          "warning"
+          "warning",
+          "fail"
         ],
         "$comment": "Informacja o przydatnosci genomu do predykcji wariantu jesli program ja zwraca. Opcjonalny."
       }
