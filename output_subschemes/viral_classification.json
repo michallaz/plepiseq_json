@@ -22,7 +22,10 @@
       },
       "database_name": {
         "type": "string",
-        "minLength": 1,
+        "enum": [
+          "Pangolin",
+          "Nextclade"
+        ],
         "$comment": "Nazwa bazy na podstawie ktorej przewidywana jest linia ewolucyjna. Wymagany."
       },
       "database_version": {
@@ -45,6 +48,15 @@
         "minLength": 1,
         "$comment": "Nazwa przewidzianego wariantu. Wymagany."
       },
+      "sequence_source": {
+        "type": "string",
+        "enum": [
+          "full_genome",
+          "NA",
+          "HA"
+        ],
+        "$comment": "Informacja jaka sewekencja zostala uzyta do danej analizy, calego genomu czy konkretnego segmentu"
+      },
       "variant_qc_status": {
         "type": "string",
         "enum": [
@@ -57,8 +69,10 @@
     },
     "required": [
       "status",
-      "database_name"
+      "database_name",
+      "sequence_source"
     ],
+    "additionalProperties": false,
     "allOf": [
       {
         "if": {
@@ -73,7 +87,8 @@
             "database_version",
             "program_name",
             "program_version",
-            "variant_name"
+            "variant_name",
+            "variant_qc_status"
           ]
         },
         "else": {

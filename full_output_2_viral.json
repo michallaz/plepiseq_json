@@ -3,7 +3,7 @@
     "pathogen": "sars2",
     "pipeline_version": "ver1",
     "timestamp": "2024-10-17T20:25:26",
-    "dehumanized_fastq_data":  [
+    "dehumanized_fastq_data": [
       "/some/path/forward.fastq.gz",
       "/some/path/reverse.fastq.gz"
     ],
@@ -97,18 +97,31 @@
     },
     "viral_classification_data": [
       {
+        "status": "blad",
+        "error_message": "Error was encountered",
+        "database_name": "Pangolin",
+        "sequence_source": "full_genome",
+        "database_version": "4.3.1",
+        "program_name": "scorpion",
+        "program_version": "0.3.19",
+        "variant_name": "Unassigned",
+        "variant_qc_status": "fail"
+      },
+      {
         "status": "tak",
-        "database_name": "Pango",
+        "database_name": "Pangolin",
         "database_version": "1.2.1",
         "program_name": "scorpion",
         "program_version": "4.5.6",
         "variant_name": "JN.1",
-        "variant_qc_status": "pass"
+        "variant_qc_status": "pass",
+        "sequence_source": "HA"
       },
       {
         "status": "nie",
         "database_name": "Nextclade",
-        "error_message": "Error was encountered"
+        "error_message": "Error was encountered",
+        "sequence_source": "NA"
       }
     ],
     "viral_mutation_data": [
