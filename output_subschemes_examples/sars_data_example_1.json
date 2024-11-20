@@ -1,8 +1,8 @@
 {
   "coinfections_status": "prawdopodobny",
-  "coinfection_message": "Some string of text that will include p-values",
+  "coinfetion_pvalue": 0.64,
   "coinfection_histogram_file": "/some/path",
-  "freyja_lineage1_name": "Omicron",
+  "freyja_lineage1_name": "O",
   "freyja_lineage2_name": "Delta",
   "freyja_lineage1_abundance": 90,
   "freyja_lineage2_abundance": 10.24,
