@@ -154,7 +154,8 @@
             "type": "string",
             "$comment": "Sciezka do pliku .fastq.gz",
             "pattern": "^.*\\.fastq(.gz)?$"
-          }
+          },
+	  "minItems": 1
         }
       },
       "required": [
