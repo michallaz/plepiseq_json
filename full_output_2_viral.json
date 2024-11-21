@@ -150,7 +150,7 @@
     ],
     "sars_data": {
       "coinfections_status": "tak",
-      "coinfetion_results": "tak",
+      "coinfetion_result": "tak",
       "coinfetion_pvalue": 0.64,
       "coinfection_histogram_file": "/some/path",
       "freyja_status": "tak",

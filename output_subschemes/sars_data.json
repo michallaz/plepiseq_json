@@ -13,7 +13,7 @@
       ],
       "$comment": "Informacja czy udalo sie wykonac analize koinfekcji przy pomocy rozwijanej w PZH metodologii. Wymagany."
     },
-    "coinfetion_results": {
+    "coinfetion_result": {
       "type": "string",
       "enum": [
         "tak",
@@ -117,6 +117,7 @@
       },
       "then": {
         "required": [
+          "coinfetion_result",
           "coinfetion_pvalue",
           "coinfection_histogram_file"
         ]
