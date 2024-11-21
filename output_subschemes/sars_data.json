@@ -9,57 +9,87 @@
       "enum": [
         "tak",
         "nie",
+        "blad"
+      ],
+      "$comment": "Informacja czy udalo sie wykonac analize koinfekcji przy pomocy rozwijanej w PZH metodologii. Wymagany."
+    },
+    "coinfetion_results": {
+      "type": "string",
+      "enum": [
+        "tak",
+        "nie",
         "prawdopodobny"
       ],
-      "$comment": "Informacja o mozliwosci wystepowania koinfekcji inna linia ewolucyjna wirusa SARS-CoV-2. Oparta o moja analize rozkladu czestosci alleli w probce. Status /mozliwe/ wynika z faktu, ze probka nie jest podobna do wszystkich probek koinfekowanych wzorcowych. Wymagany."
+      "$comment": "Informacja o mozliwosci wystepowania koinfekcji dwiema liniami ewolucyjnymi wirusa SARS-CoV-2. Oparta o analize rozkladu czestosci alleli w probce. Opis w dokumentacji w excel. Wymagany jesli coinfections_status to tak."
     },
     "coinfetion_pvalue": {
       "type": "number",
       "multipleOf": 0.01,
       "minimum": 0,
       "maximum": 1,
-      "$comment": "Komentarz zwracany przez moj skrypt. Poki co jest to string, zastanowic sie nad przepisaniem, aby zwracal liste p-value kstestu. Wymagany."
+      "$comment": "Maksymalna wartosc p-value zwracana z testu KS. Wymagany jesli coinfections_status to tak."
     },
     "coinfection_histogram_file": {
       "type": "string",
       "minLength": 1,
-      "$comment": "Sciezka do pliku zawierajcym dane niezbedne do narysowania histogramu uzycia aternatywnego allelu w probce. Wymagany."
+      "$comment": "Sciezka do pliku zawierajcym dane niezbedne do narysowania histogramu uzycia aternatywnego allelu w probce. Wymagany jesli coinfections_status to tak."
+    },
+    "freyja_status": {
+      "type": "string",
+      "enum": [
+        "tak",
+        "nie",
+        "blad"
+      ],
+      "$comment": "Informacja czy udalo sie wykonac analize koinfekcji przy pomocy programu freyja. Wymagany"
     },
     "freyja_lineage1_name": {
       "type": "string",
       "minLength": 1,
-      "$comment": "Glowna linia ewolucyjna zidentyfikowana w probce. Wymagany."
+      "$comment": "Glowna linia ewolucyjna zidentyfikowana w probce. Wymagany, jesli freyja_status to tak "
     },
     "freyja_lineage2_name": {
       "type": "string",
       "minLength": 1,
-      "$comment": "Druga linia ewolucyjna zidentyfikowana w probce. Wymagany."
+      "$comment": "Druga linia ewolucyjna zidentyfikowana w probce. Wymagany, jesli freyja_status to tak."
     },
     "freyja_lineage1_abundance": {
       "type": "number",
       "multipleOf": 0.01,
       "minimum": 0,
       "maximum": 100,
-      "$comment": "Szacowana ilosc materialu genetycznego w probce pochodzacego od pierwszej linii ewolucyjnej. Wymagany."
+      "$comment": "Szacowana ilosc materialu genetycznego w probce pochodzacego od pierwszej linii ewolucyjnej. Wymagany, jesli freyja_status to tak"
     },
     "freyja_lineage2_abundance": {
       "type": "number",
       "multipleOf": 0.01,
       "minimum": 0,
       "maximum": 100,
-      "$comment": "Szacowana ilosc materialu genetycznego w probce pochodzacego od drugiej linii ewolucyjnej. Wymagany."
+      "$comment": "Szacowana ilosc materialu genetycznego w probce pochodzacego od drugiej linii ewolucyjnej. Wymagany, jesli freyja_status to tak."
+    },
+    "protein_strucuture_status": {
+      "type": "string",
+      "enum": [
+        "tak",
+        "nie",
+        "blad"
+      ],
+      "$comment": "Informacja czy udalo sie wykonac przewidywanie struktury wybranych dla SARS-CoV-2 bialek. Wymagany"
     },
     "protein_structure_data": {
       "type": "array",
       "items": {
+        "minItems": 1,
         "type": "object",
         "properties": {
           "protein_name": {
             "type": "string",
+            "minLength": 1,
             "$comment": "Nazwa bialka. Wymagany."
           },
           "pdb_path": {
             "type": "string",
+            "minLength": 1,
             "$comment": "Sciezka do pliku tekstowego w formacie PDB ze struktura. Wymagany."
           }
         },
@@ -72,12 +102,56 @@
   },
   "required": [
     "coinfections_status",
-    "coinfetion_pvalue",
-    "coinfection_histogram_file",
-    "freyja_lineage1_name",
-    "freyja_lineage2_name",
-    "freyja_lineage1_abundance",
-    "freyja_lineage2_abundance",
-    "protein_structure_data"
+    "protein_strucuture_status",
+    "freyja_status"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "coinfections_status": {
+            "const": "tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "coinfetion_pvalue",
+          "coinfection_histogram_file"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "freyja_status": {
+            "const": "tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "freyja_lineage1_name",
+          "freyja_lineage2_name",
+          "freyja_lineage1_abundance",
+          "freyja_lineage2_abundance"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "protein_strucuture_status": {
+            "const": "tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "protein_structure_data"
+        ]
+      }
+    }
   ]
 }
