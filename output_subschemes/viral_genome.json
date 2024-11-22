@@ -19,6 +19,7 @@
     },
     "total_length_value": {
       "type": "number",
+      "minimum": 0,
       "multipleOf": 1,
       "$comment": "Calkowita dlugosc genomu. Wymagany."
     },
@@ -30,28 +31,13 @@
     "number_of_Ns_value": {
       "type": "number",
       "multipleOf": 1,
+      "minimum": 0,
       "$comment": "Ilosc nieokreslonych nukleotydow zidentyfikowana w gnomie."
     },
-    "coverage_histogram_data": {
-      "type": "array",
-      "$comment": "Dane informujaca jakie w jakich zakresach jest pokrycie. Dane sa zbiorcze dla wszystkich segmentow.",
-      "items": {
-        "type": "object",
-        "properties": {
-          "segment_name": {
-            "type": "string",
-            "$comment": "Nazwa segmentu dla ktorego rysujemy histogram pokrycia. Wymagany."
-          },
-          "data_file_path": {
-            "type": "string",
-            "$comment": "Sciezka do pliku zawierajacego plik pozwalajacy narysowac histogram. Patrz dokumentacja w excelu.. Wymagany."
-          }
-        },
-        "required": [
-          "segment_name",
-          "data_file_path"
-        ]
-      }
+    "coverage_histogram_file": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Sciezka do pliku pozwalajacego narysiwac histogram pokrycia w calym genomie"
     },
     "coverage_barplot_data": {
       "type": "array",
@@ -116,6 +102,7 @@
   "required": [
     "status"
   ],
+  "additionalProperties": false,
   "allOf": [
     {
       "if": {
@@ -130,7 +117,7 @@
           "total_length_value",
           "average_coverage_value",
           "number_of_Ns_value",
-          "coverage_histogram_data",
+          "coverage_histogram_file",
           "coverage_barplot_data",
           "primer_usage_data"
         ]
