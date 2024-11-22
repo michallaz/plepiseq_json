@@ -3,11 +3,13 @@
   "title": "Subschema for plepiseq output, list of mutations with respect to the reference and their effect on proteins",
   "$comment": "Schemat dla outputu, informacja o mutacjach w probce w stosunku do referencji i ich potencjalnemu efektowi.",
   "type": "array",
+  "minItems": 0,
   "items": {
     "type": "object",
     "properties": {
       "segment_name": {
         "type": "string",
+        "minLength": 1,
         "$comment": "Nazwa chromosomu/segmentu na ktorym zlokalizowano mutacje. Wymagany."
       },
       "position_value": {
@@ -18,20 +20,17 @@
       },
       "reference_allele_name": {
         "type": "string",
-        "enum": [
-          "A",
-          "T",
-          "G",
-          "C"
-        ],
+        "minLength": 1,
         "$comment": "Allel referencyjny na danej pozycji na danym chromosomie. Wymagany."
       },
       "sample_allele_name": {
         "type": "string",
+        "minLength": 1,
         "$comment": "Allel wystepujacy na danej pozycji na danym chromosomie w probce, alternatywnie w przypadku indeli stosujemy typowe dla nich nazwnictwo del12, ins15 itd. Wymagany."
       },
       "gene_name": {
         "type": "string",
+        "minLength": 1,
         "$comment": "Nazwa genu w jaki wpada mutacja. W przypadku mutacji intergenowych podajemy '-'. Wymagany."
       },
       "mutation_effect": {
@@ -44,7 +43,7 @@
       },
       "mutation_type_name": {
         "type": "string",
-        "$comment": "Typ mutacji, missense, synonymous, frameshift itd. Wymagany."
+        "$comment": "Typ mutacji, missense, synonymous, frameshift itd. Enum do zaimplementowania. Wymagany."
       },
       "mutation_coverage_value": {
         "type": "number",
@@ -70,6 +69,7 @@
       "mutation_type_name",
       "mutation_coverage_value",
       "mutation_usage_value"
-    ]
+    ],
+    "additionalProperties": false
   }
 }
