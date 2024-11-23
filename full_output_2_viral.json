@@ -140,7 +140,7 @@
       }
     ],
     "sars_data": {
-      "coinfections_status": "tak",
+      "coinfection_status": "tak",
       "coinfection_result": "tak",
       "coinfection_pvalue": 0.64,
       "coinfection_histogram_file": "/some/path",

@@ -101,7 +101,7 @@
     }
   },
   "required": [
-    "coinfections_status",
+    "coinfection_status",
     "protein_structure_status",
     "freyja_status"
   ],
@@ -110,7 +110,7 @@
     {
       "if": {
         "properties": {
-          "coinfections_status": {
+          "coinfection_status": {
             "const": "tak"
           }
         }
