@@ -4,7 +4,7 @@
   "$comment": "Schemat dla outputu, informacja specyficzne dla wirusa SARS-CoV-2",
   "type": "object",
   "properties": {
-    "coinfections_status": {
+    "coinfection_status": {
       "type": "string",
       "enum": [
         "tak",
