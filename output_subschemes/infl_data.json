@@ -4,18 +4,42 @@
   "$comment": "Schemat dla outputu, informacja specyficzne dla wirusa grypy",
   "type": "object",
   "properties": {
-    "reassortment_data": {
+    "reference_genome_prediction_status": {
+      "type": "string",
+      "enum": [
+        "tak",
+        "nie",
+        "blad"
+      ],
+      "$comment": "Informacja czy udalo sie wykonac analize poszukiwania genomu referencyjnego dla grypy. Wymagany."
+    },
+    "reference_genome_prediction_error_message": {
+      "type": "string",
+      "$comment": "Dowolny tekst zwracany jako komunikat błędu podczas obliczeń. Wymagany, jeśli reference_genome_prediction_status jest inny niż tak."
+    },
+    "reasortment_result": {
+      "type": "string",
+      "enum": [
+        "tak",
+        "nie"
+      ],
+      "$comment": "Informacja czy w próbce stwierdzono reassortment wirusów grypy z dwóch różnych podtypów. Wymagany, jeśli reference_genome_prediction_status to tak."
+    },
+    "reference_genome_prediction_data": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
         "properties": {
           "segment_name": {
             "type": "string",
+            "minLength": 1,
             "$comment": "Nazwa segmentu wirusa grypy"
           },
           "reference_subtype_name": {
             "type": "string",
-            "$comment": "Nazwa podtypu jaki zostal wybrany jako referencja dla danego segmentu"
+            "minLength": 1,
+            "$comment": "Nazwa podtypu jaki został wybrany jako referencja dla danego segmentu"
           }
         },
         "required": [
@@ -31,30 +55,50 @@
         "B",
         "unk"
       ],
-      "$comment": "Informacja o typie wirusa grypy zidentyfikowanego w próbce. 'unk' tylko w przypadku gdy mamy reassortment, tzn. nie wszystkie segmenty mają taki sam podtyp referencyjny. Wymagany."
+      "$comment": "Informacja o typie wirusa grypy zidentyfikowanego w próbce. 'unk' tylko w przypadku gdy mamy reassortment. Wymagany, jeśli reference_genome_prediction_status to tak."
     },
     "subtype_name": {
       "type": "string",
       "enum": [
         "H1N1",
         "H3N2",
+        "H4N6",
         "H5N1",
+        "H5N2",
+        "H5N5",
+        "H5N6",
+        "H5N8",
+        "H6N1",
+        "H7N9",
+        "H9N2",
         "Yamagata",
-        "..."
+        "Victoria"
       ],
-      "$comment": "Informacja o podtypie wirusa grypy zidentyfikowanego w próbce. Do uzupełnienia brakujące podtypy, tutaj wskazujemy to, co umie analizować pipeline, nie ma więc typów takich jak H16N10. Wymagany."
+      "$comment": "Informacja o podtypie wirusa grypy zidentyfikowanego w próbce. Wymagany, jeśli reference_genome_prediction_status to tak."
+    },
+    "protein_structure_status": {
+      "type": "string",
+      "enum": [
+        "tak",
+        "nie",
+        "blad"
+      ],
+      "$comment": "Informacja czy dla próbki przewidywano strukturę białek. Wymagany."
     },
     "protein_structure_data": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
         "properties": {
           "protein_name": {
             "type": "string",
+            "minLength": 1,
             "$comment": "Nazwa białka. Wymagany."
           },
           "pdb_path": {
             "type": "string",
+            "minLength": 1,
             "$comment": "Ścieżka do pliku tekstowego w formacie PDB ze strukturą. Wymagany."
           }
         },
@@ -64,9 +108,23 @@
         ]
       }
     },
+    "resistance_status": {
+      "type": "string",
+      "enum": [
+        "tak",
+        "nie",
+        "blad"
+      ],
+      "$comment": "Informacja czy dla próbki przewidywano oporność na leki przeciwwirusowe. Wymagany."
+    },
+    "resistance_error_message": {
+      "type": "string",
+      "$comment": "Dowolny tekst zwracany jako komunikat błędu podczas obliczeń. Wymagany, jeśli resistance_status jest inny niż tak."
+    },
     "resistance_data": {
       "type": "array",
-      "$comment": "Informacja o występowaniu mutacji wskazanych przez WHO jako powodujące oporność na leki przeciwirusowe. Wymagany.",
+      "minItems": 1,
+      "$comment": "Informacja o występowaniu mutacji wskazanych przez WHO jako powodujące oporność na leki przeciwwirusowe. Wymagany.",
       "items": {
         "type": "object",
         "properties": {
@@ -89,11 +147,12 @@
               "HRI",
               "unk"
             ],
-            "$comment": "Nazewnictwo zgodnie z dokumentem WHO. W przypadku wielu mutacji oporność na lek determinowana jest mutacją o największym efekcie. Wymagany."
+            "$comment": "Nazewnictwo zgodne z dokumentem WHO. W przypadku wielu mutacji oporność na lek determinowana jest mutacją o największym efekcie. Wymagany."
           },
           "mutation_list_data": {
             "type": "array",
-            "$comment": "Lista mutacji zidentyfikowanych w próbce, które w dokumencie WHO są wypisane jako przebadane pod kątem powodowania oporności na dany lek antywirusowy. Pozycja mutacji jest określona według sekwencji białka z próbki. Oporność na leki oparta jest o badanie mutacji w białku. Wymagany.",
+            "minItems": 1,
+            "$comment": "Lista mutacji zidentyfikowanych w próbce, które w dokumencie WHO są wypisane jako przebadane pod kątem powodowania oporności na dany lek antywirusowy. Pozycja mutacji jest określona według sekwencji białka z próbki.",
             "items": {
               "type": "object",
               "properties": {
@@ -111,7 +170,7 @@
                     "RI",
                     "HRI"
                   ],
-                  "$comment": "Efekt konkretnej mutacji ponownie w skali HRI, NI i RI"
+                  "$comment": "Efekt konkretnej mutacji w skali HRI, NI i RI."
                 }
               },
               "required": [
@@ -122,7 +181,8 @@
           },
           "mutation_list_data_reference_numbering": {
             "type": "array",
-            "$comment": "Lista mutacji zidentyfikowanych w próbce, które w dokumencie WHO są wypisane jako przebadane pod kątem powodowania oporności na dany lek antywirusowy. Pozycja mutacji jest określona według sekwencji białka referencyjnego dla danego podtypu określonej przez WHO. Oporność na leki oparta jest o badanie mutacji w białku. Wymagany.",
+            "minItems": 1,
+            "$comment": "Lista mutacji zidentyfikowanych w próbce w odniesieniu do numeracji referencyjnej białka dla danego podtypu.",
             "items": {
               "type": "object",
               "properties": {
@@ -140,36 +200,7 @@
                     "RI",
                     "HRI"
                   ],
-                  "$comment": "Efekt konkretnej mutacji ponownie w skali HRI, NI i RI"
-                }
-              },
-              "required": [
-                "mutation_name",
-                "mutation_effect"
-              ]
-            }
-          },
-          "mutation_list_data_N2_numbering": {
-            "type": "array",
-            "$comment": "Lista mutacji zidentyfikowanych w próbce, które w dokumencie WHO są wypisane jako przebadane pod kątem powodowania oporności na dany lek antywirusowy. Pozycja mutacji jest określona według sekwencji referencyjnej białka NA z podtypu 2, stosowanego historycznie. Oporność na leki oparta jest o badanie mutacji w białku. Opcjonalny.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "mutation_name": {
-                  "type": "string",
-                  "$comment": "Nazwa mutacji, wersja skrócona",
-                  "examples": [
-                    "E23K"
-                  ]
-                },
-                "mutation_effect": {
-                  "type": "string",
-                  "enum": [
-                    "NI",
-                    "RI",
-                    "HRI"
-                  ],
-                  "$comment": "Efekt konkretnej mutacji ponownie w skali HRI, NI i RI"
+                  "$comment": "Efekt konkretnej mutacji w skali HRI, NI i RI."
                 }
               },
               "required": [
@@ -182,37 +213,71 @@
         "required": [
           "drug_name",
           "drug_resistance_status",
-          "mutation_list_data_reference_numbering",
-          "mutation_list_data"
+          "mutation_list_data",
+          "mutation_list_data_reference_numbering"
         ]
       }
     }
   },
   "required": [
-    "reassortment_data",
-    "type_name",
-    "subtype_name",
-    "protein_structure_data"
+    "reference_genome_prediction_status",
+    "protein_structure_status",
+    "resistance_status"
   ],
+  "additionalProperties": false,
   "allOf": [
     {
       "if": {
         "properties": {
-          "status": {
-            "enum": [
-              "H1N1",
-              "H3N2",
-              "H5N1",
-              "H7N9",
-              "Yamagata",
-              "Victoria"
-            ]
+          "reference_genome_prediction_status": {
+            "const": "tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "reasortment_result",
+          "reference_genome_prediction_data",
+          "type_name",
+          "subtype_name"
+        ]
+      },
+      "else": {
+        "required": [
+          "reference_genome_prediction_error_message"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "protein_structure_status": {
+            "const": "tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "protein_structure_data"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "resistance_status": {
+            "const": "tak"
           }
         }
       },
       "then": {
         "required": [
           "resistance_data"
+        ]
+      },
+      "else": {
+        "required": [
+          "resistance_error_message"
         ]
       }
     }

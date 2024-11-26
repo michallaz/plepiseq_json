@@ -1,5 +1,7 @@
 {
-  "reassortment_data": [
+  "reference_genome_prediction_status": "tak",
+  "reasortment_result": "nie",
+  "reference_genome_prediction_data": [
     {
       "segment_name": "chr4_HA",
       "reference_subtype_name": "H1N1"
@@ -11,6 +13,8 @@
   ],
   "type_name": "A",
   "subtype_name": "H5N1",
+  "protein_structure_status": "tak",
+  "resistance_status": "tak",
   "protein_structure_data": [
     {
       "protein_name": "HA",
