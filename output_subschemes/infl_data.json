@@ -142,9 +142,9 @@
           "drug_resistance_status": {
             "type": "string",
             "enum": [
-              "NI",
-              "RI",
-              "HRI",
+              "S",
+              "I",
+              "R",
               "unk"
             ],
             "$comment": "Nazewnictwo zgodne z dokumentem WHO. W przypadku wielu mutacji oporność na lek determinowana jest mutacją o największym efekcie. Wymagany."

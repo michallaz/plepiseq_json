@@ -24,7 +24,7 @@
   "resistance_data": [
     {
       "drug_name": "Oseltamivir",
-      "drug_resistance_status": "HRI",
+      "drug_resistance_status": "R",
       "mutation_list_data": [
         {
           "mutation_name": "E23K",
