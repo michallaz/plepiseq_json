@@ -19,12 +19,6 @@
       "multipleOf": 1,
       "minimum": 0,
       "comment": "Liczba odczytow mapujaca sie na genom referencyjny"
-    },
-    "mapped_reads_proper_number": {
-      "type": "number",
-      "multipleOf": 1,
-      "minimum": 0,
-      "comment": "Liczba odczytow mapujaca sie na genom referencyjn. Tylko proper pairs."
     }
   },
   "required": [
@@ -42,8 +36,7 @@
       },
       "then": {
         "required": [
-          "mapped_reads_number",
-          "mapped_reads_proper_number"
+          "mapped_reads_number"
         ]
       },
       "else": {
