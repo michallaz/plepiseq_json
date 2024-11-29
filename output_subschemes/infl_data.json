@@ -151,7 +151,7 @@
           },
           "mutation_list_data": {
             "type": "array",
-            "minItems": 1,
+            "minItems": 0,
             "$comment": "Lista mutacji zidentyfikowanych w próbce, które w dokumencie WHO są wypisane jako przebadane pod kątem powodowania oporności na dany lek antywirusowy. Pozycja mutacji jest określona według sekwencji białka z próbki.",
             "items": {
               "type": "object",
@@ -181,7 +181,7 @@
           },
           "mutation_list_data_reference_numbering": {
             "type": "array",
-            "minItems": 1,
+            "minItems": 0,
             "$comment": "Lista mutacji zidentyfikowanych w próbce w odniesieniu do numeracji referencyjnej białka dla danego podtypu.",
             "items": {
               "type": "object",
