@@ -115,6 +115,11 @@
         "sequence_source": "NA"
       }
     ],
+    "viral_mapping_data": {
+      "status": "tak",
+      "mapped_reads_number": 40,
+      "mapped_reads_proper_number": 10
+    },
     "viral_mutation_data": [
       {
         "segment_name": "mn90.4",

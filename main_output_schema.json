@@ -86,6 +86,10 @@
           "$ref": "output_subschemes/rsv_data.json",
           "$comment": "Rozne inforrmacje specyficzne dla wirusa RSV. Wymagany jesli pathogen to RSV."
         },
+	"viral_mapping_data": {
+          "$ref": "output_subschemes/viral_mapping_data.json",
+          "$comment": "Podstawowe informacje o mapowaniu odczytow na genom referencyjny. Wymagany jesli pathogen to wirus."
+        },
         "genome_files_data": {
           "type": "object",
           "properties": {
@@ -191,7 +195,8 @@
               "viral_genome_data",
               "viral_classification_data",
               "viral_mutation_data",
-              "dehumanized_fastq_data"
+              "dehumanized_fastq_data",
+	      "viral_mapping_data"
             ]
           }
         },
