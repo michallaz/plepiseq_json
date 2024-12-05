@@ -2,22 +2,22 @@
   {
     "program_name": "kraken2",
     "status": "tak",
-    "main_genus_name": "Salmonella",
+    "main_genus_name": "Salmonell",
     "secondary_genus_name": "Homo",
     "main_species_name": "Salmonella",
     "secondary_species_name": "Homo",
-    "main_genus_value": "90.09",
-    "secondary_genus_value": "10.90",
-    "main_species_value": "90.09",
-    "secondary_species_value": "10.92"
+    "main_genus_value": 90.09,
+    "secondary_genus_value": 10.90,
+    "main_species_value": 90.09,
+    "secondary_species_value": 10.92
   },
   {
     "program_name": "kmerfinder",
     "status": "tak",
     "main_species_name": "Salmonella",
     "secondary_species_name": "Homo",
-    "main_species_coverage": "90.09",
-    "secondary_species_coverage": "10.92"
+    "main_species_coverage": 90.09,
+    "secondary_species_coverage": 10.92
   },
   {
     "program_name": "metaphlan",
