@@ -2,6 +2,7 @@
   "output": {
     "pathogen": "sars2",
     "pipeline_version": "ver1",
+    "ExecutionDir": "/mnt/sda1/michall/RSV/tmp_sars/",
     "timestamp": "2024-10-17T20:25:26",
     "dehumanized_fastq_data": [
       "/some/path/forward.fastq.gz",

@@ -21,6 +21,7 @@
           "type": "string",
           "$comment": "Informacja o wersji pipeline stosowanego do analizy probki. Wymagany."
         },
+	"ExecutionDir" : {"$type":"string", "$comment": "Informacja o miejscu uruchomienia pipeline. Wymagany."},
         "timestamp": {
           "type": "string",
           "$comment": "Moment utworzenia ostatecznego pliku json. Format zgodny z ISO8601 z dokladnosci do sekund",
@@ -168,7 +169,8 @@
         "timestamp",
         "genome_files_data",
         "contamination_data",
-        "sequencing_summary_data"
+        "sequencing_summary_data",
+	"ExecutionDir"
       ],
       "allOf": [
         {
