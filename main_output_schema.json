@@ -207,7 +207,7 @@
               "viral_genome_data",
               "viral_classification_data",
               "viral_mutation_data",
-              "dehumanized_fastq_data",
+              "dehumanized_fastq_file_list",
               "viral_mapping_data"
             ]
           }
