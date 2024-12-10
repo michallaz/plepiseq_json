@@ -2,7 +2,7 @@
   "output": {
     "pathogen": "sars2",
     "pipeline_version": "ver1",
-    "ExecutionDir": "/mnt/sda1/michall/RSV/tmp_sars/",
+    "ExecutionDir_dir": "/mnt/sda1/michall/RSV/tmp_sars/",
     "timestamp": "2024-10-17T20:25:26",
     "dehumanized_fastq_data": [
       "/some/path/forward.fastq.gz",
@@ -13,11 +13,11 @@
       "file_data": [
         {
           "segment_name": "NODE1_pilon_pilon_pilon_cov_20.862722668721787",
-          "segment_path": "pipeline_wyniki/S3_S5_L001/fastas/NODE1_pilon_pilon_pilon_cov_20.862722668721787.fasta"
+          "segment_file": "pipeline_wyniki/S3_S5_L001/fastas/NODE1_pilon_pilon_pilon_cov_20.862722668721787.fasta"
         },
         {
           "segment_name": "NODE2_pilon_pilon_pilon_cov_21.93405076896538",
-          "segment_path": "pipeline_wyniki/S3_S5_L001/fastas/NODE2_pilon_pilon_pilon_cov_21.93405076896538.fasta"
+          "segment_file": "pipeline_wyniki/S3_S5_L001/fastas/NODE2_pilon_pilon_pilon_cov_21.93405076896538.fasta"
         }
       ]
     },

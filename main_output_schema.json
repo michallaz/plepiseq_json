@@ -21,7 +21,12 @@
           "type": "string",
           "$comment": "Informacja o wersji pipeline stosowanego do analizy probki. Wymagany."
         },
-	"ExecutionDir" : {"$type":"string", "$comment": "Informacja o miejscu uruchomienia pipeline. Wymagany."},
+        "ExecutionDir_dir": {
+          "$type": "string",
+	  "minLength": 1,
+	  "pattern": "^\/",
+          "$comment": "Absolutna sciezka do katalogu z miejscem uruchomienia pipeline. Wymagany."
+        },
         "timestamp": {
           "type": "string",
           "$comment": "Moment utworzenia ostatecznego pliku json. Format zgodny z ISO8601 z dokladnosci do sekund",
@@ -87,7 +92,7 @@
           "$ref": "output_subschemes/rsv_data.json",
           "$comment": "Rozne inforrmacje specyficzne dla wirusa RSV. Wymagany jesli pathogen to RSV."
         },
-	"viral_mapping_data": {
+        "viral_mapping_data": {
           "$ref": "output_subschemes/viral_mapping_data.json",
           "$comment": "Podstawowe informacje o mapowaniu odczytow na genom referencyjny. Wymagany jesli pathogen to wirus."
         },
@@ -108,28 +113,33 @@
               "$comment": "informacja czy policzono profil, niepoliczono, zwrocnono blad. Wymagany."
             },
             "file_data": {
+              "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
                   "segment_name": {
                     "type": "string",
+                    "minLength": 1,
                     "$comment": "Nazwa/Naglowek segmentu. Wymagany."
                   },
-                  "segment_path": {
+                  "segment_file": {
                     "type": "string",
-                    "$comment": "Sekwencja segmentu (bez naglowka). Wymagany."
+                    "minLength": 1,
+                    "$comment": "Sciezka do sekwencji segmentu. Wymagany."
                   }
                 },
                 "required": [
                   "segment_name",
-                  "segment_path"
-                ]
+                  "segment_file"
+                ],
+                "additionalProperties": false
               }
             }
           },
           "required": [
             "status"
           ],
+          "additionalProperties": false,
           "allOf": [
             {
               "if": {
@@ -160,7 +170,7 @@
             "$comment": "Sciezka do pliku .fastq.gz",
             "pattern": "^.*\\.fastq(.gz)?$"
           },
-	  "minItems": 1
+          "minItems": 1
         }
       },
       "required": [
@@ -170,7 +180,7 @@
         "genome_files_data",
         "contamination_data",
         "sequencing_summary_data",
-	"ExecutionDir"
+        "ExecutionDir_dir"
       ],
       "allOf": [
         {
@@ -198,7 +208,7 @@
               "viral_classification_data",
               "viral_mutation_data",
               "dehumanized_fastq_data",
-	      "viral_mapping_data"
+              "viral_mapping_data"
             ]
           }
         },
