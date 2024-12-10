@@ -1,12 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Subschema for plepiseq output, statistic information regarding viral genome.",
-  "$comment": "Schemat dla outputu, statystyczne informacja o genomie wirusowym proponowanym dla probki.",
+  "comment": "Schemat dla outputu, statystyczne informacja o genomie wirusowym proponowanym dla probki.",
   "type": "object",
   "properties": {
     "error_message": {
       "type": "string",
-      "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
+      "minLength": 1,
+      "comment": "Dowolny tekst zwracany jako komunikat bledu podczas przewidywania genomu wirusowego. Wymagany, jesli status to blad."
     },
     "status": {
       "type": "string",
@@ -15,60 +16,64 @@
         "nie",
         "blad"
       ],
-      "$comment": "informacja czy policzono profil, niepoliczono, zwrocnono blad. Wymagany."
+      "comment": "Informacja czy zaproponowano genom wirusa dla probki, nieprzewidziano, zwrocono blad. Wymagany."
     },
     "total_length_value": {
       "type": "number",
       "minimum": 0,
       "multipleOf": 1,
-      "$comment": "Calkowita dlugosc genomu. Wymagany."
+      "comment": "Calkowita dlugosc genomu. Wymagany."
     },
     "average_coverage_value": {
       "type": "number",
       "multipleOf": 0.01,
-      "$comment": "Srednie pokrycie dla zapronowanego genomu, z dokladnoscia do maksymalnie do 2 miejsca po przecinku. Wymagany."
+      "comment": "Srednie pokrycie dla zaproponowanego genomu, z dokladnoscia do maksymalnie 2 miejsc po przecinku. Wymagany."
     },
     "number_of_Ns_value": {
       "type": "number",
       "multipleOf": 1,
       "minimum": 0,
-      "$comment": "Ilosc nieokreslonych nukleotydow zidentyfikowana w gnomie."
+      "comment": "Ilosc nieokreslonych nukleotydow zidentyfikowana w genomie."
     },
     "coverage_histogram_file": {
       "type": "string",
       "minLength": 1,
-      "$comment": "Sciezka do pliku pozwalajacego narysiwac histogram pokrycia w calym genomie"
+      "comment": "Sciezka do pliku pozwalajacego narysowac histogram pokrycia w calym genomie."
     },
     "coverage_barplot_data": {
       "type": "array",
-      "$comment": "Dane informujaca o pokryciu na kazdej pozycji. Kazdy segment ma oddzielne dane.",
+      "comment": "Dane informujace o pokryciu na kazdej pozycji. Kazdy segment ma oddzielny plik.",
       "items": {
         "type": "object",
         "properties": {
           "segment_name": {
             "type": "string",
-            "$comment": "Nazwa segmentu dla ktorego prezentujemy dane. Wymagany."
+            "minLength": 1,
+            "comment": "Nazwa segmentu dla ktorego prezentujemy dane. Wymagany."
           },
-          "data_file_path": {
+          "segment_file": {
             "type": "string",
-            "$comment": "Sciezka do pliku zawierajacego plik pozwalajacy narysowac barplot z pokryciem. Patrz dokumentacja w excelu.. Wymagany."
+            "minLength": 1,
+            "comment": "Sciezka do pliku zawierajacego dane do barplotu z pokryciem. Wymagany."
           }
         },
         "required": [
           "segment_name",
-          "data_file_path"
-        ]
+          "segment_file"
+        ],
+        "additionalProperties": false
       }
     },
     "primer_usage_data": {
       "type": "array",
-      "$comment": "Lista uzycia primerow oddzielnie dla kazdego z segmentow.",
+      "comment": "Lista uzycia primerow oddzielnie dla kazdego z segmentow.",
       "items": {
         "type": "object",
         "properties": {
           "segment_name": {
             "type": "string",
-            "$comment": "Nazwa segmentu dla ktorego podajemy uzycie primerow."
+            "minLength": 1,
+            "comment": "Nazwa segmentu dla ktorego podajemy uzycie primerow."
           },
           "primer_data": {
             "type": "array",
@@ -77,25 +82,28 @@
               "properties": {
                 "primer_name": {
                   "type": "string",
-                  "$comment": "Nazwa primeru"
+                  "minLength": 1,
+                  "comment": "Nazwa primeru."
                 },
                 "primer_usage": {
                   "type": "number",
                   "multipleOf": 1,
-                  "$comment": "Ilosc odczytow mapujacych sie 5' lub 3' koncem na primer"
+                  "comment": "Ilosc odczytow mapujacych sie 5' lub 3' koncem na primer."
                 }
               },
               "required": [
                 "primer_name",
                 "primer_usage"
-              ]
+              ],
+              "additionalProperties": false
             }
           }
         },
         "required": [
           "segment_name",
           "primer_data"
-        ]
+        ],
+        "additionalProperties": false
       }
     }
   },

@@ -162,7 +162,7 @@
             }
           ]
         },
-        "dehumanized_fastq_data": {
+        "dehumanized_fastq_file_list": {
           "type": "array",
           "$comment": "Lista sciezek do plikow w formacie fastq.gz pozbawionych odczytow nie mapujacych sie na docelowy origanizm",
           "items": {

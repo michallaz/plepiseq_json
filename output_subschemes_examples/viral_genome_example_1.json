@@ -3,12 +3,12 @@
   "total_length_value": 1234,
   "average_coverage_value": 100.34,
   "number_of_Ns_value": 34,
-  "coverage_histogram_file": "/path/to/a/file", 
- 
+  "coverage_histogram_file": "/path/to/a/file",
+
   "coverage_barplot_data": [
     {
       "segment_name": "MN09345",
-      "data_file_path": "/path/to/a/file"
+      "segment_file": "/path/to/a/file"
     }
   ],
   "primer_usage_data": [

@@ -15,6 +15,7 @@
     },
     "reference_genome_prediction_error_message": {
       "type": "string",
+      "minLength": 1,
       "$comment": "Dowolny tekst zwracany jako komunikat błędu podczas obliczeń. Wymagany, jeśli reference_genome_prediction_status jest inny niż tak."
     },
     "reasortment_result": {
@@ -45,7 +46,8 @@
         "required": [
           "segment_name",
           "reference_subtype_name"
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "type_name": {
@@ -96,7 +98,7 @@
             "minLength": 1,
             "$comment": "Nazwa białka. Wymagany."
           },
-          "pdb_path": {
+          "pdb_file": {
             "type": "string",
             "minLength": 1,
             "$comment": "Ścieżka do pliku tekstowego w formacie PDB ze strukturą. Wymagany."
@@ -104,8 +106,9 @@
         },
         "required": [
           "protein_name",
-          "pdb_path"
-        ]
+          "pdb_file"
+        ],
+        "additionalProperties": false
       }
     },
     "resistance_status": {
@@ -119,6 +122,7 @@
     },
     "resistance_error_message": {
       "type": "string",
+      "minLength": 1,
       "$comment": "Dowolny tekst zwracany jako komunikat błędu podczas obliczeń. Wymagany, jeśli resistance_status jest inny niż tak."
     },
     "resistance_data": {
@@ -176,7 +180,8 @@
               "required": [
                 "mutation_name",
                 "mutation_effect"
-              ]
+              ],
+              "additionalProperties": false
             }
           },
           "mutation_list_data_reference_numbering": {
@@ -206,7 +211,8 @@
               "required": [
                 "mutation_name",
                 "mutation_effect"
-              ]
+              ],
+              "additionalProperties": false
             }
           }
         },

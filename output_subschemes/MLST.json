@@ -16,6 +16,7 @@
       },
       "error_message": {
         "type": "string",
+        "minLength": 1,
         "$comment": "Dowolny tekst zwracany jako komunikat błędu podczas liczenia profilu. Wymagany, jeśli status to 'błąd'."
       },
       "status": {
@@ -29,21 +30,31 @@
       },
       "profile_id": {
         "type": "string",
-        "$comment": "Numer zidentyfikowanego profilu. Z zewnętrznej bazy, jeśli jest, inaczej identyfikator nadawany jest lokalnie."
+        "minLength": 1,
+        "$comment": "Numer zidentyfikowanego profilu. Z zewnętrznej bazy, jeśli jest, inaczej identyfikator nadawany jest lokalnie. Wymagany jesli status to tak"
       },
       "closest_external_profile_id": {
         "type": "string",
-        "$comment": "Identyfikator profilu z zewnętrznej bazy, który jest najbardziej zbliżony do profilu próbki. Wymagany, jeśli schemat to cgMLST."
+        "minLength": 1,
+        "$comment": "Identyfikator profilu z zewnętrznej bazy, który jest najbardziej zbliżony do profilu próbki. Wymagany, jeśli schemat to cgMLST i status to tak."
       },
       "closest_external_profile_distance": {
         "type": "number",
-        "$comment": "Podobieństwo między najbliższym profilem z zewnętrznej bazy a profilem próbki. Wymagany, jeśli schemat to cgMLST."
+        "multipleOf": 1,
+        "minimum": 0,
+        "$comment": "Podobieństwo między najbliższym profilem z zewnętrznej bazy a profilem próbki. Wymagany, jeśli schemat to cgMLST i status to tak."
       },
       "missing_allels_value": {
-        "type": "number"
+        "type": "number",
+        "multipleOf": 1,
+        "minimum": 0,
+        "$comment": "Liczba loci dla ktorych nie udalo sie znalezc zadnego znanego allelu, Wymagany, jeśli status to tak."
       },
       "duplicated_allels_value": {
-        "type": "number"
+        "type": "number",
+        "multipleOf": 1,
+        "minimum": 0,
+        "$comment": "Liczba loci dla ktorych udalo sie znalezc wiecej niz jedna pasujaca wersje allelu.  Wymagany, jeśli status to tak."
       },
       "profile_allel_list": {
         "type": "array",
@@ -62,7 +73,8 @@
           "required": [
             "locus_name",
             "locus_allel_id"
-          ]
+          ],
+          "additionalProperties": false
         },
         "$comment": "Lista loci i zidentyfikowanych dla nich alleli dla danego profilu. Wymagany."
       },
@@ -99,7 +111,8 @@
           "required": [
             "level",
             "group_id"
-          ]
+          ],
+          "additionalProperties": false
         },
         "$comment": "Przynależność do grupy profili na podstawie podobieństwa profilu. Obliczany z wykorzystaniem zewnętrznej bazy (Enterobase lub PubMLST). Wymagany, jeśli schemat to cgMLST."
       },
@@ -136,11 +149,13 @@
           "required": [
             "level",
             "group_id"
-          ]
+          ],
+          "additionalProperties": false
         },
         "$comment": "Przynależność do grupy profili na podstawie podobieństwa profilu. Obliczany wewnętrznie w PZH. Opcjonalny."
       },
       "hiercc_historical_data": {
+        "comment": "Informacja w jakich krajach i w jakim roku zidentyfikowano szczepy podobne do czepu zidentyfikowanego w probce. Wymagany jesli schemat to cgMLST.",
         "type": "array",
         "items": {
           "type": "object",
@@ -153,15 +168,17 @@
               ],
               "$comment": "Poziom odcięcia. Szczepy z publicznej bazy, które należą do tej samej grupy na tym poziomie, są analizowane. Wymagany."
             },
-            "data_path": {
+            "data_file": {
               "type": "string",
-              "$comment": "Ścieżka do pliku w formacie CSV, co zawiera plik, opisano w Excelu."
+              "minLength": 1,
+              "$comment": "Ścieżka do pliku w formacie CSV, co zawiera plik, opisano w Excelu.Wymagany."
             }
           },
           "required": [
             "level",
-            "data_path"
-          ]
+            "data_file"
+          ],
+          "additionalProperties": false
         }
       }
     },

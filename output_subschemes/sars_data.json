@@ -13,6 +13,11 @@
       ],
       "$comment": "Informacja czy udalo sie wykonac analize koinfekcji przy pomocy rozwijanej w PZH metodologii. Wymagany."
     },
+    "coinfetion_error_message": {
+      "type": "string",
+      "minLength": 1,
+      "comment": "Dowolny tekst zwracany jako komunikat bledu podczas przewidywania potencjalnych koinfekcji. Wymagany, jesli coinfection_status jest inny niz tak."
+    },
     "coinfection_result": {
       "type": "string",
       "enum": [
@@ -87,7 +92,7 @@
             "minLength": 1,
             "$comment": "Nazwa bialka. Wymagany."
           },
-          "pdb_path": {
+          "pdb_file": {
             "type": "string",
             "minLength": 1,
             "$comment": "Sciezka do pliku tekstowego w formacie PDB ze struktura. Wymagany."
@@ -95,8 +100,9 @@
         },
         "required": [
           "protein_name",
-          "pdb_path"
-        ]
+          "pdb_file"
+        ],
+        "additionalProperties": false
       }
     }
   },
@@ -120,6 +126,11 @@
           "coinfection_result",
           "coinfection_pvalue",
           "coinfection_histogram_file"
+        ]
+      },
+      "else": {
+        "required": [
+          "coinfetion_error_message"
         ]
       }
     },

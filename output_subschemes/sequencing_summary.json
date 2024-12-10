@@ -21,7 +21,8 @@
       },
       "error_message": {
         "type": "string",
-        "$comment": "Dowoln tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
+	"minLength": 1,
+        "$comment": "Dowolny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
       },
       "status": {
         "type": "string",
@@ -35,49 +36,52 @@
       "reads_min_length_value": {
         "type": "number",
         "multipleOf": 1,
-        "$comment": "Dlugosc najkrotszego odczytu zidentyfikowanego w probce. Liczba calkowita. Wymagany."
+        "$comment": "Dlugosc najkrotszego odczytu zidentyfikowanego w probce. Liczba calkowita. Wymagany, jesli status to tak."
       },
       "reads_max_length_value": {
         "type": "number",
         "multipleOf": 1,
-        "$comment": "Dlugosc najdluzszego odczytu zidentyfikowanego w probce. Liczba calkowita. Wymagany."
+        "$comment": "Dlugosc najdluzszego odczytu zidentyfikowanego w probce. Liczba calkowita. Wymagany, jesli status to tak."
       },
-      "position_quality_plot_path": {
+      "position_quality_plot_file": {
         "type": "string",
-        "$comment": "Sciezka do pliku pozwalajacego narysowac wykres obrazujacy srednia jakosc odczytu uzyskana dla odczytow w zaleznosci od ich pozycji w odczycie . Zawartość pliku opisana w dokumentacji. Wymagany "
+        "minLength": 1,
+        "$comment": "Sciezka do pliku pozwalajacego narysowac wykres obrazujacy srednia jakosc odczytu uzyskana dla odczytow w zaleznosci od ich pozycji w odczycie . Zawartość pliku opisana w dokumentacji. Wymagany, jesli status to tak."
       },
       "gc_content_value": {
         "type": "number",
         "multipleOf": 0.01,
-        "$comment": "Procent par GC zidentyfikowany w probce podawana z dokladnoscia do 2 miejsca po przecinku. Wymagany "
+        "$comment": "Procent par GC zidentyfikowany w probce podawana z dokladnoscia do 2 miejsca po przecinku. Wymagany, jesli status to tak."
       },
       "number_of_reads_value": {
         "type": "number",
         "multipleOf": 1,
-        "$comment": "Calkowita liczba odczytow. Wymagany."
+        "$comment": "Calkowita liczba odczytow. Wymagany, jesli status to tak."
       },
       "number_of_bases_value": {
         "type": "number",
         "multipleOf": 1,
-        "$comment": "Calkowita ilosc zasad. Wymagany "
+        "$comment": "Calkowita ilosc zasad. Wymagany, jesli status to tak."
       },
       "reads_median_length_value": {
         "type": "number",
         "multipleOf": 0.01,
-        "$comment": "Mediana dlugosci odczytow. Wymagany "
+        "$comment": "Mediana dlugosci odczytow. Wymagany, jesli status to tak."
       },
-      "reads_length_histogram_path": {
+      "reads_length_histogram_file": {
         "type": "string",
-        "$comment": "Sciezka do pliku pozwalajacego narysowac histogram dlugosci odczytow. Zawartość pliku opisana w dokumentacji. Wymagany "
+        "minLength": 1,
+        "$comment": "Sciezka do pliku pozwalajacego narysowac histogram dlugosci odczytow. Zawartość pliku opisana w dokumentacji. Wymagany, jesli status to tak."
       },
       "reads_median_quality_value": {
         "type": "number",
         "multipleOf": 0.01,
-        "$comment": "Mediana jakosci odczytow w skali PHRED+33. Wymagany "
+        "$comment": "Mediana jakosci odczytow w skali PHRED+33. Wymagany, jesli status to tak."
       },
-      "reads_quality_histogram_path": {
+      "reads_quality_histogram_file": {
         "type": "string",
-        "$comment": "Sciezka do pliku pozwalajacego narysowac histogram jakosci zasad w odczytach. Zawartość pliku opisana w dokumentacji. Wymagany "
+        "minLength": 1,
+        "$comment": "Sciezka do pliku pozwalajacego narysowac histogram jakosci zasad w odczytach. Zawartość pliku opisana w dokumentacji. Wymagany, jesli status to tak."
       }
     },
     "required": [
@@ -85,6 +89,7 @@
       "step_name",
       "status"
     ],
+    "additionalProperties": false,
     "allOf": [
       {
         "if": {
@@ -98,14 +103,14 @@
           "required": [
             "reads_min_length_value",
             "reads_max_length_value",
-            "position_quality_plot_path",
+            "position_quality_plot_file",
             "gc_content_value",
             "number_of_reads_value",
             "number_of_bases_value",
             "reads_median_length_value",
-            "reads_length_histogram_path",
+            "reads_length_histogram_file",
             "reads_median_quality_value",
-            "reads_quality_histogram_path"
+            "reads_quality_histogram_file"
           ]
         },
         "else": {

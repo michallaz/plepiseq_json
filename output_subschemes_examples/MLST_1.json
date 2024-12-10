@@ -57,7 +57,7 @@
     "hiercc_historical_data": [
       {
         "level": "5",
-        "data_path": "/some/path"
+        "data_file": "/some/path"
       }
     ]
   },
