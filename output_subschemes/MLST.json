@@ -170,7 +170,8 @@
               "type": "string",
               "enum": [
                 "5",
-                "20"
+                "20",
+		"25"
               ],
               "$comment": "Poziom odcięcia. Szczepy z publicznej bazy, które należą do tej samej grupy na tym poziomie, są analizowane. Wymagany."
             },
