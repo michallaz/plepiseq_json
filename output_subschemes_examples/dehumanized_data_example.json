@@ -1,0 +1,7 @@
+{
+  "status": "tak",
+  "dehumanized_fastq_file_list": [
+    "/some/path/forward.fastq.gz",
+    "/some/path/reverse.fastq.gz"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output, information regarding Input files that were de-humanized.",
+  "$comment": "Schemat dla outputu, plikow fastq.gz z inputu z ktorych usunieto ludzkie sekwencje",
+  "type": "object",
+  "properties": {
+    "error_message": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "tak",
+        "nie",
+        "blad"
+      ],
+      "$comment": "informacja czy otrzymano pliki dehumanized, niepoliczono, zwrocnono blad. Wymagany."
+    },
+    "dehumanized_fastq_file_list": {
+      "type": "array",
+      "$comment": "Lista sciezek do plikow w formacie fastq.gz pozbawionych odczytow nie mapujacych sie na docelowy origanizm",
+      "items": {
+        "type": "string",
+        "$comment": "Sciezka do pliku .fastq.gz",
+        "pattern": "^.*\\.fastq(.gz)?$"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "dehumanized_fastq_file_list"
+        ]
+      },
+      "else": {
+        "required": [
+          "error_message"
+        ]
+      }
+    }
+  ]
+}

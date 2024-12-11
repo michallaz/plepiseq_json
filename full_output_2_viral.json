@@ -4,10 +4,13 @@
     "pipeline_version": "ver1",
     "ExecutionDir_dir": "/mnt/sda1/michall/RSV/tmp_sars/",
     "timestamp": "2024-10-17T20:25:26",
-    "dehumanized_fastq_data": [
-      "/some/path/forward.fastq.gz",
-      "/some/path/reverse.fastq.gz"
-    ],
+    "dehumanized_data" : {
+      "status": "tak",
+      "dehumanized_fastq_file_list": [
+        "/some/path/forward.fastq.gz",
+        "/some/path/reverse.fastq.gz"
+      ]
+    }, 
     "genome_files_data": {
       "status": "tak",
       "file_data": [

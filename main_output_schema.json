@@ -96,6 +96,10 @@
           "$ref": "output_subschemes/viral_mapping_data.json",
           "$comment": "Podstawowe informacje o mapowaniu odczytow na genom referencyjny. Wymagany jesli pathogen to wirus."
         },
+	"dehumanized_data" : {
+          "$ref": "output_subschemes/dehumanized_data.json",
+          "$comment": "Sciezki do plikow fastq.gz z inputu z ktorych usunieto ludzkie sekwencje. Wymagany jesli pathogen to wirus."
+	},
         "genome_files_data": {
           "type": "object",
           "properties": {
@@ -110,7 +114,7 @@
                 "nie",
                 "blad"
               ],
-              "$comment": "informacja czy policzono profil, niepoliczono, zwrocnono blad. Wymagany."
+              "$comment": "informacja czy zaproponowano genom dla danej probki, niepoliczono, lub zwrocnono blad na tym etapie obliczen. Wymagany."
             },
             "file_data": {
               "type": "array",
@@ -161,16 +165,6 @@
               }
             }
           ]
-        },
-        "dehumanized_fastq_file_list": {
-          "type": "array",
-          "$comment": "Lista sciezek do plikow w formacie fastq.gz pozbawionych odczytow nie mapujacych sie na docelowy origanizm",
-          "items": {
-            "type": "string",
-            "$comment": "Sciezka do pliku .fastq.gz",
-            "pattern": "^.*\\.fastq(.gz)?$"
-          },
-          "minItems": 1
         }
       },
       "required": [
@@ -207,7 +201,7 @@
               "viral_genome_data",
               "viral_classification_data",
               "viral_mutation_data",
-              "dehumanized_fastq_file_list",
+              "dehumanized_data",
               "viral_mapping_data"
             ]
           }
