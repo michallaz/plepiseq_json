@@ -17,8 +17,19 @@
           ],
           "$comment": "Rodzaj wybranego pipeline'u, mamy dwa - bakteryjny lub wirusowy. Wirusowy wymaga podania jednak jako outputu organizmu, Wymagany."
         },
+	"pathogen_predicted_genus": {
+          "type": "string",
+	  "minLength": 1,
+          "$comment": "Informacja o patogenie w probce zidentyfikowanym przez pipeline, nazwa rodzaju. Wymagany dla bakterii."
+        },
+	"pathogen_predicted_species": {
+          "type": "string",
+	  "minLength": 1,
+          "$comment": "Informacja o patogenie w probce zidentyfikowanym przez pipeline, nazwa gatunku. Wymagany dla bakterii."
+        },
         "pipeline_version": {
           "type": "string",
+	  "minLength": 1,
           "$comment": "Informacja o wersji pipeline stosowanego do analizy probki. Wymagany."
         },
         "ExecutionDir_dir": {
@@ -187,6 +198,8 @@
           },
           "then": {
             "required": [
+	      "pathogen_predicted_genus",
+	      "pathogen_predicted_species",
               "mlst_data",
               "drug_resistance_data",
               "bacterial_genome_data",

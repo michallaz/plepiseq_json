@@ -54,7 +54,7 @@
         "group_id": "200"
       }
     ],
-    "hiercc_historical_data": [
+    "external_historical_data": [
       {
         "level": "5",
         "data_file": "/some/path"

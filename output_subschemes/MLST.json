@@ -160,7 +160,7 @@
         },
         "$comment": "Przynależność do grupy profili na podstawie podobieństwa profilu. Obliczany wewnętrznie w PZH. Opcjonalny."
       },
-      "hiercc_historical_data": {
+      "external_historical_data": {
         "comment": "Informacja w jakich krajach i w jakim roku zidentyfikowano szczepy podobne do czepu zidentyfikowanego w probce. Wymagany jesli schemat to cgMLST.",
         "type": "array",
         "items": {
@@ -225,7 +225,7 @@
                   "hiercc_clustering_external_data",
                   "closest_external_profile_id",
                   "closest_external_profile_distance",
-                  "hiercc_historical_data"
+                  "external_historical_data"
                 ]
               }
             }

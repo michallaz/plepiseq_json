@@ -1,6 +1,8 @@
 {
   "output": {
     "pathogen": "bacteria",
+    "pathogen_predicted_genus" : "Salmonella",
+    "pathogen_predicted_species" : "Salmonella enterica",
     "pipeline_version": "some_version_control",
     "timestamp": "2024-10-17T20:25:26",
     "ExecutionDir_dir": "/mnt/sda1/michall/RSV/tmp_sars/",
@@ -73,7 +75,7 @@
             "group_id": "200"
           }
         ],
-        "hiercc_historical_data": [
+        "external_historical_data": [
           {
             "level": "5",
             "data_file": "/some/path"
