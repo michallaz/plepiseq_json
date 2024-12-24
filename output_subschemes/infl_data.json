@@ -41,11 +41,23 @@
             "type": "string",
             "minLength": 1,
             "$comment": "Nazwa podtypu jaki został wybrany jako referencja dla danego segmentu"
+          },
+          "reference_strain_name": {
+            "type": "string",
+            "minLength": 1,
+            "$comment": "Nazwa szczepu ltorego sekwencja byla uzyta do mapowan dla tego segmentu. Wymagany."
+          },
+          "reference_strain_id": {
+            "type": "string",
+            "minLength": 1,
+            "$comment": "Identyfikator szczepu ltorego sekwencja byla uzyta do mapowan dla tego segmentu. Wymagany."
           }
         },
         "required": [
           "segment_name",
-          "reference_subtype_name"
+          "reference_subtype_name",
+          "reference_strain_name",
+          "reference_strain_id"
         ],
         "additionalProperties": false
       }

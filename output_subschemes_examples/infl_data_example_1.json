@@ -4,11 +4,15 @@
   "reference_genome_prediction_data": [
     {
       "segment_name": "chr4_HA",
-      "reference_subtype_name": "H1N1"
+      "reference_subtype_name": "H1N1",
+      "reference_strain_name": "A/Gallus_gallus/Belgium/13357-0001/2022",
+      "reference_strain_id": "EPI_ISL_18953089"
     },
     {
       "segment_name": "chr6_NA",
-      "reference_subtype_name": "H1N1"
+      "reference_subtype_name": "H1N1",
+      "reference_strain_name": "A/Gallus_gallus/Belgium/13357-0001/2022",
+      "reference_strain_id": "EPI_ISL_16549157"
     }
   ],
   "type_name": "A",
