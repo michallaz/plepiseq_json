@@ -71,44 +71,10 @@
       "minimum": 0,
       "maximum": 100,
       "$comment": "Szacowana ilosc materialu genetycznego w probce pochodzacego od drugiej linii ewolucyjnej. Wymagany, jesli freyja_status to tak."
-    },
-    "protein_structure_status": {
-      "type": "string",
-      "enum": [
-        "tak",
-        "nie",
-        "blad"
-      ],
-      "$comment": "Informacja czy udalo sie wykonac przewidywanie struktury wybranych dla SARS-CoV-2 bialek. Wymagany."
-    },
-    "protein_structure_data": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "object",
-        "properties": {
-          "protein_name": {
-            "type": "string",
-            "minLength": 1,
-            "$comment": "Nazwa bialka. Wymagany."
-          },
-          "pdb_file": {
-            "type": "string",
-            "minLength": 1,
-            "$comment": "Sciezka do pliku tekstowego w formacie PDB ze struktura. Wymagany."
-          }
-        },
-        "required": [
-          "protein_name",
-          "pdb_file"
-        ],
-        "additionalProperties": false
-      }
     }
   },
   "required": [
     "coinfection_status",
-    "protein_structure_status",
     "freyja_status"
   ],
   "additionalProperties": false,
@@ -148,20 +114,6 @@
           "freyja_lineage2_name",
           "freyja_lineage1_abundance",
           "freyja_lineage2_abundance"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "protein_structure_status": {
-            "const": "tak"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "protein_structure_data"
         ]
       }
     }

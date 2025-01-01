@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output, structural data",
+  "$comment": "Schemat dla outputu, informacja o lokalizacji zaproponowanych struktur bialek",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "tak",
+        "nie",
+        "blad"
+      ],
+      "$comment": "Informacja czy udalo sie wykonac przewidywanie struktury wybranych dla danego organizmu bialek. Wymagany."
+    },
+    "_error_message": {
+      "type": "string",
+      "minLength": 1,
+      "comment": "Dowolny tekst zwracany jako komunikat bledu podczas przewidywania struktury bialek. Wymagany, jesli status jest inny niz tak."
+    },
+    "protein_structure_data": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "protein_name": {
+            "type": "string",
+            "enum": [
+              "Spike",
+              "HA",
+              "NA",
+              "F",
+              "G"
+            ],
+            "minLength": 1,
+            "$comment": "Nazwa wybraego do analizy bialka. Wymagany."
+          },
+          "pdb_file": {
+            "type": "string",
+            "minLength": 1,
+            "$comment": "Sciezka do pliku tekstowego w formacie PDB ze struktura. Wymagany."
+          }
+        },
+        "required": [
+          "protein_name",
+          "pdb_file"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "protein_structure_data"
+        ]
+      },
+      "else": {
+        "required": [
+          "error_message"
+        ]
+      }
+    }
+  ]
+}

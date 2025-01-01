@@ -17,25 +17,25 @@
           ],
           "$comment": "Rodzaj wybranego pipeline'u, mamy dwa - bakteryjny lub wirusowy. Wirusowy wymaga podania jednak jako outputu organizmu, Wymagany."
         },
-	"pathogen_predicted_genus": {
+        "pathogen_predicted_genus": {
           "type": "string",
-	  "minLength": 1,
+          "minLength": 1,
           "$comment": "Informacja o patogenie w probce zidentyfikowanym przez pipeline, nazwa rodzaju. Wymagany dla bakterii."
         },
-	"pathogen_predicted_species": {
+        "pathogen_predicted_species": {
           "type": "string",
-	  "minLength": 1,
+          "minLength": 1,
           "$comment": "Informacja o patogenie w probce zidentyfikowanym przez pipeline, nazwa gatunku. Wymagany dla bakterii."
         },
         "pipeline_version": {
           "type": "string",
-	  "minLength": 1,
+          "minLength": 1,
           "$comment": "Informacja o wersji pipeline stosowanego do analizy probki. Wymagany."
         },
         "ExecutionDir_dir": {
           "$type": "string",
-	  "minLength": 1,
-	  "pattern": "^\/",
+          "minLength": 1,
+          "pattern": "^\/",
           "$comment": "Absolutna sciezka do katalogu z miejscem uruchomienia pipeline. Wymagany."
         },
         "timestamp": {
@@ -107,10 +107,14 @@
           "$ref": "output_subschemes/viral_mapping_data.json",
           "$comment": "Podstawowe informacje o mapowaniu odczytow na genom referencyjny. Wymagany jesli pathogen to wirus."
         },
-	"dehumanized_data" : {
+        "dehumanized_data": {
           "$ref": "output_subschemes/dehumanized_data.json",
           "$comment": "Sciezki do plikow fastq.gz z inputu z ktorych usunieto ludzkie sekwencje. Wymagany jesli pathogen to wirus."
-	},
+        },
+        "structural_data": {
+          "$ref": "output_subschemes/structural_data.json",
+          "$comment": "informacja o lokalizacji zaproponowanych struktur bialek. Wymagany jesli pathogen to wirus."
+        },
         "genome_files_data": {
           "type": "object",
           "properties": {
@@ -198,8 +202,8 @@
           },
           "then": {
             "required": [
-	      "pathogen_predicted_genus",
-	      "pathogen_predicted_species",
+              "pathogen_predicted_genus",
+              "pathogen_predicted_species",
               "mlst_data",
               "drug_resistance_data",
               "bacterial_genome_data",
@@ -215,7 +219,8 @@
               "viral_classification_data",
               "viral_mutation_data",
               "dehumanized_data",
-              "viral_mapping_data"
+              "viral_mapping_data",
+              "structural_data"
             ]
           }
         },

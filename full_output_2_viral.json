@@ -4,13 +4,13 @@
     "pipeline_version": "ver1",
     "ExecutionDir_dir": "/mnt/sda1/michall/RSV/tmp_sars/",
     "timestamp": "2024-10-17T20:25:26",
-    "dehumanized_data" : {
+    "dehumanized_data": {
       "status": "tak",
       "dehumanized_fastq_file_list": [
         "/some/path/forward.fastq.gz",
         "/some/path/reverse.fastq.gz"
       ]
-    }, 
+    },
     "genome_files_data": {
       "status": "tak",
       "file_data": [
@@ -62,33 +62,32 @@
       }
     ],
     "viral_genome_data": {
-     "status": "tak",
-  "total_length_value": 1234,
-  "average_coverage_value": 100.34,
-  "number_of_Ns_value": 34,
-  "coverage_histogram_file": "/path/to/a/file",
-
-  "coverage_barplot_data": [
-    {
-      "segment_name": "MN09345",
-      "segment_file": "/path/to/a/file"
-    }
-  ],
-  "primer_usage_data": [
-    {
-      "segment_name": "chr4_HA",
-      "primer_data": [
+      "status": "tak",
+      "total_length_value": 1234,
+      "average_coverage_value": 100.34,
+      "number_of_Ns_value": 34,
+      "coverage_histogram_file": "/path/to/a/file",
+      "coverage_barplot_data": [
         {
-          "primer_name": "Primer1",
-          "primer_usage": 10
-        },
+          "segment_name": "MN09345",
+          "segment_file": "/path/to/a/file"
+        }
+      ],
+      "primer_usage_data": [
         {
-          "primer_name": "Primer1",
-          "primer_usage": 10
+          "segment_name": "chr4_HA",
+          "primer_data": [
+            {
+              "primer_name": "Primer1",
+              "primer_usage": 10
+            },
+            {
+              "primer_name": "Primer1",
+              "primer_usage": 10
+            }
+          ]
         }
       ]
-    }
-  ]
     },
     "viral_classification_data": [
       {
@@ -147,6 +146,19 @@
         "mutation_usage_value": 86.82
       }
     ],
+    "structural_data": {
+      "status": "tak",
+      "protein_structure_data": [
+        {
+          "protein_name": "Spike",
+          "pdb_file": "/Some/path/to.pdb"
+        },
+        {
+          "protein_name": "HA",
+          "pdb_file": "/Someother/path/to.pdb"
+        }
+      ]
+    },
     "sars_data": {
       "coinfection_status": "tak",
       "coinfection_result": "tak",
@@ -156,14 +168,7 @@
       "freyja_lineage1_name": "O",
       "freyja_lineage2_name": "Delta",
       "freyja_lineage1_abundance": 90,
-      "freyja_lineage2_abundance": 10.24,
-      "protein_structure_status": "tak",
-      "protein_structure_data": [
-        {
-          "protein_name": "Spike",
-          "pdb_file": "/Some/path/to.pdb"
-        }
-      ]
+      "freyja_lineage2_abundance": 10.24
     }
   }
 }

@@ -1,0 +1,13 @@
+{
+  "status": "tak",
+  "protein_structure_data": [
+    {
+      "protein_name": "Spike",
+      "pdb_file": "/Some/path/to.pdb"
+    },
+    {
+      "protein_name": "HA",
+      "pdb_file": "/Someother/path/to.pdb"
+    }
+  ]
+}

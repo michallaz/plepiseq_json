@@ -7,12 +7,5 @@
   "freyja_lineage1_name": "O",
   "freyja_lineage2_name": "Delta",
   "freyja_lineage1_abundance": 90,
-  "freyja_lineage2_abundance": 10.24,
-  "protein_structure_status": "tak",
-  "protein_structure_data": [
-    {
-      "protein_name": "Spike",
-      "pdb_file": "/Some/path/to.pdb"
-    }
-  ]
+  "freyja_lineage2_abundance": 10.24
 }
