@@ -13,7 +13,7 @@
       ],
       "$comment": "Informacja czy udalo sie wykonac przewidywanie struktury wybranych dla danego organizmu bialek. Wymagany."
     },
-    "_error_message": {
+    "error_message": {
       "type": "string",
       "minLength": 1,
       "comment": "Dowolny tekst zwracany jako komunikat bledu podczas przewidywania struktury bialek. Wymagany, jesli status jest inny niz tak."
