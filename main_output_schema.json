@@ -113,7 +113,7 @@
         },
         "structural_data": {
           "$ref": "output_subschemes/structural_data.json",
-          "$comment": "informacja o lokalizacji zaproponowanych struktur bialek. Wymagany jesli pathogen to wirus."
+          "$comment": "informacja o lokalizacji zaproponowanych struktur bialek. Wymagany."
         },
         "genome_files_data": {
           "type": "object",
@@ -189,7 +189,8 @@
         "genome_files_data",
         "contamination_data",
         "sequencing_summary_data",
-        "ExecutionDir_dir"
+        "ExecutionDir_dir",
+	"structural_data"
       ],
       "allOf": [
         {
@@ -219,8 +220,7 @@
               "viral_classification_data",
               "viral_mutation_data",
               "dehumanized_data",
-              "viral_mapping_data",
-              "structural_data"
+              "viral_mapping_data"
             ]
           }
         },

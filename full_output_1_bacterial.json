@@ -19,6 +19,15 @@
         }
       ]
     },
+    "structural_data": {
+      "status": "tak",
+      "protein_structure_data": [
+        {
+          "protein_name": "Gyrase",
+          "pdb_file": "/Some/path/to.pdb"
+        }
+      ]
+    },
     "mlst_data": [
       {
         "scheme_name": "MLST",
