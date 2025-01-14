@@ -31,7 +31,8 @@
               "HA",
               "NA",
               "F",
-              "G"
+              "G",
+	      "Gyrase"
             ],
             "minLength": 1,
             "$comment": "Nazwa wybraego do analizy bialka. Wymagany."
