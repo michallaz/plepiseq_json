@@ -166,7 +166,7 @@
       "coinfection_histogram_file": "/some/path"
     },
     "freyja_data": {
-      "freyja_status": "tak",
+      "status": "tak",
       "freyja_lineage1_name": "O",
       "freyja_lineage2_name": "Delta",
       "freyja_lineage1_abundance": 90,
