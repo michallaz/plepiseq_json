@@ -3,6 +3,7 @@
   "title": "Subschema for plepiseq output, statistic information regarding BACTERIAL genome proposed at various steps of a pipeline.",
   "$comment": "Schemat dla outputu, statystyczne informacja o genomach bakteryjnych poropnowanych na roznych etapach pipeline.",
   "type": "array",
+  "minItems": 1,
   "items": {
     "type": "object",
     "properties": {

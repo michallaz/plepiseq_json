@@ -22,6 +22,7 @@
     },
     "spi_data": {
       "type": "array",
+      "minItems": 0,
       "items": {
         "type": "object",
         "properties": {

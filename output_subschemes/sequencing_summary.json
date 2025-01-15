@@ -3,6 +3,7 @@
   "title": "Subschema for plepiseq output, statistic information regarding reads.",
   "$comment": "Schemat dla outputu, statystyczne informacja o odczytach.",
   "type": "array",
+  "minItems": 1,
   "items": {
     "type": "object",
     "properties": {

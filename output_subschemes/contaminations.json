@@ -3,6 +3,7 @@
   "title": "Schemat dla outputu plepiseq, podsumowanie danych dotyczacych zanieczyszczen",
   "$comment": "Schemat dla outputu, podsumowanie wynikow predykcji zanieczyszczen.",
   "type": "array",
+  "minItems": 1,
   "items": {
     "type": "object",
     "properties": {

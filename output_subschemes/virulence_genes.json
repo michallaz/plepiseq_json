@@ -3,6 +3,7 @@
   "title": "Subschema for plepiseq output, summary of predicted virulence genes.",
   "$comment": "Schemat dla outputu, Podsumowanie predykcji genów wirulencji.",
   "type": "array",
+  "minItems": 1,
   "items": {
     "type": "object",
     "properties": {
@@ -30,6 +31,7 @@
       },
       "patotpye_data": {
         "type": "array",
+	"minItems": 0,
         "items": {
           "type": "object",
           "properties": {
@@ -50,6 +52,7 @@
       },
       "virulence_genes_data": {
         "type": "array",
+	"minItems": 0,
         "items": {
           "type": "object",
           "properties": {

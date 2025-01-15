@@ -3,6 +3,7 @@
   "title": "Subschema for plepiseq output, MLST related data",
   "$comment": "Schemat dla outputu, Podsumowanie typowania w oparciu o dany schemat. Aktualnie do wyboru MLST lub cgMLST.",
   "type": "array",
+  "minItems": 1,
   "items": {
     "type": "object",
     "properties": {
@@ -58,6 +59,7 @@
       },
       "profile_allel_list": {
         "type": "array",
+	"minItems": 1,
         "items": {
           "type": "object",
           "properties": {
@@ -81,6 +83,7 @@
       },
       "hiercc_clustering_external_data": {
         "type": "array",
+	"minItems": 1,
         "items": {
           "type": "object",
           "properties": {
@@ -123,6 +126,7 @@
       },
       "hiercc_clustering_internal_data": {
         "type": "array",
+	"minItems": 1,
         "items": {
           "type": "object",
           "properties": {
@@ -166,6 +170,7 @@
       "external_historical_data": {
         "comment": "Informacja w jakich krajach i w jakim roku zidentyfikowano szczepy podobne do czepu zidentyfikowanego w probce. Wymagany jesli schemat to cgMLST.",
         "type": "array",
+	"minItems": 0,
         "items": {
           "type": "object",
           "properties": {
