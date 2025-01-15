@@ -90,39 +90,6 @@
       ],
       "$comment": "Informacja o podtypie wirusa grypy zidentyfikowanego w próbce. Wymagany, jeśli reference_genome_prediction_status to tak."
     },
-    "protein_structure_status": {
-      "type": "string",
-      "enum": [
-        "tak",
-        "nie",
-        "blad"
-      ],
-      "$comment": "Informacja czy dla próbki przewidywano strukturę białek. Wymagany."
-    },
-    "protein_structure_data": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "object",
-        "properties": {
-          "protein_name": {
-            "type": "string",
-            "minLength": 1,
-            "$comment": "Nazwa białka. Wymagany."
-          },
-          "pdb_file": {
-            "type": "string",
-            "minLength": 1,
-            "$comment": "Ścieżka do pliku tekstowego w formacie PDB ze strukturą. Wymagany."
-          }
-        },
-        "required": [
-          "protein_name",
-          "pdb_file"
-        ],
-        "additionalProperties": false
-      }
-    },
     "resistance_status": {
       "type": "string",
       "enum": [
@@ -239,7 +206,6 @@
   },
   "required": [
     "reference_genome_prediction_status",
-    "protein_structure_status",
     "resistance_status"
   ],
   "additionalProperties": false,
@@ -263,20 +229,6 @@
       "else": {
         "required": [
           "reference_genome_prediction_error_message"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "protein_structure_status": {
-            "const": "tak"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "protein_structure_data"
         ]
       }
     },

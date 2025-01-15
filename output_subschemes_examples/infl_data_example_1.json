@@ -17,14 +17,7 @@
   ],
   "type_name": "A",
   "subtype_name": "H5N1",
-  "protein_structure_status": "tak",
   "resistance_status": "tak",
-  "protein_structure_data": [
-    {
-      "protein_name": "HA",
-      "pdb_file": "/path/to/some.pdb"
-    }
-  ],
   "resistance_data": [
     {
       "drug_name": "Oseltamivir",
