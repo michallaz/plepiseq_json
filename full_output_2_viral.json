@@ -163,7 +163,9 @@
       "coinfection_status": "tak",
       "coinfection_result": "tak",
       "coinfection_pvalue": 0.64,
-      "coinfection_histogram_file": "/some/path",
+      "coinfection_histogram_file": "/some/path"
+    },
+    "freyja_data": {
       "freyja_status": "tak",
       "freyja_lineage1_name": "O",
       "freyja_lineage2_name": "Delta",

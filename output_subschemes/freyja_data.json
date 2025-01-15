@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subschema for plepiseq output, freyja produced data",
+  "$comment": "Schemat dla outputu, informacja o wystepowaniu koinfekcji dwoma wirusami z tego samego gatunku",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "tak",
+        "nie",
+        "blad"
+      ],
+      "$comment": "Informacja czy udalo sie wykonac przewidywanie struktury wybranych dla danego organizmu bialek. Wymagany."
+    },
+    "error_message": {
+      "type": "string",
+      "minLength": 1,
+      "comment": "Dowolny tekst zwracany jako komunikat bledu podczas przewidywania koinfekcji programem freyja. Wymagany, jesli status jest inny niz tak."
+    },
+    "freyja_lineage1_name": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Glowna linia ewolucyjna zidentyfikowana w probce. Wymagany, jesli freyja_status to tak."
+    },
+    "freyja_lineage2_name": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "Druga linia ewolucyjna zidentyfikowana w probce. Wymagany, jesli freyja_status to tak."
+    },
+    "freyja_lineage1_abundance": {
+      "type": "number",
+      "multipleOf": 0.01,
+      "minimum": 0,
+      "maximum": 100,
+      "$comment": "Szacowana ilosc materialu genetycznego w probce pochodzacego od pierwszej linii ewolucyjnej. Wymagany, jesli freyja_status to tak."
+    },
+    "freyja_lineage2_abundance": {
+      "type": "number",
+      "multipleOf": 0.01,
+      "minimum": 0,
+      "maximum": 100,
+      "$comment": "Szacowana ilosc materialu genetycznego w probce pochodzacego od drugiej linii ewolucyjnej. Wymagany, jesli freyja_status to tak."
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "tak"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "freyja_lineage1_name",
+          "freyja_lineage2_name",
+          "freyja_lineage1_abundance",
+          "freyja_lineage2_abundance"
+        ]
+      },
+      "else": {
+        "required": [
+          "error_message"
+        ]
+      }
+    }
+  ]
+}

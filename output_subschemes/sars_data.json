@@ -38,44 +38,10 @@
       "type": "string",
       "minLength": 1,
       "$comment": "Sciezka do pliku zawierajcym dane niezbedne do narysowania histogramu uzycia alternatywnego allelu w probce. Wymagany jesli coinfections_status to tak."
-    },
-    "freyja_status": {
-      "type": "string",
-      "enum": [
-        "tak",
-        "nie",
-        "blad"
-      ],
-      "$comment": "Informacja czy udalo sie wykonac analize koinfekcji przy pomocy programu freyja. Wymagany."
-    },
-    "freyja_lineage1_name": {
-      "type": "string",
-      "minLength": 1,
-      "$comment": "Glowna linia ewolucyjna zidentyfikowana w probce. Wymagany, jesli freyja_status to tak."
-    },
-    "freyja_lineage2_name": {
-      "type": "string",
-      "minLength": 1,
-      "$comment": "Druga linia ewolucyjna zidentyfikowana w probce. Wymagany, jesli freyja_status to tak."
-    },
-    "freyja_lineage1_abundance": {
-      "type": "number",
-      "multipleOf": 0.01,
-      "minimum": 0,
-      "maximum": 100,
-      "$comment": "Szacowana ilosc materialu genetycznego w probce pochodzacego od pierwszej linii ewolucyjnej. Wymagany, jesli freyja_status to tak."
-    },
-    "freyja_lineage2_abundance": {
-      "type": "number",
-      "multipleOf": 0.01,
-      "minimum": 0,
-      "maximum": 100,
-      "$comment": "Szacowana ilosc materialu genetycznego w probce pochodzacego od drugiej linii ewolucyjnej. Wymagany, jesli freyja_status to tak."
     }
   },
   "required": [
-    "coinfection_status",
-    "freyja_status"
+    "coinfection_status"
   ],
   "additionalProperties": false,
   "allOf": [
@@ -97,23 +63,6 @@
       "else": {
         "required": [
           "coinfetion_error_message"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "freyja_status": {
-            "const": "tak"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "freyja_lineage1_name",
-          "freyja_lineage2_name",
-          "freyja_lineage1_abundance",
-          "freyja_lineage2_abundance"
         ]
       }
     }

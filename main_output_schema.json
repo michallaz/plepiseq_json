@@ -115,6 +115,10 @@
           "$ref": "output_subschemes/structural_data.json",
           "$comment": "informacja o lokalizacji zaproponowanych struktur bialek. Wymagany."
         },
+	"freyja_data": {
+          "$ref": "output_subschemes/freyja_data.json",
+          "$comment": "Informacja o wystepowaniu potencjalnych koinfekcji dwoma wirusami z tego samego gatunku. Wymagany jesli pathogen to wirus."
+        },
         "genome_files_data": {
           "type": "object",
           "properties": {
@@ -220,7 +224,8 @@
               "viral_classification_data",
               "viral_mutation_data",
               "dehumanized_data",
-              "viral_mapping_data"
+              "viral_mapping_data",
+	      "freyja_data"
             ]
           }
         },
