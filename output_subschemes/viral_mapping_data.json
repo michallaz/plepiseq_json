@@ -3,6 +3,7 @@
   "properties": {
     "error_message": {
       "type": "string",
+      "minLength": 1,
       "$comment": "Dowlny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to Blad"
     },
     "status": {

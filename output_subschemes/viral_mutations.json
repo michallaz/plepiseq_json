@@ -35,6 +35,7 @@
       },
       "mutation_effect": {
         "type": "string",
+	"minLength": 1,
         "$comment": "Efekt mutacji na strukture bialka, jesli wystepuje. Wymagany.",
         "examples": [
           "p.Phe924Phe",
@@ -43,6 +44,7 @@
       },
       "mutation_type_name": {
         "type": "string",
+	"minLength": 1,
         "$comment": "Typ mutacji, missense, synonymous, frameshift itd. Enum do zaimplementowania. Wymagany."
       },
       "mutation_coverage_value": {

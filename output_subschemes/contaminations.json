@@ -17,6 +17,7 @@
       },
       "error_message": {
         "type": "string",
+	"minLength": 1,
         "$comment": "Dowolny tekst zwracany jako komunikat bledu podczas obliczen. Wymagany, jesli status to blad."
       },
       "status": {

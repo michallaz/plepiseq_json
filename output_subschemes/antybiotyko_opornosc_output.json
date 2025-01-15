@@ -25,6 +25,7 @@
       },
       "error_message": {
         "type": "string",
+	"minLength": 1,
         "$comment": "Any error message returned during profile calculation. Required if status is not tak."
       },
       "program_data": {
@@ -34,6 +35,7 @@
           "properties": {
             "antibiotic_name": {
               "type": "string",
+	      "minLength": 1,
               "$comment": "Antibiotic name (based on Tomek's document). Required."
             },
             "antibiotic_status": {
@@ -52,14 +54,17 @@
                 "properties": {
                   "factor_name": {
                     "type": "string",
+		    "minLength": 1,
                     "$comment": "Name of the factor causing resistance. Required."
                   },
                   "factor_contig_name": {
                     "type": "string",
+		    "minLength": 1,
                     "$comment": "Name of the contig where the factor was identified. Required."
                   },
                   "factor_mutation": {
                     "type": "string",
+		    "minLength": 1,
                     "$comment": "Name of the mutation causing resistance. Required if factor_type_name is 'mutacja_punktowa'."
                   },
                   "factor_sequence_similarity_to_reference_value": {
@@ -76,6 +81,7 @@
                   },
                   "factor_reference_name": {
                     "type": "string",
+		    "minLength": 1,
                     "$comment": "Name of the reference factor. Required if factor_type_name is 'gen'."
                   },
                   "factor_type_name": {
