@@ -302,6 +302,11 @@
         "error_message": "Some text"
       }
     ],
+    "prokka_data": {
+      "status": "tak",
+      "prokka_gff": "/path/to/file1",
+      "prokka_ffn": "/path/to/file2"
+    },
     "virulence_islands_data": {
       "status": "tak",
       "spi_data": [
