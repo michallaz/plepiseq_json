@@ -1,0 +1,5 @@
+{
+  "status": "tak",
+  "prokka_gff": "/path/to/file1",
+  "prokka_ffn": "/path/to/file2"
+}

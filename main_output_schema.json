@@ -119,6 +119,10 @@
           "$ref": "output_subschemes/freyja_data.json",
           "$comment": "Informacja o wystepowaniu potencjalnych koinfekcji dwoma wirusami z tego samego gatunku. Wymagany jesli pathogen to wirus."
         },
+	"prokka_data": {
+	  "$ref": "output_subschemes/prokka_out.json",
+          "$comment": "Sciezki do plikow zwracanych przez program prokka. Wymagany, jesli pathogen to bakteria."
+	},
         "genome_files_data": {
           "type": "object",
           "properties": {
@@ -217,7 +221,8 @@
               "plasmids_data",
               "antigenic_data",
               "virulence_genes_data",
-              "virulence_islands_data"
+              "virulence_islands_data",
+	      "prokka_data"
             ]
           },
           "else": {
