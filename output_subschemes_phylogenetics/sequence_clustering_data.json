@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/michallaz/plepiseq_json/main/output_subschemes_phylogenetics/sequence_clustering_data.json",
+  "type": "array",
+  "description": "Wyniki klastrowania sekwencji (jedna pozycja na klaster).",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id_representative": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^\\S+$",
+        "description": "Sekwencja reprezentująca klaster.",
+        "$comment": "Dowolny niepusty identyfikator bez spacji."
+      },
+      "id_members": {
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^\\S+$",
+          "description": "Id sekwencji należącej do klastra."
+        },
+        "description": "Lista identyfikatorów sekwencji należących do klastra (WLICZAJĄC przedstawiciela).",
+        "$comment": "Standardowy JSON Schema nie wymusi zawierania id_representative w tej liście; sprawdź to w kodzie lub użyj rozszerzeń walidatora."
+      },
+      "clutering_threshold_value": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "description": "Minimalna identyczność sekwencyjna sekwencji w klastrze.",
+        "examples": [1.0, 0.999, 0.95]
+      }
+    },
+    "required": ["id_representative", "id_members", "clutering_threshold_value"],
+    "additionalProperties": false
+  }
+}
+

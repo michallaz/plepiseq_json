@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/michallaz/plepiseq_json/main/output_subschemes_phylogenetics/chronogram_data.json",
+  "type": "object",
+  "properties": {
+    "id_filogram": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^\\S+$",
+        "description": "ID sekwencji użytej do tworzenia chronogramu."
+      },
+      "description": "Lista ID sekwencji użytych do tworzenia chronogramu.",
+      "$comment": "Używane są wszystkie sekwencje spełniające QC (także duplikaty) — celowo NIE ustawiamy uniqueItems:true."
+    },
+    "program_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Nazwa programu używanego do liczenia drzewa czasowego."
+    },
+    "program_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Wersja programu używana do liczenia chronogramu."
+    },
+    "clockrate_value": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Rzeczywista wartość parametru clockrate.",
+      "examples": [0.0008, 5e-4],
+      "$comment": "Priorytet: (1) wartość od użytkownika; (2) estymacja z danych przy silnym sygnale; (3) fallback do progów zdefiniowanych przez nas przy słabym sygnale."
+    },
+    "clockrate_correlation": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Korelacja między sygnałem temporalnym a genetycznym w danych.",
+      "examples": [0.82, 0.35],
+      "$comment": "Zakres 0–1. Niska korelacja → niezalecane używanie clockrate estymowanego z danych."
+    }
+  },
+  "required": [
+    "id_filogram",
+    "program_name",
+    "program_version",
+    "clockrate_value",
+    "clockrate_correlation"
+  ],
+  "additionalProperties": false
+}
+
