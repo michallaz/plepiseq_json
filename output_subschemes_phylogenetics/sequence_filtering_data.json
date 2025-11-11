@@ -12,6 +12,12 @@
         "description": "Identyfikator sekwencji.",
         "$comment": "Dowolny niepusty ciąg znaków."
       },
+      "segment_name": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Identyfikator segmentu.",
+        "$comment": "Dowolny niepusty ciag znakow, w przypadku bakterii identyczny z id."
+      },
       "number_of_N": {
         "type": "integer",
         "minimum": 0,
@@ -36,7 +42,7 @@
         "$comment": "Wymagany, gdy status='nie'."
       }
     },
-    "required": ["id", "number_of_N", "number_of_ambigous", "status"],
+    "required": ["id", "segment_name", "number_of_N", "number_of_ambigous", "status"],
     "additionalProperties": false,
     "allOf": [
       {
