@@ -84,11 +84,13 @@
     "threshold_Ns": {
       "type": "number",
       "minimum": 0,
+      "maximum" : 1,
       "description": "Maksymalna dozwolona liczba N w sekwencji (QC)."
     },
-    "threshold_ambiguites": {
+    "threshold_ambiguities": {
       "type": "number",
       "minimum": 0,
+      "maximum": 1,
       "description": "Maksymalna dozwolona liczba znaków innych niż A,T,G,C,N (QC)."
     },
 
@@ -98,7 +100,7 @@
       "description": "Poziom szczegółowości lokalizacji dla znaczników na mapie w Microreact."
     },
 
-    "phylogentic_model": {
+    "phylogenetic_model": {
       "type": "string",
       "minLength": 1,
       "description": "Model używany do predykcji filogramu."
@@ -158,9 +160,9 @@
     "input_metadata",
     "results_dir",
     "threshold_Ns",
-    "threshold_ambiguites",
+    "threshold_ambiguities",
     "map_detail",
-    "phylogentic_model",
+    "phylogenetic_model",
     "phylogenetic_bootstrap",
     "min_support",
     "starting_trees",
