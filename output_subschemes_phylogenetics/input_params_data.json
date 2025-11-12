@@ -2,14 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/michallaz/plepiseq_json/main/output_subschemes_phylogenetics/input_params_data.json",
   "type": "object",
-
   "$defs": {
     "bacterialPathogens": {
-      "enum": ["salmonella", "escherichia", "campylobacter"]
+      "enum": [
+        "salmonella",
+        "escherichia",
+        "campylobacter"
+      ]
     },
     "relPathFileOrDir": {
       "type": "string",
-      "pattern": "^(\\./)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+/?$",
+      "pattern": "^(/)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+/?$",
       "$comment": "Ścieżka względna względem ExecutionDir_dir; nie zaczyna się od '/'."
     },
     "anyPosixPathFileOrDir": {
@@ -34,11 +37,17 @@
       "$comment": "YYYY-MM-DD HH:MM; spójne z output.execution_time."
     }
   },
-
   "properties": {
     "pathogen": {
       "type": "string",
-      "enum": ["sars-cov-2", "rsv", "influenza", "salmonella", "escherichia", "campylobacter"],
+      "enum": [
+        "sars-cov-2",
+        "rsv",
+        "influenza",
+        "Salmonella",
+        "Escherichia",
+        "Campylobacter"
+      ],
       "description": "Nazwa gatunku podana przez użytkownika.",
       "$comment": "Powinna być spójna z output.pathogen."
     },
@@ -62,29 +71,34 @@
       "description": "Wersja pipeline'u.",
       "$comment": "Spójne z output.pipeline_version."
     },
-
     "input_data": {
       "$ref": "#/$defs/anyPosixPathFileOrDir",
-      "examples": ["/data/wgs/", "./input/", "metadata/sequences/"],
+      "examples": [
+        "/data/wgs/",
+        "./input/",
+        "metadata/sequences/"
+      ],
       "description": "Ścieżka do katalogu z plikami FASTA/GFF wskazana przez użytkownika.",
       "$comment": "Dawniej 'input_fasta'. Nie jest zależna od ExecutionDir_dir."
     },
     "input_metadata": {
       "$ref": "#/$defs/anyPosixPathFileOrDir",
-      "examples": ["/data/metadata.tsv", "./meta/metadata.csv", "metadata.json"],
+      "examples": [
+        "/data/metadata.tsv",
+        "./meta/metadata.csv",
+        "metadata.json"
+      ],
       "description": "Ścieżka do pliku metadanych wymaganych do uruchomienia programu.",
       "$comment": "Nie jest zależna od ExecutionDir_dir."
     },
     "results_dir": {
-      "$ref": "#/$defs/relPathFileOrDir",
-      "examples": ["wyniki/", "out/runA/", "./results/"],
-      "description": "Ścieżka (względna do ExecutionDir_dir) gdzie program zapisuje wyniki."
+      "$ref": "#/$defs/anyPosixPathFileOrDir",
+      "description": "Ścieżka gdzie program zapisuje wyniki."
     },
-
     "threshold_Ns": {
       "type": "number",
       "minimum": 0,
-      "maximum" : 1,
+      "maximum": 1,
       "description": "Maksymalna dozwolona liczba N w sekwencji (QC)."
     },
     "threshold_ambiguities": {
@@ -93,13 +107,14 @@
       "maximum": 1,
       "description": "Maksymalna dozwolona liczba znaków innych niż A,T,G,C,N (QC)."
     },
-
     "map_detail": {
       "type": "string",
-      "enum": ["city", "country"],
+      "enum": [
+        "city",
+        "country"
+      ],
       "description": "Poziom szczegółowości lokalizacji dla znaczników na mapie w Microreact."
     },
-
     "phylogenetic_model": {
       "type": "string",
       "minLength": 1,
@@ -110,38 +125,41 @@
       "minimum": 1,
       "description": "Liczba replik bootstrap do oceny wsparcia filogramu."
     },
-    "min_support": {
-      "type": "integer",
+    "phylogenetic_min_support": {
+      "type": "number",
       "minimum": 0,
-      "description": "Minimalna wartość wsparcia; gałęzie poniżej progu są zwijane."
+      "maximum": 100,
+      "description": "Minimalna wartość wsparcia; gałęzie poniżej progu są zwijane. "
     },
-    "starting_trees": {
+    "phylogenetic_starting_trees": {
       "type": "integer",
       "minimum": 1,
       "description": "Liczba drzew startowych użytych przy estymacji filogramu."
     },
     "clockrate": {
-      "type": "number",
-      "exclusiveMinimum": 0,
+      "oneOf": [
+        {
+          "type": "number",
+          "description": "Any number is allowed"
+        },
+        {
+          "type": "string",
+          "description": "Can be empty"
+        }
+      ],
       "description": "Tempo ewolucji (clockrate) dla danego organizmu."
     },
-
     "input_ids": {
-      "type": "array",
+      "type": "string",
       "minItems": 1,
-      "uniqueItems": true,
-      "items": {
-        "type": "string",
-        "minLength": 1,
-        "pattern": "^[^\\s]+$",
-        "description": "ID próbki bez spacji."
-      },
       "description": "Lista wszystkich ID próbek przekazanych w metadanych."
     },
-
     "input_type_bacteria": {
       "type": "string",
-      "enum": ["fasta", "gff"],
+      "enum": [
+        "fasta",
+        "gff"
+      ],
       "description": "Typ danych wejściowych (tylko dla bakterii)."
     },
     "prokka_image": {
@@ -149,7 +167,6 @@
       "description": "Nazwa obrazu Docker z programem prokka (tylko dla bakterii)."
     }
   },
-
   "required": [
     "pathogen",
     "subcategory_organism",
@@ -164,24 +181,30 @@
     "map_detail",
     "phylogenetic_model",
     "phylogenetic_bootstrap",
-    "min_support",
-    "starting_trees",
+    "phylogenetic_min_support",
+    "phylogenetic_starting_trees",
     "clockrate",
     "input_ids"
   ],
-
   "allOf": [
     {
       "if": {
-        "properties": { "pathogen": { "$ref": "#/$defs/bacterialPathogens" } },
-        "required": ["pathogen"]
+        "properties": {
+          "pathogen": {
+            "$ref": "#/$defs/bacterialPathogens"
+          }
+        },
+        "required": [
+          "pathogen"
+        ]
       },
       "then": {
-        "required": ["input_type_bacteria", "prokka_image"]
+        "required": [
+          "input_type_bacteria",
+          "prokka_image"
+        ]
       }
     }
   ],
-
   "additionalProperties": false
 }
-
