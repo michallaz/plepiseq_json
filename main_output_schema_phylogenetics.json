@@ -46,7 +46,7 @@
           "description": "Bezwzględna lub względna ścieżka, gdzie uruchomiono pipeline. Wszystkie pozostałe ścieżki są względne do tego katalogu.",
           "$comment": "Musi zawierać co najmniej jeden ukośnik '/'."
         },
-        "execution_time": {
+        "data_uruchomienia": {
           "type": "string",
           "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])\\s(0\\d|1\\d|2[0-3]):[0-5]\\d$",
           "examples": [
@@ -69,36 +69,51 @@
         },
 
         "filogram_nwk": {
-          "type": "string",
-          "minLength": 5,
-          "pattern": "^(\\./)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.nwk$",
-          "examples": ["analizy/filogramy/drzewo.nwk","wyniki/tree.nwk","tree.nwk","./tree.nwk"],
-          "description": "Ścieżka względna (względem ExecutionDir_dir) do pliku w formacie Newick (*.nwk) z filogramem.",
+          "type": "object",
+          "description": "Mapa: nazwa segmentu → ścieżka względna do pliku Newick (*.nwk) z filogramem (względem ExecutionDir_dir).",
+          "minProperties": 1,
+          "patternProperties": {
+            "^\\S+$": {
+              "type": "string",
+              "minLength": 5,
+              "pattern": "^(\\./)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.nwk$",
+              "examples": ["analizy/filogramy/drzewo.nwk","wyniki/tree.nwk","tree.nwk","./tree.nwk"]
+            }
+          },
+          "additionalProperties": false,
           "$comment": "Nie może zaczynać się od '/', musi kończyć się na '.nwk'."
         },
+
         "microreact_json": {
-          "type": "string",
-          "minLength": 6,
-          "pattern": "^(\\./)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.json$",
-          "examples": ["microreact/wejscie.json","viz/microreact.json","./microreact.json"],
-          "description": "Ścieżka względna (względem ExecutionDir_dir) do pliku JSON używanego jako wejście do wizualizatora Microreact.",
+          "type": "object",
+          "description": "Mapa: nazwa segmentu → ścieżka względna do pliku JSON wejściowego dla Microreact (względem ExecutionDir_dir).",
+          "minProperties": 1,
+          "patternProperties": {
+            "^\\S+$": {
+              "type": "string",
+              "minLength": 6,
+              "pattern": "^(\\./)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.json$",
+              "examples": ["microreact/wejscie.json","viz/microreact.json","./microreact.json"]
+            }
+          },
+          "additionalProperties": false,
           "$comment": "Nie zaczyna się od '/', musi kończyć się na '.json'."
         },
+
         "chronogram_nwk": {
-          "type": "string",
-          "minLength": 5,
-          "pattern": "^(\\./)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.nwk$",
-          "examples": ["drzewa/chronogram.nwk","wyniki/chronogram.nwk","chronogram.nwk"],
-          "description": "Ścieżka względna (względem ExecutionDir_dir) do pliku Newick (*.nwk) z chronogramem (drzewo skalowane w czasie).",
+          "type": "object",
+          "description": "Mapa: nazwa segmentu → ścieżka względna do pliku Newick (*.nwk) z chronogramem (względem ExecutionDir_dir).",
+          "minProperties": 1,
+          "patternProperties": {
+            "^\\S+$": {
+              "type": "string",
+              "minLength": 5,
+              "pattern": "^(\\./)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.nwk$",
+              "examples": ["drzewa/chronogram.nwk","wyniki/chronogram.nwk","chronogram.nwk"]
+            }
+          },
+          "additionalProperties": false,
           "$comment": "Plik Newick z chronogramem utworzonym na podstawie klasycznego drzewa filogenetycznego."
-        },
-        "mst_html": {
-          "type": "string",
-          "minLength": 6,
-          "pattern": "^(\\./)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.html$",
-          "examples": ["mst/mst_wynik.html","viz/mst.html","mst.html"],
-          "description": "Ścieżka względna (względem ExecutionDir_dir) do pliku HTML z drzewem minimalnego rozpinającego (MST) wyznaczonym z danych cgMLST analizowanych próbek.",
-          "$comment": "Nie zaczyna się od '/', musi kończyć się na '.html'."
         },
 
         "sequence_filtering_data": {
@@ -124,7 +139,7 @@
         "pathogen",
         "pipeline_version",
         "ExecutionDir_dir",
-        "execution_time",
+        "data_uruchomienia",
         "input_params_data"
       ],
       "additionalProperties": false,
