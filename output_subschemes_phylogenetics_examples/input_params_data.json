@@ -1,0 +1,21 @@
+{
+  "pathogen": "Salmonella",
+  "subcategory_organism": "TBD",
+  "main_image": "pzh_pipeline-phylo:latest",
+  "data_uruchomienia": "2025-11-12 16:10",
+  "pipeline_version": "0.0.1",
+  "input_data": "/home/michall/git/pzh-phylogenetic-pipeline/data/example_data/salmonella/fastas",
+  "input_metadata": "/home/michall/git/pzh-phylogenetic-pipeline/data/example_data/salmonella/metadata_salmonella.txt",
+  "results_dir": "/home/michall/git/pzh-phylogenetic-pipeline/./results/test_salmonella",
+  "threshold_Ns": 0.02,
+  "threshold_ambiguities": 0,
+  "map_detail": "city",
+  "phylogenetic_model": "GTR+G",
+  "phylogenetic_bootstrap": 200,
+  "phylogenetic_min_support": 70,
+  "phylogenetic_starting_trees": 10,
+  "clockrate": "",
+  "input_ids": "ERR13711462,SRR10032843,SRR10049737,SRR10084868,SRR10084881,SRR10222053,SRR10235805,SRR10236686,SRR10314911,SRR10404589,SRR14766386,SRR16216494,SRR2096548,SRR22230307,SRR23721562,SRR27592486,SRR28412153,SRR29209733,SRR3097404,SRR5742498,SRR5815675,SRR5883584,SRR6029164,SRR6107159,SRR6663496,SRR7011956,SRR7890524,SRR8207016,SRR8782323,",
+  "input_type_bacteria": "fasta",
+  "prokka_image": "staphb/prokka:latest"
+}

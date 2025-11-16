@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/michallaz/plepiseq_json/main/output_subschemes_phylogenetics/sequence_filtering_data_map.json",
+  "title": "Wyniki filtrowania sekwencji",
+  "type": "object",
+  "description": "Struktura: { segment_name: { sample_id: { pola_QC } } }.",
+  "patternProperties": {
+    "^[^\\s]+$": {
+      "type": "object",
+      "description": "Wyniki filtrowania sekwencji dla danego semgentu.",
+      "patternProperties": {
+        "^[^\\s]+$": {
+          "type": "object",
+          "description": "Wyniki filtrowania dla konkretnej probki w danym segmencie.",
+          "properties": {
+            "number_of_N": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Liczba znaków 'N' w sekwencji."
+            },
+            "number_of_ambiguous": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Liczba znaków innych niż A,T,C,G,N w sekwencji."
+            },
+            "status": {
+              "type": "string",
+              "enum": ["tak", "nie"],
+              "description": "Czy sekwencja jest akceptowana do daleszej analizy (tak) czy odrzucona (nie)."
+            },
+            "error_message": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Powód odrzucenia sekwencji (wymagany, gdy status='nie')."
+            }
+          },
+          "required": ["number_of_N", "number_of_ambiguous", "status"],
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": { "properties": { "status": { "const": "nie" } }, "required": ["status"] },
+              "then": { "required": ["error_message"] }
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,15 @@
+{
+  "hRSV_A_England_397_2017": {
+    "EPI_ISL_19685832": {
+      "number_of_N": 76,
+      "number_of_ambiguous": 0,
+      "status": "tak"
+    },
+    "EPI_ISL_19685833": {
+      "number_of_N": 581,
+      "number_of_ambiguous": 0,
+      "status": "nie",
+      "error_message": "Number of Ns in a sequence is 581, with total length os a sequence is 15202 that number exceeds threshold of 0.02"
+    }
+  }
+}

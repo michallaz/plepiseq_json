@@ -1,0 +1,32 @@
+{
+  "bacterial_genome": {
+    "threshold": 1.0,
+    "clusters": {
+      "SRR10049737": [
+        "SRR10049737",
+        "SRR10084868"
+      ],
+      "SRR10314911": [
+        "SRR10314911",
+        "SRR10404589"
+      ],
+      "SRR6029164": [
+        "SRR6029164",
+        "SRR6107159"
+      ]
+    }
+  },
+  "other": {
+    "threshold": 0.3,
+    "clusters": {
+      "ala": [
+        "ala",
+        "ola"
+      ],
+      "ela": [
+        "pole",
+        "wol"
+      ]
+    }
+  }
+}

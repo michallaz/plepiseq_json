@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/michallaz/plepiseq_json/main/output_subschemes_phylogenetics/filogram_data_map.json",
+  "title": "Wyniki analizy filogenetycznej",
+  "type": "object",
+  "description": "Struktura: { segment_name: { id_filogram, program_name, program_version, phylogenetic_model, phylogenetic_bootstrap, phylogenetic_min_support, phylogenetic_starting_trees } }.",
+  "patternProperties": {
+    "^\\S+$": {
+      "type": "object",
+      "description": "Wyniki dla danego segmentu.",
+      "properties": {
+        "id_filogram": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Lista ID sekwencji użytych do filogramu, rozdzielona przecinkami."
+        },
+        "program_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Nazwa programu (np. iqtree2, raxml-ng)."
+        },
+        "program_version": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Wersja programu (np. 2.4.0)."
+        },
+        "phylogenetic_model": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Model substytucji (np. GTR+G)."
+        },
+        "phylogenetic_bootstrap": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Liczba replik bootstrap."
+        },
+        "phylogenetic_min_support": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Minimalne wsparcie gałęzi (0–1), poniżej progu gałęzie mogą być zwijane. W przypadku iqtree wartosc jest z zakresu 0-1, w przypadku raxml 0-100."
+        },
+        "phylogenetic_starting_trees": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Liczba drzew startowych."
+        }
+      },
+      "required": [
+        "id_filogram",
+        "program_name",
+        "program_version",
+        "phylogenetic_model",
+        "phylogenetic_bootstrap",
+        "phylogenetic_min_support",
+        "phylogenetic_starting_trees"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

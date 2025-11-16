@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/michallaz/plepiseq_json/main/output_subschemes_phylogenetics/sequence_clustering_data_map.json",
+  "title": "Wyniki procedury clustrowania sekwencji",
+  "type": "object",
+  "description": "Struktura: { segment_name: { threshold: number, clusters: { rep_id: [member_ids...] } } }.",
+  "patternProperties": {
+    "^\\S+$": {
+      "type": "object",
+      "description": "Wyniki procedury dla indywidualnych segmentow",
+      "properties": {
+        "threshold": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "description": "Minimalna identyczność sekwencyjna użyta do tworzenia klastrów z przedzialu 0-1."
+        },
+        "clusters": {
+          "type": "object",
+          "description": "Reprezentanci i przedstawiciele wszystkich klastrow, takze tych o wielkosci 1",
+          "patternProperties": {
+            "^\\S+$": {
+              "type": "array",
+              "description": "Lista identyfikatorów w klastrze (zwyczajowo zawiera id reprezentanta).",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^\\S+$",
+                "description": "Identyfikator sekwencji."
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "threshold",
+        "clusters"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

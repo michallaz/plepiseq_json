@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/michallaz/plepiseq_json/main/output_subschemes_phylogenetics/chronogram_data_map.json",
+  "title": "Chronogram data",
+  "type": "object",
+  "description": "Struktura: { segment_name: { id_chronogram, augur_version, treetime_version, clockrate_value, clockrate_correlation } }.",
+  "patternProperties": {
+    "^\\S+$": {
+      "type": "object",
+      "description": "Wyniki obliczen dla semgntu",
+      "properties": {
+        "id_chronogram": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Lista ID sekwencji użytych do liczenia chronogramu, rozdzielona przecinkami."
+        },
+        "augur_version": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Wersja programu Augur.",
+          "pattern": "^[0-9]+(?:\\.[0-9]+){0,3}(?:[-._][A-Za-z0-9]+)*$"
+        },
+        "treetime_version": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Wersja programu Treetime.",
+          "pattern": "^[0-9]+(?:\\.[0-9]+){0,3}(?:[-._][A-Za-z0-9]+)*$"
+        },
+        "clockrate_value": {
+          "description": "Wartość parametru clockrate.",
+          "type": "number"
+        },
+        "clockrate_correlation": {
+          "description": "Korelacja sygnału czasowego (0–1).",
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1,
+          "$comment": "Liczba z zakresu 0-1, wartosc -1 oznacza ze user podal wlasny clockrate i korelacja nie byla liczona"
+        }
+      },
+      "required": [
+        "id_chronogram",
+        "augur_version",
+        "treetime_version",
+        "clockrate_value",
+        "clockrate_correlation"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

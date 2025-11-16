@@ -1,0 +1,20 @@
+{
+  "hRSV_A_England_397_2017": {
+    "id_filogram": "EPI_ISL_19685832,EPI_ISL_19689072,EPI_ISL_19687298,EPI_ISL_19693741,EPI_ISL_19693731,EPI_ISL_19693743,EPI_ISL_19725092,EPI_ISL_19693744,EPI_ISL_19709602,EPI_ISL_19693732,EPI_ISL_19689070,EPI_ISL_19693745,EPI_ISL_19725090,EPI_ISL_19725390,",
+    "program_name": "iqtree2",
+    "program_version": "2.4.0",
+    "phylogenetic_model": "GTR+G",
+    "phylogenetic_bootstrap": 1000,
+    "phylogenetic_min_support": 0.75,
+    "phylogenetic_starting_trees": 10
+  },
+  "chr1": {
+    "id_filogram": "sek1, sek2",
+    "program_name": "some_name",
+    "program_version": "some_version",
+    "phylogenetic_model": "some_model",
+    "phylogenetic_bootstrap": 10,
+    "phylogenetic_min_support": 0.9,
+    "phylogenetic_starting_trees": 1
+  }
+}
