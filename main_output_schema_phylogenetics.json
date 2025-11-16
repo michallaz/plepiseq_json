@@ -2,6 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/michallaz/plepiseq_json/main/",
   "type": "object",
+  "$defs": {
+    "bacterialPathogens": {
+      "enum": [
+        "salmonella",
+        "escherichia",
+        "campylobacter"
+      ]
+    }
+  },
   "properties": {
     "output": {
       "type": "object",
@@ -115,7 +124,21 @@
           "additionalProperties": false,
           "$comment": "Plik Newick z chronogramem utworzonym na podstawie klasycznego drzewa filogenetycznego."
         },
-
+        "mst_html": {
+          "type": "object",
+          "description": "Mapa: nazwa segmentu → ścieżka względna do pliku HTML z MST (względem ExecutionDir_dir). Wymagane dla patogenów bakteryjnych.",
+          "minProperties": 1,
+          "patternProperties": {
+            "^\\S+$": {
+              "type": "string",
+              "minLength": 6,
+              "pattern": "^(\\./)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.html$",
+              "examples": ["mst/mst_wynik.html","viz/mst.html","mst.html"]
+            }
+          },
+          "additionalProperties": false,
+          "$comment": "musi kończyć się na '.html'."
+        },
         "sequence_filtering_data": {
           "$ref": "output_subschemes_phylogenetics/sequence_filtering_data.json",
           "$comment": "Szczegółowe wyniki modułu kontroli/filtrowania sekwencji wejściowych."
@@ -143,35 +166,35 @@
         "input_params_data"
       ],
       "additionalProperties": false,
-
-      "allOf": [
+       "allOf": [
         {
-          "if": {
-            "properties": { "status": { "const": "nie" } },
-            "required": ["status"]
-          },
-          "then": {
-            "required": ["error_message"]
-          }
+          "if": { "properties": { "status": { "const": "nie" } }, "required": ["status"] },
+          "then": { "required": ["error_message"] }
         },
         {
-          "if": {
-            "properties": { "status": { "const": "tak" } },
-            "required": ["status"]
-          },
+          "if": { "properties": { "status": { "const": "tak" } }, "required": ["status"] },
           "then": {
             "required": [
               "title",
               "filogram_nwk",
               "microreact_json",
               "chronogram_nwk",
-              "mst_html",
               "sequence_filtering_data",
               "sequence_clustering_data",
               "filogram_data",
               "chronogram_data"
             ]
           }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": { "const": "tak" },
+              "pathogen": { "$ref": "#/$defs/bacterialPathogens" }
+            },
+            "required": ["status","pathogen"]
+          },
+          "then": { "required": ["mst_html"] }
         }
       ]
     }
@@ -179,4 +202,5 @@
   "required": ["output"],
   "additionalProperties": false
 }
+
 
