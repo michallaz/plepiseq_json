@@ -44,9 +44,9 @@
         "sars-cov-2",
         "rsv",
         "influenza",
-        "Salmonella",
-        "Escherichia",
-        "Campylobacter"
+        "salmonella",
+        "escherichia",
+        "campylobacter"
       ],
       "description": "Nazwa gatunku podana przez użytkownika.",
       "$comment": "Powinna być spójna z output.pathogen."
