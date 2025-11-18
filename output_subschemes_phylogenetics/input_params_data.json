@@ -150,8 +150,12 @@
       "description": "Tempo ewolucji (clockrate) dla danego organizmu."
     },
     "input_ids": {
-      "type": "string",
+      "type": "array",
       "minItems": 1,
+      "items" : {
+	"type": "string",
+	"minLength": 1
+      },
       "description": "Lista wszystkich ID próbek przekazanych w metadanych."
     },
     "input_type_bacteria": {
