@@ -101,12 +101,12 @@
             "^\\S+$": {
               "type": "string",
               "minLength": 6,
-              "pattern": "^(\\./)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.json$",
-              "examples": ["microreact/wejscie.json","viz/microreact.json","./microreact.json"]
+              "pattern": "^(\\./)?([A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+\\.microreact$",
+              "examples": ["microreact/wejscie.microreact","viz/microreact.microreact","./microreact.microreact"]
             }
           },
           "additionalProperties": false,
-          "$comment": "Nie zaczyna się od '/', musi kończyć się na '.json'."
+          "$comment": "Nie zaczyna się od '/', musi kończyć się na '.microreact'."
         },
 
         "chronogram_nwk": {
