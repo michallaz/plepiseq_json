@@ -9,10 +9,14 @@
       "type": "object",
       "description": "Wyniki dla danego segmentu.",
       "properties": {
-        "id_filogram": {
-          "type": "string",
-          "minLength": 1,
-          "description": "Lista ID sekwencji użytych do filogramu, rozdzielona przecinkami."
+	"id_filogram": {
+          "type": "array",
+          "minItems": 1,
+          "items" : {
+            "type": "string",
+            "minLength": 1
+          },
+        "description": "Lista ID sekwencji użytych do filogramu."
         },
         "program_name": {
           "type": "string",
